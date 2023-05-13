@@ -36,7 +36,7 @@ struct StartScreen: View {
                 HStack{
                     Spacer()
                     RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                        withAnimation(.spring()) {
+                        withAnimation(.easeIn(duration: 2)) {
                             buttonIsPressed = true
                         }
                       

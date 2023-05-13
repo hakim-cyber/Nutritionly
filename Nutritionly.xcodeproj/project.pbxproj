@@ -53,7 +53,6 @@
 		082CC94E2A0F95F000D7F345 = {
 			isa = PBXGroup;
 			children = (
-				082CC97C2A1007F200D7F345 /* UserInformationView.swift */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
 				082CC9582A0F95F000D7F345 /* Products */,
 			);
@@ -73,6 +72,7 @@
 				082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */,
 				082CC96A2A0F972000D7F345 /* Features */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
+				082CC97C2A1007F200D7F345 /* UserInformationView.swift */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
 				082CC9682A0F96C800D7F345 /* StartScreen.swift */,
 				082CC9712A0FF25D00D7F345 /* LoginScreen.swift */,

@@ -91,7 +91,9 @@ struct LoginScreen: View {
                     .onAppear{
                         Auth.auth().addStateDidChangeListener{auth,user in
                             if user != nil{
+                                withAnimation(.easeIn(duration: 2)){
                                 userIsLoggedIn.toggle()
+                            }
                             }
                         }
                     }

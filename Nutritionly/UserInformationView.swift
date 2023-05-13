@@ -13,10 +13,11 @@ struct UserInformationView: View {
     @State private var weight: Int = 50
     @State private var age: Int = 12
     @State private var selectedGender = "Male"
-    @State private var informationIsAdded = false
+ 
     let genders = ["Male","Female"]
     let arrayOFHeight = Array(0...250)
     
+    @AppStorage("informationIsAdded") var informationIsAdded = false
     
     var body: some View {
         if informationIsAdded{
@@ -207,9 +208,9 @@ struct UserInformationView: View {
             HStack{
                 Spacer()
                 RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                    withAnimation(.spring()){
+                  
                         storeUserInformation()
-                    }
+                    
                     
                     
                 })
@@ -217,21 +218,49 @@ struct UserInformationView: View {
                 .font(.title2)
             }
         }
+        .onAppear{
+            withAnimation(.easeIn(duration: 2)) {
+                checkInforationIsAdded()
+            }
+        }
     }
+           
     }
     private func storeUserInformation(){
-        guard let uid = Auth.auth().currentUser?.uid else{return}
-        guard let email = Auth.auth().currentUser?.email else{return}
-        let userData = ["email":email,"id":uid,"weight":weight,"height":height,"age":age,"gender":selectedGender] as [String : Any]
-        Firestore.firestore().collection("users").document(uid).setData(userData){error in
-            if error != nil{
-                print(error?.localizedDescription)
-                return
-            }else{
-                self.informationIsAdded = true
+        if !informationIsAdded{
+            guard let uid = Auth.auth().currentUser?.uid else{return}
+            guard let email = Auth.auth().currentUser?.email else{return}
+            let userData = ["email":email,"id":uid,"weight":weight,"height":height,"age":age,"gender":selectedGender] as [String : Any]
+            Firestore.firestore().collection("users").document(uid).setData(userData){error in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    return
+                }
+                
+            }
+            withAnimation(.easeIn(duration: 2)) {
+                checkInforationIsAdded()
             }
             
         }
+    }
+    func checkInforationIsAdded(){
+               guard let uid = Auth.auth().currentUser?.uid else{return}
+               let db = Firestore.firestore()
+               let docRef = db.collection("users").document(uid)
+               
+               docRef.getDocument { (document, error) in
+                   if let document = document{
+                       
+                       if document.exists {
+                           self.informationIsAdded = true
+                       } else {
+                           self.informationIsAdded = false
+                       }
+                   }
+                   
+                
+               }
     }
 }
 
