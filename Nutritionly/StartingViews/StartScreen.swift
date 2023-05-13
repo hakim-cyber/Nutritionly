@@ -9,8 +9,20 @@ import SwiftUI
 
 struct StartScreen: View {
     @State private var buttonIsPressed = false
+   
     var body: some View {
         if !buttonIsPressed{
+          content
+        }else{
+          
+                LoginScreen()
+                    
+           
+                
+        }
+    }
+    var content:some View{
+        
             ZStack{
                 BackGround()
                 VStack(alignment: .center){
@@ -37,7 +49,7 @@ struct StartScreen: View {
                     Spacer()
                     RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
                         withAnimation(.easeIn(duration: 2)) {
-                            buttonIsPressed = true
+                            buttonIsPressed.toggle()
                         }
                       
                         
@@ -46,10 +58,6 @@ struct StartScreen: View {
                         .font(.title2)
                 }
             }
-        }else{
-            LoginScreen()
-                
-        }
     }
 }
 

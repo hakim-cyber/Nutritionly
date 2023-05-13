@@ -108,7 +108,7 @@ struct LoginScreen: View {
     func login(){
         Auth.auth().signIn(withEmail: email, password: password){result , error in
             if error != nil{
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
             }
         }
     }
@@ -116,7 +116,7 @@ struct LoginScreen: View {
     func register(){
         Auth.auth().createUser(withEmail: email, password: password){result,error in
             if error != nil{
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
           

@@ -10,6 +10,7 @@ import Firebase
 
 @main
 struct NutritionlyApp: App {
+    
     init(){
         FirebaseApp.configure()
     }
