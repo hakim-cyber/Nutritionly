@@ -8,35 +8,40 @@
 import SwiftUI
 
 struct StartScreen: View {
+    @State private var buttonIsPressed = false
     var body: some View {
-        ZStack{
-            BackGround()
-            VStack(alignment: .center){
-               Spacer()
-                Text("start")
-                Text("your new")
-                Text("day with")
-                Text("us :)")
-                   
-            Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-            }
-            .font(.system(size: 50))
-            .fontWeight(.heavy)
-            
-        
+        if !buttonIsPressed{
+            ZStack{
+                BackGround()
+                VStack(alignment: .center){
+                    Spacer()
+                    Text("start")
+                    Text("your new")
+                    Text("day with")
+                    Text("us :)")
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                }
+                .font(.system(size: 50))
+                .fontWeight(.heavy)
                 
-               
-        }
-        .safeAreaInset(edge: .bottom){
-            HStack{
-                Spacer()
-                RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {})
-                    .padding(20)
-                    .font(.title2)
+                
+                
+                
             }
+            .safeAreaInset(edge: .bottom){
+                HStack{
+                    Spacer()
+                    RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {buttonIsPressed = true})
+                        .padding(20)
+                        .font(.title2)
+                }
+            }
+        }else{
+            LoginScreen()
         }
     }
 }
