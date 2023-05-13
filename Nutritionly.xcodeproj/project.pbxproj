@@ -19,6 +19,7 @@
 		082CC9772A0FFA8D00D7F345 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 082CC9762A0FFA8D00D7F345 /* FirebaseAuth */; };
 		082CC9792A0FFA8D00D7F345 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 082CC9782A0FFA8D00D7F345 /* FirebaseFirestore */; };
 		082CC97B2A0FFDC000D7F345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */; };
+		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		082CC96F2A0FA5BF00D7F345 /* RoundedButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtton.swift; sourceTree = "<group>"; };
 		082CC9712A0FF25D00D7F345 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		082CC94E2A0F95F000D7F345 = {
 			isa = PBXGroup;
 			children = (
+				082CC97C2A1007F200D7F345 /* UserInformationView.swift */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
 				082CC9582A0F95F000D7F345 /* Products */,
 			);
@@ -179,6 +182,7 @@
 				082CC96C2A0F97A000D7F345 /* BackgroundShape.swift in Sources */,
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
+				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,

@@ -15,14 +15,14 @@ struct LoginScreen: View {
     @State private var isEmailValid = false
     var body: some View {
         if userIsLoggedIn{
-            ContentView()
+            UserInformationView()
         }else{
             LogView
         }
     }
     var LogView:some View{
         ZStack{
-            BackGround()
+            BackGround2()
             VStack(alignment: .center){
               Spacer()
                 
@@ -115,7 +115,9 @@ struct LoginScreen: View {
         Auth.auth().createUser(withEmail: email, password: password){result,error in
             if error != nil{
                 print(error?.localizedDescription)
+                return
             }
+          
         }
     }
     private func validateEmail(email: String) {
@@ -123,6 +125,8 @@ struct LoginScreen: View {
            let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
            isEmailValid = emailPredicate.evaluate(with: email)
        }
+    
+   
 }
 
 struct LoginScreen_Previews: PreviewProvider {

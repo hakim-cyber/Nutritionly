@@ -35,13 +35,20 @@ struct StartScreen: View {
             .safeAreaInset(edge: .bottom){
                 HStack{
                     Spacer()
-                    RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {buttonIsPressed = true})
+                    RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
+                        withAnimation(.spring()) {
+                            buttonIsPressed = true
+                        }
+                      
+                        
+                    })
                         .padding(20)
                         .font(.title2)
                 }
             }
         }else{
             LoginScreen()
+                
         }
     }
 }
