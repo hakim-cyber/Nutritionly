@@ -10,7 +10,7 @@ import Foundation
 class NutritionData_Manager:ObservableObject{
     //Nutrition Todays
     @Published  var caloriesNeed = 1600
-    @Published var caloriesTaken = 1248
+    @Published var caloriesTaken = 1200
     @Published var proteinNeed = 120
     @Published var proteinTaken = 80
     @Published var carbohydratesNeed = 150
@@ -24,5 +24,9 @@ class NutritionData_Manager:ObservableObject{
     @Published var steps = 5000
     
     //Food information Todays
+    
+    var progressCalories:Double{
+       Double( caloriesTaken) /  Double( caloriesNeed )
+    }
     
 }

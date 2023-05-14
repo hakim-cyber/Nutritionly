@@ -25,7 +25,7 @@ struct LoginScreen: View {
     }
     var LogView:some View{
         ZStack{
-            BackGround2(namespace: namespace)
+            BackGround(namespace: namespace)
              
                     
                

@@ -68,24 +68,24 @@ struct BackGround: View {
 
 struct BackGround2: View {
     var namespace:Namespace.ID
-
+    var animated:Bool
     var body: some View{
         ZStack{
             Color.backgroundColor.ignoresSafeArea()
                 .safeAreaInset(edge: .top){
                     ZStack{
-                        BackgroundShape2()
+                        BackgroundShape()
                             .fill(.ultraThinMaterial)
-                            .frame(maxWidth:  .infinity , maxHeight:UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight:animated ? 0:UIScreen.main.bounds.height / 2.2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
                             .matchedGeometryEffect(id: "background1", in: namespace)
-                            
-                        BackgroundShape2()
+   
+                        BackgroundShape()
                             .fill(Color.white)
-                            .frame(maxWidth:  .infinity , maxHeight: UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight:animated ? 0: UIScreen.main.bounds.height / 2.2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
                             .matchedGeometryEffect(id: "background2", in: namespace)
-                            
+                           
                         
                         
                         

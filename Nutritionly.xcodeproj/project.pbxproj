@@ -18,6 +18,7 @@
 		082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC9712A0FF25D00D7F345 /* LoginScreen.swift */; };
 		082CC97B2A0FFDC000D7F345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */; };
 		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
+		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
@@ -37,6 +38,7 @@
 		082CC9712A0FF25D00D7F345 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
+		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		08C79C4C2A10EECC00AC28CB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				089CF08D2A10310400061597 /* StartingViews */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
 				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
+				084F29A12A10F6070071D321 /* ProgressView.swift */,
 				08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */,
 				082CC95E2A0F95F200D7F345 /* Assets.xcassets */,
 				082CC9602A0F95F200D7F345 /* Preview Content */,
@@ -202,6 +205,7 @@
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,
+				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

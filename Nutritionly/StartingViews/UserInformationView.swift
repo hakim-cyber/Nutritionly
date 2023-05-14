@@ -19,6 +19,7 @@ struct UserInformationView: View {
    @State var screen =  UIScreen.main.bounds
     
     @State var informationIsAdded = false
+    @State var animated = false
     var namespace:Namespace.ID
     var body: some View {
         if informationIsAdded{
@@ -26,7 +27,7 @@ struct UserInformationView: View {
                
         }else{
         ZStack{
-            BackGround(namespace: namespace)
+            BackGround2(namespace: namespace,animated: animated)
        
                  
                
@@ -272,8 +273,13 @@ struct UserInformationView: View {
                    if let document = document{
                        
                        if document.exists {
-                           withAnimation(.easeIn(duration: 2)) {
-                               self.informationIsAdded = true
+                           withAnimation(.spring()){
+                               self.animated = true
+                           }
+                           DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                               withAnimation(.easeIn(duration: 1)) {
+                                   self.informationIsAdded = true
+                               }
                            }
                        } else {
                            return
