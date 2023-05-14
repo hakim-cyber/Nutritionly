@@ -37,7 +37,8 @@ struct BackgroundShape2: Shape {
 }
 
 struct BackGround: View {
-    
+    var namespace:Namespace.ID
+   
     var body: some View{
         ZStack{
             Color.backgroundColor.ignoresSafeArea()
@@ -45,13 +46,17 @@ struct BackGround: View {
                     ZStack{
                         BackgroundShape()
                             .fill(.ultraThinMaterial)
-                            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight: UIScreen.main.bounds.height / 2.2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
+                            .matchedGeometryEffect(id: "background1", in: namespace)
+                       
+                            
                         BackgroundShape()
                             .fill(Color.white)
-                            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight: UIScreen.main.bounds.height / 2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
-                        
+                            .matchedGeometryEffect(id: "background2", in: namespace)
+                           
                         
                         
                         
@@ -62,7 +67,8 @@ struct BackGround: View {
 }
 
 struct BackGround2: View {
-    
+    var namespace:Namespace.ID
+
     var body: some View{
         ZStack{
             Color.backgroundColor.ignoresSafeArea()
@@ -70,12 +76,16 @@ struct BackGround2: View {
                     ZStack{
                         BackgroundShape2()
                             .fill(.ultraThinMaterial)
-                            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight:UIScreen.main.bounds.height / 2.2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
+                            .matchedGeometryEffect(id: "background1", in: namespace)
+                            
                         BackgroundShape2()
                             .fill(Color.white)
-                            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 2, alignment: .top)
+                            .frame(maxWidth:  .infinity , maxHeight: UIScreen.main.bounds.height / 2.2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
+                            .matchedGeometryEffect(id: "background2", in: namespace)
+                            
                         
                         
                         

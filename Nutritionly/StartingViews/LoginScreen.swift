@@ -13,16 +13,22 @@ struct LoginScreen: View {
     @State private var password = ""
     @State private var userIsLoggedIn = false
     @State private var isEmailValid = false
+ 
+    var namespace:Namespace.ID
     var body: some View {
         if userIsLoggedIn{
-            UserInformationView()
+            UserInformationView(namespace: namespace)
+               
         }else{
             LogView
         }
     }
     var LogView:some View{
         ZStack{
-            BackGround2()
+            BackGround2(namespace: namespace)
+             
+                    
+               
             VStack(alignment: .center){
               Spacer()
                 
@@ -132,7 +138,8 @@ struct LoginScreen: View {
 }
 
 struct LoginScreen_Previews: PreviewProvider {
+    @Namespace static var namespace
     static var previews: some View {
-        LoginScreen()
+        LoginScreen(namespace: namespace)
     }
 }

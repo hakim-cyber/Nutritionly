@@ -9,14 +9,17 @@ import SwiftUI
 
 struct StartScreen: View {
     @State private var buttonIsPressed = false
+  
+    @Namespace var namespace
    
     var body: some View {
         if !buttonIsPressed{
           content
         }else{
-          
-                LoginScreen()
-                    
+    
+                LoginScreen( namespace: namespace)
+                
+         
            
                 
         }
@@ -24,7 +27,8 @@ struct StartScreen: View {
     var content:some View{
         
             ZStack{
-                BackGround()
+                BackGround(namespace: namespace)
+                    
                 VStack(alignment: .center){
                     Spacer()
                     Text("start")

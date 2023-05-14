@@ -20,6 +20,8 @@
 		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
+		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
+		08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		082CC9712A0FF25D00D7F345 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
+		08C79C4C2A10EECC00AC28CB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				082CC96A2A0F972000D7F345 /* Features */,
 				089CF08D2A10310400061597 /* StartingViews */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
+				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
+				08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */,
 				082CC95E2A0F95F200D7F345 /* Assets.xcassets */,
 				082CC9602A0F95F200D7F345 /* Preview Content */,
 			);
@@ -187,6 +193,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */,
+				08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */,
+				08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */,
 				082CC96C2A0F97A000D7F345 /* BackgroundShape.swift in Sources */,
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,

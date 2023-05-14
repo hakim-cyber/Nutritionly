@@ -13,18 +13,23 @@ struct UserInformationView: View {
     @State private var weight: Int = 50
     @State private var age: Int = 12
     @State private var selectedGender:String = "Male"
+   
  
     @State var genders = ["Male","Female"]
    @State var screen =  UIScreen.main.bounds
     
     @State var informationIsAdded = false
-    
+    var namespace:Namespace.ID
     var body: some View {
         if informationIsAdded{
             ContentView()
+               
         }else{
         ZStack{
-            Color.backgroundColor.ignoresSafeArea()
+            BackGround(namespace: namespace)
+       
+                 
+               
             
             VStack(spacing:30){
                 HStack{
@@ -284,7 +289,8 @@ struct UserInformationView: View {
 }
 
 struct UserInformationView_Previews: PreviewProvider {
+    @Namespace static var namespace
     static var previews: some View {
-        UserInformationView()
+        UserInformationView(namespace: namespace)
     }
 }
