@@ -8,13 +8,15 @@
 import SwiftUI
 import Firebase
 struct UserInformationView: View {
+   
+
     
     @State private var height: Int = 150
     @State private var weight: Int = 50
     @State private var age: Int = 12
     @State private var selectedGender:String = "Male"
    
- 
+
     @State var genders = ["Male","Female"]
    @State var screen =  UIScreen.main.bounds
     
@@ -246,10 +248,15 @@ struct UserInformationView: View {
                     print(error?.localizedDescription as Any)
                     return
                 }else{
+                    
                     checkInforationIsAdded()
                 }
                 
             }
+            
+            // add user to core data
+            
+           
            
                 
             
@@ -260,6 +267,7 @@ struct UserInformationView: View {
     }
     func checkInforationIsAdded(){
                guard let uid = Auth.auth().currentUser?.uid else{return}
+        guard let email = Auth.auth().currentUser?.email else{return}
                let db = Firestore.firestore()
                let docRef = db.collection("users").document(uid)
                
@@ -273,6 +281,7 @@ struct UserInformationView: View {
                    if let document = document{
                        
                        if document.exists {
+                          
                            withAnimation(.spring()){
                                self.animated = true
                            }
@@ -282,6 +291,7 @@ struct UserInformationView: View {
                                }
                            }
                        } else {
+                           
                            return
                          
                        }

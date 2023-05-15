@@ -11,7 +11,7 @@ import Firebase
 @main
 struct NutritionlyApp: App {
     @StateObject var dataManager = NutritionData_Manager()
-    @StateObject private var dataController = DataController()
+    
     init(){
         FirebaseApp.configure()
     }
@@ -19,7 +19,7 @@ struct NutritionlyApp: App {
         WindowGroup {
             StartScreen()
                 .environmentObject(dataManager)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+               
         }
     }
 }

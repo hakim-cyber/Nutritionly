@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import NotificationCenter
+import Firebase
+import FirebaseFirestoreSwift
 
 struct MainView: View {
     @EnvironmentObject var dataManager: NutritionData_Manager
     @State var screen = UIScreen.main.bounds
-    
+    @StateObject var usersStore = UserStore()
     
     var body: some View {
         ZStack{
@@ -184,6 +187,11 @@ struct MainView: View {
                 
                 Button{
                     // add food
+                    if  let currentId = Auth.auth().currentUser?.uid{
+                        let user = User(name: "update2", email: "test@Email.com firebase", height: 175, age: 16, gender: "Male", days: [Day]())
+                        
+                        usersStore.updateUser(user: user)
+                    }
                 }label:{
                     ZStack{
                         RoundedRectangle(cornerRadius: 40)
@@ -202,6 +210,9 @@ struct MainView: View {
             }
             .padding(.top)
             .padding(.horizontal)
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
+                // function for everyday 00;00
+            }
         }
     }
 }

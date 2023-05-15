@@ -18,7 +18,7 @@ struct CustomProgressView: View {
                 .overlay(alignment:.bottom){
                     Rectangle()
                         .fill(Color.black)
-                        .frame(width:100,height: 100 * progress)
+                        .frame(width:100,height:  max(0,progress * 100))
                         .animation(.spring(), value: progress)
                 }
             
@@ -28,7 +28,7 @@ struct CustomProgressView: View {
         .frame(width: 100,height: 100)
         .clipShape(Circle())
         .overlay(alignment: .bottom){
-            Text("\(Int(progress * 100) ,format: .percent)")
+            Text("\(max(0,progress * 100) ,format: .number)%")
                 .foregroundColor(.white)
                 .font(.system(size: 20))
                 .fontDesign(.monospaced)

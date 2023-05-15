@@ -6,22 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NutritionData_Manager:ObservableObject{
     //Nutrition Todays
-    @Published  var caloriesNeed = 1600
-    @Published var caloriesTaken = 1200
-    @Published var proteinNeed = 120
-    @Published var proteinTaken = 80
-    @Published var carbohydratesNeed = 150
-    @Published var carbohydratesTaken = 130
-    @Published var fatsNeed = 80
-    @Published var fatsTaken = 60
+    
+    @AppStorage("caloriesNeed")  var caloriesNeed = 0
+    @AppStorage("caloriesTaken") var caloriesTaken = 0
+    @AppStorage("proteinNeed") var proteinNeed = 0
+    @AppStorage("proteinTaken") var proteinTaken = 0
+    @AppStorage("carbohydratesNeed") var carbohydratesNeed = 0
+    @AppStorage("carbohydratesTaken") var carbohydratesTaken = 0
+    @AppStorage("fatsNeed") var fatsNeed = 0
+    @AppStorage("fatsTaken") var fatsTaken = 0
     
     // BurningInformation Todays
     
-    @Published var workoutMinutes = 105
-    @Published var steps = 5000
+    @AppStorage("workoutMinutes") var workoutMinutes = 0
+    @AppStorage("steps") var steps = 0
     
     //Food information Todays
     
@@ -35,5 +37,6 @@ class NutritionData_Manager:ObservableObject{
         
         return String("\(hours)h \(minutes)m")
     }
+    
     
 }
