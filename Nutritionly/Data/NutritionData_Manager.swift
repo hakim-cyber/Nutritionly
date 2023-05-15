@@ -29,4 +29,11 @@ class NutritionData_Manager:ObservableObject{
        Double( caloriesTaken) /  Double( caloriesNeed )
     }
     
+    func minuteToHourText()->String{
+        let hours = Int(workoutMinutes / 60)
+        let minutes = Int(Double(workoutMinutes) -  Double(hours * 60))
+        
+        return String("\(hours)h \(minutes)m")
+    }
+    
 }

@@ -41,7 +41,7 @@ struct BackGround: View {
    
     var body: some View{
         ZStack{
-            Color.backgroundColor.ignoresSafeArea()
+            Color.openGreen.ignoresSafeArea()
                 .safeAreaInset(edge: .top){
                     ZStack{
                         BackgroundShape()
@@ -71,18 +71,20 @@ struct BackGround2: View {
     var animated:Bool
     var body: some View{
         ZStack{
-            Color.backgroundColor.ignoresSafeArea()
+            Color.openGreen.ignoresSafeArea()
                 .safeAreaInset(edge: .top){
                     ZStack{
                         BackgroundShape()
                             .fill(.ultraThinMaterial)
-                            .frame(maxWidth:  .infinity , maxHeight:animated ? 0:UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , alignment: .top)
+                            .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2.2)
                             .edgesIgnoringSafeArea(.top)
                             .matchedGeometryEffect(id: "background1", in: namespace)
    
                         BackgroundShape()
                             .fill(Color.white)
-                            .frame(maxWidth:  .infinity , maxHeight:animated ? 0: UIScreen.main.bounds.height / 2.2, alignment: .top)
+                            .frame(maxWidth:  .infinity , alignment: .top)
+                            .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2.2)
                             .edgesIgnoringSafeArea(.top)
                             .matchedGeometryEffect(id: "background2", in: namespace)
                            

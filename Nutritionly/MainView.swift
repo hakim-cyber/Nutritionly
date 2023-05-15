@@ -14,13 +14,13 @@ struct MainView: View {
     
     var body: some View {
         ZStack{
-            Color.backgroundColor.ignoresSafeArea()
+            Color.clear.ignoresSafeArea()
             
-            VStack(spacing:30){
+            VStack(spacing:25){
                 HStack{
                     VStack(alignment: .leading, spacing: 10){
                         Text("have a good day!")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .font(.system(size: 23))
                             .fontDesign(.rounded)
                             .fontWeight(.bold)
@@ -30,18 +30,19 @@ struct MainView: View {
                             .fontDesign(.rounded)
                             .fontWeight(.bold)
                     }
+                    .padding(.horizontal, 10)
                     Spacer()
                     Button{
                         
                     }label: {
                         Image(systemName: "bell.fill")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                     }
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 15,style: .continuous)
                         .fill(Color.openGreen)
-                        .shadow(color: .black,radius: 10)
+                        
                     
                         HStack{
                             VStack(alignment: .leading, spacing: 15){
@@ -86,20 +87,121 @@ struct MainView: View {
                  .frame(width: screen.width / 1.1,height:200 )
                 
                 HStack{
-                    Text("activities")
-                    .foregroundColor(.white)
+                    Text("activity")
+                    .foregroundColor(.black)
                     .font(.system(size: 20))
                     .fontDesign(.rounded)
                     .fontWeight(.bold)
                     
                     Spacer()
+                    Button{
+                        // additional
+                    }label:{
+                        Image(systemName: "ellipsis")
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
+                    }
                     
                 }
-                Spacer()
-               
+                .padding(.horizontal, 10)
+                HStack{
+                    ZStack{
+                        // walking hours
+                        
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.openGreen.opacity(0.1))
+                            
+                        
+                        VStack{
+                        
+                            HStack{
+                                Image(systemName: "figure.walk")
+                                    .padding(9)
+                                    .background(Color.openGreen)
+                                    .clipShape(Circle())
+                                    Text("\(dataManager.steps) ")
+                                        .fontDesign(.default)
+                                        .fontWeight(.bold)
+                                Spacer()
+                                  
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(10)
+                        
+                    }
+                    .frame(width: screen.width / 2.1,height:160 )
+                    ZStack{
+                        // workouts hour
+                        
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.red.opacity(0.1))
+                            
+                        VStack{
+                        
+                            HStack{
+                                Image(systemName: "dumbbell")
+                                    .padding(9)
+                                    .background(Color.orange)
+                                    .clipShape(Circle())
+                                    Text("\(dataManager.minuteToHourText()) ")
+                                        .fontDesign(.default)
+                                        .fontWeight(.bold)
+                                Spacer()
+                                  
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(10)
+                        
+                    }
+                    .frame(width: screen.width / 2.1,height:160 )
+                }
+                ZStack{
+                    // weight loss
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.yellow.opacity(0.1))
+                    VStack{
+                                           
+                                               HStack{
+                                                   Image(systemName: "chart.bar.xaxis")
+                                                       .padding(9)
+                                                       .background(Color.yellow)
+                                                       .clipShape(Circle())
+                                                       
+                                                   Spacer()
+                                                     
+                                               }
+                                               
+                                               Spacer()
+                                           }
+                                           .padding(10)
+                }
+                .frame(width: screen.width / 1.05,height:130 )
+                
+                
+                Button{
+                    // add food
+                }label:{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(.black)
+                         
+                        Text("add food")
+                            .font(.system(size: 20))
+                            .fontDesign(.monospaced)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                        
+                    }
+                    .frame(width: screen.width / 1.08,height: 60)
+                }
                
             }
-            .padding()
+            .padding(.top)
+            .padding(.horizontal)
         }
     }
 }
