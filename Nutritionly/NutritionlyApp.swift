@@ -11,6 +11,7 @@ import Firebase
 @main
 struct NutritionlyApp: App {
     @StateObject var dataManager = NutritionData_Manager()
+    @StateObject var usersStore = UserStore()
     
     init(){
         FirebaseApp.configure()
@@ -19,6 +20,7 @@ struct NutritionlyApp: App {
         WindowGroup {
             StartScreen()
                 .environmentObject(dataManager)
+                .environmentObject(usersStore)
                
         }
     }

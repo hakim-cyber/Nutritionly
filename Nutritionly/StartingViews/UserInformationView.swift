@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 struct UserInformationView: View {
    
-
+    @EnvironmentObject var userStore: UserStore
     
     @State private var height: Int = 150
     @State private var weight: Int = 50
@@ -235,30 +235,14 @@ struct UserInformationView: View {
         do{
             guard let uid = Auth.auth().currentUser?.uid else{return}
             guard let email = Auth.auth().currentUser?.email else{return}
-            let userData: [String: Any] = [
-                   "email": email,
-                   "id": uid,
-                   "weight": weight,
-                   "height": height,
-                   "age": age,
-                   "gender": selectedGender
-               ]
-            Firestore.firestore().collection("users").document(uid).setData(userData){error in
-                if error != nil{
-                    print(error?.localizedDescription as Any)
-                    return
-                }else{
-                    
-                    checkInforationIsAdded()
-                }
-                
-            }
             
-            // add user to core data
+            let user = User(id:uid,name: "", email: email, height: height, age: age, gender: selectedGender, days: [Day]())
+        
+            //adding user to firebase
             
+            userStore.updateorAddUser(user: user)
            
-           
-                
+                checkInforationIsAdded()
             
         }catch{
             print("errror")

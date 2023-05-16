@@ -12,12 +12,13 @@ import FirebaseFirestoreSwift
 
 struct MainView: View {
     @EnvironmentObject var dataManager: NutritionData_Manager
+    @EnvironmentObject var userStore: UserStore
     @State var screen = UIScreen.main.bounds
-    @StateObject var usersStore = UserStore()
+
     
     var body: some View {
         ZStack{
-            Color.clear.ignoresSafeArea()
+            Color.white.ignoresSafeArea()
             
             VStack(spacing:25){
                 HStack{
@@ -187,11 +188,10 @@ struct MainView: View {
                 
                 Button{
                     // add food
-                    if  let currentId = Auth.auth().currentUser?.uid{
-                        let user = User(name: "update2", email: "test@Email.com firebase", height: 175, age: 16, gender: "Male", days: [Day]())
-                        
-                        usersStore.updateUser(user: user)
-                    }
+                  
+                    
+                  
+                   
                 }label:{
                     ZStack{
                         RoundedRectangle(cornerRadius: 40)
@@ -221,5 +221,6 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(NutritionData_Manager())
+            .preferredColorScheme(.light)
     }
 }

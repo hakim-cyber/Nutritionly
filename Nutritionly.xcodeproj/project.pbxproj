@@ -26,6 +26,7 @@
 		08F367B72A12CADF00180195 /* Structs Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367B62A12CADF00180195 /* Structs Users.swift */; };
 		08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */; };
 		08F367BC2A12CDD000180195 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BB2A12CDD000180195 /* UserStore.swift */; };
+		08F367BE2A1414E000180195 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BD2A1414E000180195 /* AddFoodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
 		08F367B62A12CADF00180195 /* Structs Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs Users.swift"; sourceTree = "<group>"; };
 		08F367BB2A12CDD000180195 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		08F367BD2A1414E000180195 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddFoodView.swift; path = "../../../../Library/Developer/Xcode/DerivedData/Nutritionly-ffjfotstisgvfxblsnnbsqczzyqt/SourcePackages/checkouts/leveldb/AddFoodView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,7 @@
 		082CC94E2A0F95F000D7F345 = {
 			isa = PBXGroup;
 			children = (
-				08F367B62A12CADF00180195 /* Structs Users.swift */,
-				08F367BB2A12CDD000180195 /* UserStore.swift */,
+				08F367BD2A1414E000180195 /* AddFoodView.swift */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
 				082CC9582A0F95F000D7F345 /* Products */,
 				08F367B82A12CB3900180195 /* Frameworks */,
@@ -129,6 +130,8 @@
 		08F367842A12A73600180195 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				08F367BB2A12CDD000180195 /* UserStore.swift */,
+				08F367B62A12CADF00180195 /* Structs Users.swift */,
 				08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */,
 			);
 			path = Data;
@@ -226,6 +229,7 @@
 				082CC96C2A0F97A000D7F345 /* BackgroundShape.swift in Sources */,
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
+				08F367BE2A1414E000180195 /* AddFoodView.swift in Sources */,
 				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,

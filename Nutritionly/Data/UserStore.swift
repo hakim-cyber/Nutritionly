@@ -17,8 +17,20 @@ class UserStore:ObservableObject{
     let db = Firestore.firestore()
     
     
-    
-    
+    init(){
+       fetchUserUsingThisApp()
+    }
+    func addDayToUser(day:Day,to user:User){
+        var userForAdd = user
+        userForAdd.days.append(day)
+        
+        updateorAddUser(user: userForAdd)
+    }
+    func fetchUserUsingThisApp(){
+        guard let idOfUser = Auth.auth().currentUser?.uid else{return}
+        
+        fetchUser(userId: idOfUser)
+    }
     func fetchUser(userId:String){
         let docRef = db.collection("users").document(userId)
         
@@ -37,7 +49,7 @@ class UserStore:ObservableObject{
             
         }
     }
-    func updateUser(user:User){
+    func updateorAddUser(user:User){
         // Use for updating user ,adding with id you want , if no id it uses adding new user
         
         
