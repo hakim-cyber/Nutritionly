@@ -14,13 +14,16 @@ struct MainView: View {
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
     @State var screen = UIScreen.main.bounds
-
+    @State private var showAddView = false
+@Namespace var namespace
     
     var body: some View {
         ZStack{
             Color.white.ignoresSafeArea()
+                .matchedGeometryEffect(id: "white background", in: namespace)
             
             VStack(spacing:25){
+                
                 HStack{
                     VStack(alignment: .leading, spacing: 10){
                         Text("have a good day!")
@@ -188,7 +191,9 @@ struct MainView: View {
                 
                 Button{
                     // add food
-                  
+                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                        showAddView = true
+                    }
                     
                   
                    
@@ -213,6 +218,18 @@ struct MainView: View {
             .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
                 // function for everyday 00;00
             }
+            if showAddView{
+                AddFoodView(namespace:namespace){
+                    withAnimation(.spring()){
+                        showAddView = false
+                    }
+                }
+                .environmentObject(dataManager)
+                .transition(.move(edge: .bottom))
+                
+                
+            }
+            
         }
     }
 }

@@ -21,12 +21,17 @@
 		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
+		08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0EE2A15168900CEA256 /* NewFoodView.swift */; };
+		08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */; };
+		08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */; };
 		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
 		08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */; };
 		08F367B72A12CADF00180195 /* Structs Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367B62A12CADF00180195 /* Structs Users.swift */; };
 		08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */; };
 		08F367BC2A12CDD000180195 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BB2A12CDD000180195 /* UserStore.swift */; };
-		08F367BE2A1414E000180195 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BD2A1414E000180195 /* AddFoodView.swift */; };
+		08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BF2A1419BB00180195 /* AddFoodView.swift */; };
+		08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367C12A141B8900180195 /* NutritionsLine.swift */; };
+		08F367C42A141FF200180195 /* MealItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367C32A141FF200180195 /* MealItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +48,16 @@
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		08AEC0EE2A15168900CEA256 /* NewFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFoodView.swift; sourceTree = "<group>"; };
+		08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
+		08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		08C79C4C2A10EECC00AC28CB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
 		08F367B62A12CADF00180195 /* Structs Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs Users.swift"; sourceTree = "<group>"; };
 		08F367BB2A12CDD000180195 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
-		08F367BD2A1414E000180195 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddFoodView.swift; path = "../../../../Library/Developer/Xcode/DerivedData/Nutritionly-ffjfotstisgvfxblsnnbsqczzyqt/SourcePackages/checkouts/leveldb/AddFoodView.swift"; sourceTree = "<group>"; };
+		08F367BF2A1419BB00180195 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		08F367C12A141B8900180195 /* NutritionsLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionsLine.swift; sourceTree = "<group>"; };
+		08F367C32A141FF200180195 /* MealItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +77,6 @@
 		082CC94E2A0F95F000D7F345 = {
 			isa = PBXGroup;
 			children = (
-				08F367BD2A1414E000180195 /* AddFoodView.swift */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
 				082CC9582A0F95F000D7F345 /* Products */,
 				08F367B82A12CB3900180195 /* Frameworks */,
@@ -90,6 +99,9 @@
 				082CC96A2A0F972000D7F345 /* Features */,
 				089CF08D2A10310400061597 /* StartingViews */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
+				08F367BF2A1419BB00180195 /* AddFoodView.swift */,
+				08AEC0EE2A15168900CEA256 /* NewFoodView.swift */,
+				08F367C32A141FF200180195 /* MealItem.swift */,
 				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
 				08F367842A12A73600180195 /* Data */,
 				082CC95E2A0F95F200D7F345 /* Assets.xcassets */,
@@ -109,6 +121,9 @@
 		082CC96A2A0F972000D7F345 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */,
+				08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */,
+				08F367C12A141B8900180195 /* NutritionsLine.swift */,
 				084F29A12A10F6070071D321 /* ProgressView.swift */,
 				082CC96D2A0FA35100D7F345 /* Color.swift */,
 				082CC96B2A0F97A000D7F345 /* BackgroundShape.swift */,
@@ -225,16 +240,21 @@
 			files = (
 				082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */,
 				08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */,
+				08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */,
 				08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */,
 				082CC96C2A0F97A000D7F345 /* BackgroundShape.swift in Sources */,
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
+				08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
-				08F367BE2A1414E000180195 /* AddFoodView.swift in Sources */,
+				08F367C42A141FF200180195 /* MealItem.swift in Sources */,
 				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
+				08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */,
+				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,
+				08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */,
 				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
 				08F367BC2A12CDD000180195 /* UserStore.swift in Sources */,
 			);

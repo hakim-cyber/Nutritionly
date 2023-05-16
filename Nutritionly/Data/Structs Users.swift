@@ -32,8 +32,16 @@ struct Food:Codable{
 }
 
 struct Ingredients:Codable{
+    var title:String
     var calorie:Int
     var protein:Int
     var fat:Int
     var carbs:Int
+}
+
+
+struct Nutrition:Codable,Hashable{
+    var name:String
+    var count:Int
+    var shortName:String
 }

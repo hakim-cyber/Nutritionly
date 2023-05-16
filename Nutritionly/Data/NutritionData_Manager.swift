@@ -25,7 +25,37 @@ class NutritionData_Manager:ObservableObject{
     @AppStorage("workoutMinutes") var workoutMinutes = 0
     @AppStorage("steps") var steps = 0
     
-    //Food information Todays
+    // meals
+    let meals = ["Breakfast","Lunch","Dinner","Snack"]
+    let mealsColors:[String:Color] = ["Breakfast":Color.openGreen, "Lunch":Color.indigo,"Dinner":Color.mint,"Snack":Color.orange]
+    
+    
+    //foods of day and recent ones
+    let keyforFoodsOfDay = "foodsOfDay"
+    @Published var foodsOfDay = [Food]()
+    @Published var recentFoodsOfUser = [Food]()
+    
+    //load all needed data when open
+    init(){
+       loadFoodsOfDay()
+    }
+//saving and loading foods
+    func saveFoodsOfDay(){
+        if let encoded = try? JSONEncoder().encode(foodsOfDay){
+            UserDefaults.standard.set(encoded, forKey: keyforFoodsOfDay)
+        }
+    }
+    func loadFoodsOfDay(){
+        
+        if let data = UserDefaults.standard.data(forKey: keyforFoodsOfDay){
+            if let decoded = try? JSONDecoder().decode([Food].self, from: data){
+                foodsOfDay = decoded
+            }
+        }
+    }
+    
+    
+    
     
     var progressCalories:Double{
        Double( caloriesTaken) /  Double( caloriesNeed )
@@ -38,5 +68,13 @@ class NutritionData_Manager:ObservableObject{
         return String("\(hours)h \(minutes)m")
     }
     
-    
+    var nutritionsArray:[Nutrition]{
+       
+        let fats = Nutrition(name: "Fats", count: fatsTaken, shortName: "g")
+        let cals = Nutrition(name: "Calories", count: fatsTaken, shortName: "kcal")
+        let prot = Nutrition(name: "Proteins", count: fatsTaken, shortName: "g")
+        let carb = Nutrition(name: "Carb", count: fatsTaken, shortName: "g")
+        
+        return [fats,carb,prot,cals]
+    }
 }
