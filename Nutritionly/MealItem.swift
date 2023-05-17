@@ -11,6 +11,9 @@ struct MealItem: View {
     var foods:[Food]
     var meal:String
     var color:Color
+    var nameSpace:Namespace.ID
+    var showAddingNewFood:(String)->Void
+  
     var body: some View {
    
       
@@ -28,6 +31,7 @@ struct MealItem: View {
                                 .foregroundColor(.black)
                             Button{
                                 // add day with this meal
+                                showAddingNewFood(meal)
                             }label: {
                                 Image(systemName: "plus")
                                     .padding(5)
@@ -48,6 +52,7 @@ struct MealItem: View {
                         ZStack{
                             RoundedRectangle(cornerRadius: 20,style: .continuous)
                                 .fill(color)
+                                .matchedGeometryEffect(id: "Background\(meal)", in: nameSpace)
                                
                             ScrollView(.vertical,showsIndicators: false){
                                 VStack(alignment: .leading, spacing: 15){
@@ -127,7 +132,10 @@ struct MealItem: View {
 }
 
 struct MealItem_Previews: PreviewProvider {
+    @Namespace static var namespace
     static var previews: some View {
-        MealItem(foods: [Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]())], meal: "Dinner",color: Color.openGreen)
+        MealItem(foods: [Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]())], meal: "Dinner",color: Color.openGreen, nameSpace:  namespace){_ in
+            
+        }
     }
 }

@@ -14,10 +14,21 @@ struct NewFoodView: View {
     @State var typeOfadding = TypeOfAddings.new
     @EnvironmentObject var dataManager:NutritionData_Manager
     @State private var ingredients = [Ingredients(title: "name", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "ame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "hame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "nme", calorie: 0, protein: 0, fat: 0, carbs: 0)]
+    var namespace:Namespace.ID
+    var close:()->Void
     var body: some View {
         ZStack{
             color.ignoresSafeArea()
+                .matchedGeometryEffect(id: "Background\(meal)", in: namespace)
             VStack(spacing: 25){
+                HStack{
+                    Image(systemName: "arrow.backward")
+                        .onTapGesture {
+                            close()
+                        }
+                    Spacer()
+                }
+                .padding(.horizontal)
                 CustomSwitch(typeOfadding: $typeOfadding)
                 if typeOfadding == .new{
                     new
@@ -128,8 +139,11 @@ struct NewFoodView: View {
 }
 
 struct NewFoodView_Previews: PreviewProvider {
+    @Namespace static var namespace
     static var previews: some View {
-        NewFoodView(meal: "Breakfast",color: Color.indigo)
+        NewFoodView(meal: "Breakfast",color: Color.indigo,namespace: namespace){
+            
+        }
     }
 }
 
