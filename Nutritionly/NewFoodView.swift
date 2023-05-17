@@ -36,15 +36,16 @@ struct NewFoodView: View {
         VStack(spacing: 20){
             VStack{
                 TextField("Name",text: $name)
-                .padding()
                 .background( Color.clear)
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .shadow(color:.gray,radius: 5)
                 .padding(.horizontal,10)
-                .padding(.vertical,2)
                
-                    
+                    Rectangle()
+                    .fill(.gray)
+                    .frame(width: 350, height: 4)
+                    .opacity(0.2)
             }
           
             HStack{
@@ -67,12 +68,14 @@ struct NewFoodView: View {
             }
            
             ScrollView(.vertical,showsIndicators: false){
-                LazyVStack(spacing: 20){
+                LazyVStack(spacing: 0){
                     ForEach(ingredients, id: \.title){ingred in
                         ZStack{
                             RoundedRectangle(cornerRadius: 10,style: .continuous)
-                                .fill(color)
-                                .shadow(color:.gray,radius: 5)
+                                .fill(.ultraThinMaterial)
+                                .shadow(radius: 5)
+                                .opacity(0.7)
+                              
                             VStack{
                                 HStack{
                                     Text(ingred.title)
@@ -80,7 +83,7 @@ struct NewFoodView: View {
                                    
                                 }
                                 
-                                    HStack(){
+                                    HStack{
                                         
                                         Text("p")
                                             .foregroundColor(.secondary)
@@ -106,6 +109,8 @@ struct NewFoodView: View {
                                     }
                                 
                             }
+                            .padding(.leading)
+                            .padding(.horizontal,5)
                             .padding(5)
                         }
                         .padding(.top)
@@ -124,7 +129,7 @@ struct NewFoodView: View {
 
 struct NewFoodView_Previews: PreviewProvider {
     static var previews: some View {
-        NewFoodView(meal: "Breakfast",color: Color.orange)
+        NewFoodView(meal: "Breakfast",color: Color.indigo)
     }
 }
 

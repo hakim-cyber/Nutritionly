@@ -220,12 +220,12 @@ struct MainView: View {
             }
             if showAddView{
                 AddFoodView(namespace:namespace){
-                    withAnimation(.spring()){
+                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                         showAddView = false
                     }
                 }
                 .environmentObject(dataManager)
-                .transition(.move(edge: .bottom))
+                .transition(.move(edge:  .bottom))
                 
                 
             }
