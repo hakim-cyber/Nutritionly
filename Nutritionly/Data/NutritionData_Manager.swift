@@ -54,7 +54,12 @@ class NutritionData_Manager:ObservableObject{
         }
     }
     
-    
+    func AddNewFoodForDay(ingred:[Ingredients],name:String,meal:String){
+        let food = Food(name: name, meal: meal, ingredients: ingred)
+        
+        foodsOfDay.append(food)
+        saveFoodsOfDay()
+    }
     
     
     var progressCalories:Double{

@@ -16,34 +16,89 @@ struct NewFoodView: View {
     @State private var ingredients = [Ingredients(title: "name", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "ame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "hame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "nme", calorie: 0, protein: 0, fat: 0, carbs: 0)]
     var namespace:Namespace.ID
     var close:()->Void
+    
+    @State private var showsearchView = false
+    @State private var showtotalView = false
+    @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
             color.ignoresSafeArea()
-                .matchedGeometryEffect(id: "Background\(meal)", in: namespace)
-            VStack(spacing: 25){
-                HStack{
-                    Image(systemName: "arrow.backward")
-                        .onTapGesture {
-                            close()
+            if !showsearchView{
+                if !showtotalView{
+                    ZStack{
+                        color.ignoresSafeArea()
+                            .matchedGeometryEffect(id: "Background\(meal)", in: namespace)
+                        VStack(spacing: 25){
+                            HStack{
+                                Image(systemName: "arrow.backward")
+                                    .onTapGesture {
+                                        close()
+                                    }
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            CustomSwitch(typeOfadding: $typeOfadding)
+                            if typeOfadding == .new{
+                                new
+                            }else{
+                                
+                            }
+                            Spacer()
+                            
                         }
-                    Spacer()
-                }
-                .padding(.horizontal)
-                CustomSwitch(typeOfadding: $typeOfadding)
-                if typeOfadding == .new{
-                    new
+                        .padding(.top)
+                    }
+                    .safeAreaInset(edge: .bottom){
+                        Button{
+                            // Go to total view
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                showtotalView = true
+                            }
+                            
+                        }label:{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 40)
+                                    .fill(.black)
+                                
+                                Text("add food")
+                                    .font(.system(size: 20))
+                                    .fontDesign(.monospaced)
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.white)
+                                
+                            }
+                            .frame(width: screen.width / 1.08,height: 60)
+                        }
+                    }
+                    .transition(.move(edge: .top))
                 }else{
-                    
+                    TotalFoodView(ingredients: ingredients, name: name, meal: meal){
+                        dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal)
+                        close()
+                    }
+                        .transition(.move(edge: .top))
                 }
-                Spacer()
                 
+            }else{
+                SearchIngredientsView(color: color){selected in
+                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                        for select in selected{
+                            if !ingredients.contains(where: {$0.id == select.id}){
+                                ingredients.append(select)
+                            }
+                        }
+                        showsearchView = false
+                        
+                    }
+                }
+                .transition(.move(edge: .bottom))
             }
-            .padding(.top)
+            
         }
-       
     }
     
     var new:some View{
+        
         VStack(spacing: 20){
             VStack{
                 TextField("Name",text: $name)
@@ -67,7 +122,9 @@ struct NewFoodView: View {
                     .fontWeight(.bold)
                   
                 Button{
-                    
+                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                        showsearchView = true
+                    }
                 }label: {
                     Image(systemName: "plus")
                         .font(.caption)
@@ -80,7 +137,7 @@ struct NewFoodView: View {
            
             ScrollView(.vertical,showsIndicators: false){
                 LazyVStack(spacing: 0){
-                    ForEach(ingredients, id: \.title){ingred in
+                    ForEach(ingredients, id: \.id){ingred in
                         ZStack{
                             RoundedRectangle(cornerRadius: 10,style: .continuous)
                                 .fill(.ultraThinMaterial)
@@ -135,7 +192,9 @@ struct NewFoodView: View {
         }
         .padding(.horizontal,20)
         
+        
     }
+    
 }
 
 struct NewFoodView_Previews: PreviewProvider {

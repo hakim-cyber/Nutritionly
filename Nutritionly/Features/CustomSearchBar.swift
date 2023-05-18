@@ -11,7 +11,7 @@ struct CustomSearchBar: View {
     @Binding var searchText:String
     var color:Color
     var body: some View {
-        TextField("Search ",text: $searchText)
+        TextField("🔎 Search ",text: $searchText)
         .padding()
         .padding(.horizontal,10)
         .background(color)

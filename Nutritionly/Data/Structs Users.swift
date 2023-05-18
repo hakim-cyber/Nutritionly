@@ -26,12 +26,14 @@ struct Day:Codable{
     var walkingSteps:Int
 }
 struct Food:Codable{
+   
     var name:String
     var meal:String
     var ingredients:[Ingredients]
 }
 
 struct Ingredients:Codable{
+    var id = UUID()
     var title:String
     var calorie:Int
     var protein:Int
