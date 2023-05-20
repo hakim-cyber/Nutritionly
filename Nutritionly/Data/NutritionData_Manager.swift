@@ -32,12 +32,14 @@ class NutritionData_Manager:ObservableObject{
     
     //foods of day and recent ones
     let keyforFoodsOfDay = "foodsOfDay"
+    let keyforRecentFoods = "recentFoods"
     @Published var foodsOfDay = [Food]()
     @Published var recentFoodsOfUser = [Food]()
     
     //load all needed data when open
     init(){
        loadFoodsOfDay()
+        loadRecentfoods()
     }
 //saving and loading foods
     func saveFoodsOfDay(){
@@ -53,34 +55,32 @@ class NutritionData_Manager:ObservableObject{
             }
         }
     }
-    /*
-     var totals:[String:Int]{
-       var totalProtein = 0
-       var totalCarb = 0
-       var totalKcal = 0
-     var totalFats = 0
-         
-         for ingredient in ingredients {
-             totalProtein += Int(ingredient.protein * (ingredient.grams / 100))
-             totalCarb +=  Int(ingredient.carbs * (ingredient.grams / 100))
-             totalKcal +=  Int(ingredient.calorie * (ingredient.grams / 100))
-             totalFats +=  Int(ingredient.fat * (ingredient.grams / 100))
-             
-         }
-         
-         return [
-         "p":totalProtein,
-         "c":totalCarb,
-         "f":totalFats,
-         "kcal":totalKcal
-         
-         ]
-     }
-     */
+    // recent uploaded foods
+    func saveRecentFoods(){
+        if let encoded = try? JSONEncoder().encode(recentFoodsOfUser){
+            UserDefaults.standard.set(encoded, forKey: keyforRecentFoods)
+        }
+    }
+    func loadRecentfoods(){
+        
+        if let data = UserDefaults.standard.data(forKey: keyforRecentFoods){
+            if let decoded = try? JSONDecoder().decode([Food].self, from: data){
+                recentFoodsOfUser = decoded
+            }
+        }
+    }
+    
+   
     func AddNewFoodForDay(ingred:[Ingredients],name:String,meal:String){
         let food = Food(name: name, meal: meal, ingredients: ingred)
         
         foodsOfDay.append(food)
+        
+        if !(recentFoodsOfUser.contains(where: {$0.ingredients == food.ingredients})){
+            recentFoodsOfUser.append(food)
+            saveRecentFoods()
+        }
+        
         saveFoodsOfDay()
     }
     

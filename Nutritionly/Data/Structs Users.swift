@@ -26,16 +26,19 @@ struct Day:Codable{
     var walkingSteps:Int
 }
 struct Food:Codable{
-   
     var name:String
     var meal:String
     var ingredients:[Ingredients]
+    
+   
 }
 
 
-struct Ingredients:Codable{
+struct Ingredients:Codable,Equatable{
     var grams = 100
-    var id:Int
+    
+    var id:UUID
+    var fdcId:Int
     var title:String
     var calorie:Int
     var protein:Int

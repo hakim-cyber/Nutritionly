@@ -14,6 +14,8 @@ struct NewFoodView: View {
     @State var typeOfadding = TypeOfAddings.new
     @EnvironmentObject var dataManager:NutritionData_Manager
     @State private var ingredients = [Ingredients]()
+    
+    @State private var selectedFood:Food?
     var namespace:Namespace.ID
     var close:()->Void
     
@@ -40,8 +42,12 @@ struct NewFoodView: View {
                             CustomSwitch(typeOfadding: $typeOfadding)
                             if typeOfadding == .new{
                                 new
+                                    .transition(.move(edge: .leading))
                             }else{
-                                
+                                // recents view
+                                RecentsView(selectedFood: $selectedFood)
+                                    .transition(.move(edge: .trailing))
+                                   
                             }
                             Spacer()
                             
@@ -51,8 +57,18 @@ struct NewFoodView: View {
                     .safeAreaInset(edge: .bottom){
                         Button{
                             // Go to total view
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                                showtotalView = true
+                            if typeOfadding == .new{
+                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    showtotalView = true
+                                }
+                            }else{
+                                
+                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    if let selectedFood = selectedFood{
+                                        dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal)
+                                    }
+                                    close()
+                                }
                             }
                             
                         }label:{
@@ -72,11 +88,13 @@ struct NewFoodView: View {
                     }
                     .transition(.move(edge: .top))
                 }else{
-                    TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
-                        dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal)
-                        close()
-                    }
+                    
+                        TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
+                            dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal)
+                            close()
+                        }
                         .transition(.move(edge: .top))
+                    
                 }
                 
             }else{
@@ -194,6 +212,9 @@ struct NewFoodView: View {
         
         
     }
+    
+   
+
     
 }
 

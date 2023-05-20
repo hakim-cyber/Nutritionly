@@ -84,9 +84,9 @@ struct SearchIngredientsView: View {
                                 .padding(.top)
                                 .padding(.horizontal,10)
                                 .onTapGesture {
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                                    withAnimation(.spring()) {
                                         if isSelected(ingred: ingred){
-                                            if let index = selectedIngredients.firstIndex(where: {$0.id == ingred.id}){
+                                            if let index = selectedIngredients.firstIndex(where: {$0.fdcId == ingred.fdcId}){
                                                 selectedIngredients.remove(at: index)
                                             }
                                         }else{
@@ -132,7 +132,7 @@ struct SearchIngredientsView: View {
     
     
     func isSelected(ingred:Ingredients)->Bool{
-        return selectedIngredients.contains(where: {$0.id == ingred.id})
+        return selectedIngredients.contains(where: {$0.fdcId == ingred.fdcId})
     }
     var searchResult:[Ingredients]{
         var results = [Ingredients]()
@@ -142,7 +142,7 @@ struct SearchIngredientsView: View {
             let fat = Int(filterNutrition(nutritions: result.filteredNutrients, nutrition: "fat").value)
             let carb = Int( filterNutrition(nutritions: result.filteredNutrients, nutrition: "carb").value)
             
-            let ingredient = Ingredients(id:result.fdcId ?? 0,title: result.description ?? "", calorie: kcal, protein: proteins, fat: fat, carbs: carb)
+            let ingredient = Ingredients(id:UUID(),fdcId: result.fdcId ?? 0, title: result.description ?? "", calorie: kcal, protein: proteins, fat: fat, carbs: carb)
             
             results.append(ingredient)
         }
