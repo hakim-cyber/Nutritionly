@@ -115,7 +115,7 @@ struct MealItem: View {
         
         for food in filteredFoods {
             for ingredient in food.ingredients{
-                total += ingredient.calorie
+                total += ingredient.totalNutritions["kcal"] ?? 0
             }
         }
         

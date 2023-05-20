@@ -69,21 +69,21 @@ struct TotalFoodView: View {
                                                     
                                                     Text("p")
                                                         .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].protein)g")
+                                                    Text("\(ingredients[index].totalNutritions["p"] ?? 0)g")
                                                         .fontDesign(.monospaced)
                                                         .fontWeight(.bold)
                                                     Text("c")
                                                         .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].carbs)g")
+                                                    Text("\(ingredients[index].totalNutritions["c"] ?? 0)g")
                                                         .fontDesign(.monospaced)
                                                         .fontWeight(.bold)
                                                     Text("f")
                                                         .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].fat)g")
+                                                    Text("\(ingredients[index].totalNutritions["f"] ?? 0)g")
                                                         .fontDesign(.monospaced)
                                                         .fontWeight(.bold)
                                                     
-                                                    Text("\(ingredients[index].calorie)kcal")
+                                                    Text("\(ingredients[index].totalNutritions["kcal"] ?? 0)kcal")
                                                         .fontDesign(.monospaced)
                                                         .fontWeight(.bold)
                                                     
@@ -193,8 +193,8 @@ struct TotalFoodView: View {
         for ingredient in ingredients {
             totalProtein += ingredient.totalNutritions["p"] ?? 0
             totalCarb +=  ingredient.totalNutritions["c"] ?? 0
-            totalKcal +=  ingredient.totalNutritions["f"] ?? 0
-            totalFats +=  ingredient.totalNutritions["kcal"] ?? 0
+            totalKcal +=  ingredient.totalNutritions["kcal"] ?? 0
+            totalFats +=  ingredient.totalNutritions["f"] ?? 0
             
         }
         
