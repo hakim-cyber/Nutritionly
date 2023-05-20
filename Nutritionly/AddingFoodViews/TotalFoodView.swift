@@ -19,7 +19,7 @@ struct TotalFoodView: View {
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
-           
+            
             
             VStack{
                 HStack{
@@ -36,7 +36,7 @@ struct TotalFoodView: View {
                             close()
                         }
                     }label: {
-                       
+                        
                         Image(systemName: "plus")
                             .font(.title3)
                             .padding(5)
@@ -46,98 +46,100 @@ struct TotalFoodView: View {
                 }
                 
                 ScrollView(.vertical,showsIndicators: false){
-                                LazyVStack(spacing: 0){
-                                    ForEach(Array(ingredients.indices), id: \.self){index in
-                                        ZStack{
-                                            RoundedRectangle(cornerRadius: 10,style: .continuous)
-                                                .fill(.ultraThinMaterial)
-                                                .shadow(radius: 5)
-                                                .opacity(0.7)
-                                            VStack{
-                                            VStack{
-                                                HStack{
-                                                    Text(ingredients[index].title)
-                                                    Spacer()
-                                                    Text("\(ingredients[index].grams)g")
-                                                        .fontDesign(.rounded)
-                                                        .font(.callout)
-                                                        .foregroundColor(.gray)
-                                                    
-                                                    
-                                                }
-                                                
-                                                HStack{
-                                                    
-                                                    Text("p")
-                                                        .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].totalNutritions["p"] ?? 0)g")
-                                                        .fontDesign(.monospaced)
-                                                        .fontWeight(.bold)
-                                                    Text("c")
-                                                        .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].totalNutritions["c"] ?? 0)g")
-                                                        .fontDesign(.monospaced)
-                                                        .fontWeight(.bold)
-                                                    Text("f")
-                                                        .foregroundColor(.secondary)
-                                                    Text("\(ingredients[index].totalNutritions["f"] ?? 0)g")
-                                                        .fontDesign(.monospaced)
-                                                        .fontWeight(.bold)
-                                                    
-                                                    Text("\(ingredients[index].totalNutritions["kcal"] ?? 0)kcal")
-                                                        .fontDesign(.monospaced)
-                                                        .fontWeight(.bold)
-                                                    
-                                                    
-                                                }
-                                                
-                                            }
-                                            .onTapGesture{
-                                                withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
-                                                    if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
-                                                        if  let index = tappedIngreds.firstIndex(where: {$0.id == ingredients[index].id}){
-                                                            tappedIngreds.remove(at: index)
-                                                        }
-                                                    }else{
-                                                        tappedIngreds.append(ingredients[index])
-                                                    }
-                                                }
-                                            }
-                                            // foods grams changing
-                                             
-                                                if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
-                                                    TextField("amount in grams", value: $ingredients[index].grams, formatter: NumberFormatter())
-                                                            .keyboardType(.numberPad)
-                                                            .focused($amountIsFocused)
-                                                            .padding(8)
-                                                            .padding(.horizontal,5)
-                                                            .background(.thinMaterial)
-                                                            .foregroundColor(.white)
-                                                            .cornerRadius(20)
-                                                            .shadow(color:.gray,radius: 5)
-                                                            .padding(.horizontal,5)
-                                                            .padding(.vertical,2)
-                                                    }
-                                                                          
-                                                
+                    LazyVStack(spacing: 0){
+                        ForEach(Array(ingredients.indices), id: \.self){index in
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                                    .shadow(radius: 5)
+                                    .opacity(0.7)
+                                VStack{
+                                    VStack{
+                                        HStack{
+                                            Text(ingredients[index].title)
+                                            Spacer()
+                                            Text("\(ingredients[index].grams)g")
+                                                .fontDesign(.rounded)
+                                                .font(.callout)
+                                                .foregroundColor(.gray)
+                                            
+                                            
                                         }
-                                            .padding(.leading)
-                                            .padding(.horizontal,5)
-                                            .padding(5)
-                                        }
-                                        .padding(.top)
-                                        .padding(.horizontal)
                                         
+                                        HStack{
+                                            
+                                            Text("p")
+                                                .foregroundColor(.secondary)
+                                            Text("\(ingredients[index].totalNutritions["p"] ?? 0)g")
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.bold)
+                                            Text("c")
+                                                .foregroundColor(.secondary)
+                                            Text("\(ingredients[index].totalNutritions["c"] ?? 0)g")
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.bold)
+                                            Text("f")
+                                                .foregroundColor(.secondary)
+                                            Text("\(ingredients[index].totalNutritions["f"] ?? 0)g")
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.bold)
+                                            
+                                            Text("\(ingredients[index].totalNutritions["kcal"] ?? 0)kcal")
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.bold)
+                                            
+                                            
+                                        }
                                         
                                     }
+                                    .onTapGesture{
+                                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
+                                            if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
+                                                if  let index = tappedIngreds.firstIndex(where: {$0.id == ingredients[index].id}){
+                                                    tappedIngreds.remove(at: index)
+                                                }
+                                            }else{
+                                                tappedIngreds.append(ingredients[index])
+                                            }
+                                        }
+                                    }
+                                    // foods grams changing
+                                    
+                                    if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
+                                        TextField("amount in grams", value: $ingredients[index].grams, formatter: NumberFormatter())
+                                            .keyboardType(.numberPad)
+                                            .focused($amountIsFocused)
+                                            .padding(8)
+                                            .padding(.horizontal,5)
+                                            .background(.thinMaterial)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(20)
+                                            .shadow(color:.gray,radius: 5)
+                                            .padding(.horizontal,5)
+                                            .padding(.vertical,2)
+                                    }
+                                    
+                                    
                                 }
+                                .padding(.leading)
+                                .padding(.horizontal,5)
+                                .padding(5)
                             }
+                            .padding(.top)
+                            .padding(.horizontal)
+                            
+                            
+                        }
+                    }
+                }
+                .scrollDismissesKeyboard(.immediately)
+                .ignoresSafeArea(.keyboard)
                 // total card view
                 
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.thinMaterial)
-                       
+                    
                     
                     VStack{
                         HStack{
@@ -146,9 +148,9 @@ struct TotalFoodView: View {
                                 .font(.system(size: 35))
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                         
+                            
                         }
-                      Spacer()
+                        Spacer()
                         HStack{
                             
                             Text("p")
@@ -179,7 +181,7 @@ struct TotalFoodView: View {
                 .padding(.horizontal)
                 
                 Spacer()
-               
+                
             }
             .padding(.top)
             .padding(.horizontal)
@@ -194,6 +196,7 @@ struct TotalFoodView: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
      
     }
     var totals:[String:Int]{

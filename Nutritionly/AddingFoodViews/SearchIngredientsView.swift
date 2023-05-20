@@ -99,6 +99,7 @@ struct SearchIngredientsView: View {
                     
                 }
             }
+           
             .padding(.top,30)
             .padding(.horizontal)
         }
@@ -122,6 +123,7 @@ struct SearchIngredientsView: View {
                 .frame(width: screen.width / 1.08,height: 60)
             }
         }
+        .ignoresSafeArea(.keyboard)
        
     }
     
