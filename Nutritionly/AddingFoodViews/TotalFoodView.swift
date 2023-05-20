@@ -14,6 +14,7 @@ struct TotalFoodView: View {
     var close:()->Void
     
     @State var tappedIngreds = [Ingredients]()
+    @FocusState private var amountIsFocused: Bool
     
     @State private var screen = UIScreen.main.bounds
     var body: some View {
@@ -107,6 +108,7 @@ struct TotalFoodView: View {
                                                 if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
                                                     TextField("amount in grams", value: $ingredients[index].grams, formatter: NumberFormatter())
                                                             .keyboardType(.numberPad)
+                                                            .focused($amountIsFocused)
                                                             .padding(8)
                                                             .padding(.horizontal,5)
                                                             .background(.thinMaterial)
@@ -181,6 +183,16 @@ struct TotalFoodView: View {
             }
             .padding(.top)
             .padding(.horizontal)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    
+                    Button("Done") {
+                        amountIsFocused = false
+                    }
+                    
+                }
+            }
         }
      
     }
