@@ -187,13 +187,16 @@ struct TotalFoodView: View {
             .padding(.horizontal)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    
-                    Button("Done") {
-                        amountIsFocused = false
+                    HStack{
+                        Spacer()
+                     
+                            Button("Done") {
+                                amountIsFocused = false
+                            }
+                        }
                     }
                     
-                }
+                
             }
         }
         .ignoresSafeArea(.keyboard)
@@ -224,7 +227,7 @@ struct TotalFoodView: View {
 }
 
 struct TotalFoodView_Previews: PreviewProvider {
-    @State private static var ingredients = [Ingredients(id:1,title: "name", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(id:2,title: "ame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(id:3,title: "hame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(id:4,title: "nme", calorie: 600, protein: 0, fat: 0, carbs: 0)]
+    @State private static var ingredients = [Ingredients(id:UUID(),fdcId: 0, title: "name", calorie: 0, protein: 0, fat: 0, carbs: 0)]
     static var previews: some View {
         TotalFoodView(ingredients:.constant(ingredients), name: "Pasta", meal: "Dinner"){
             

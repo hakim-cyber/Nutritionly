@@ -24,6 +24,8 @@
 		08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0EE2A15168900CEA256 /* NewFoodView.swift */; };
 		08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */; };
 		08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */; };
+		08AF76672A19503E00ABC818 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 08AF76662A19503E00ABC818 /* EmojiPicker */; };
+		08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA5B032A19395A001B2174 /* RecentsView.swift */; };
 		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
 		08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */; };
 		08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */; };
@@ -56,6 +58,7 @@
 		08AEC0EE2A15168900CEA256 /* NewFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFoodView.swift; sourceTree = "<group>"; };
 		08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		08BA5B032A19395A001B2174 /* RecentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsView.swift; sourceTree = "<group>"; };
 		08C79C4C2A10EECC00AC28CB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
 		08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngredientsView.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 				089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */,
 				08DB01882A17E2ED00DCA54A /* Alamofire in Frameworks */,
 				089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */,
+				08AF76672A19503E00ABC818 /* EmojiPicker in Frameworks */,
 				08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +158,7 @@
 		08DB01832A16CD9300DCA54A /* AddingFoodViews */ = {
 			isa = PBXGroup;
 			children = (
+				08BA5B032A19395A001B2174 /* RecentsView.swift */,
 				08F367C32A141FF200180195 /* MealItem.swift */,
 				08F367BF2A1419BB00180195 /* AddFoodView.swift */,
 				08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */,
@@ -202,6 +207,7 @@
 				089CF08B2A10300700061597 /* FirebaseFirestore */,
 				08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */,
 				08DB01872A17E2ED00DCA54A /* Alamofire */,
+				08AF76662A19503E00ABC818 /* EmojiPicker */,
 			);
 			productName = Nutritionly;
 			productReference = 082CC9572A0F95F000D7F345 /* Nutritionly.app */;
@@ -234,6 +240,7 @@
 			packageReferences = (
 				089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				08DB01862A17E2ED00DCA54A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 			);
 			productRefGroup = 082CC9582A0F95F000D7F345 /* Products */;
 			projectDirPath = "";
@@ -281,6 +288,7 @@
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,
+				08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */,
 				08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */,
 				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
 				08F367BC2A12CDD000180195 /* UserStore.swift in Sources */,
@@ -497,6 +505,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		08DB01862A17E2ED00DCA54A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -517,6 +533,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		08AF76662A19503E00ABC818 /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
 		};
 		08DB01872A17E2ED00DCA54A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
