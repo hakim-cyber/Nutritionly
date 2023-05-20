@@ -125,7 +125,7 @@ struct MealItem: View {
         var total = 0
         
         for ingred in food.ingredients{
-            total += ingred.calorie
+            total += ingred.totalNutritions["kcal"] ?? 0
         }
         return total
     }

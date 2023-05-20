@@ -59,7 +59,7 @@ struct AddFoodView: View {
                                             self.showaddingNewFood = true
                                         }
                                     }
-                                    .frame(maxHeight:  screen.size.height / 2.8)
+                                    .frame(maxHeight:  screen.size.height / 3.05)
                                     .frame(minHeight: screen.size.height / 5.7)
                                     
                                 }
