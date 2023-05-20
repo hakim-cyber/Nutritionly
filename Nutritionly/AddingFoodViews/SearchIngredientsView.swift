@@ -13,6 +13,9 @@ struct SearchIngredientsView: View {
     
 @StateObject var model = SearchIngredientViewModel()
     
+    
+    
+    
   
     @State private var selectedIngredients = [Ingredients]()
     
