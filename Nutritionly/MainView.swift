@@ -20,7 +20,7 @@ struct MainView: View {
     var body: some View {
         ZStack{
             Color.white.ignoresSafeArea()
-                .matchedGeometryEffect(id: "white background", in: namespace)
+               
             
             VStack(spacing:25){
                 

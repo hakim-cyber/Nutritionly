@@ -187,13 +187,13 @@ struct TotalFoodView: View {
             .padding(.horizontal)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
-                    HStack{
+                   
                         Spacer()
                      
                             Button("Done") {
                                 amountIsFocused = false
                             }
-                        }
+                        
                     }
                     
                 

@@ -19,7 +19,7 @@ struct NewFoodView: View {
     @State private var selectedFood:Food?
     // emoji picker
     @State private var selectedEmoji:Emoji?
-    
+    @State private var showEmojiPikcer = false
     
     var namespace:Namespace.ID
     var close:()->Void
@@ -70,7 +70,7 @@ struct NewFoodView: View {
                                 
                                 withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                                     if let selectedFood = selectedFood{
-                                        dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal)
+                                        dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal,emoji: selectedFood.emoji)
                                     }
                                     close()
                                 }
@@ -95,7 +95,7 @@ struct NewFoodView: View {
                 }else{
                     
                         TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
-                            dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal)
+                            dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal,emoji: selectedEmoji?.value)
                             close()
                         }
                         .transition(.move(edge: .top))
@@ -124,18 +124,32 @@ struct NewFoodView: View {
         
         VStack(spacing: 20){
             VStack{
-                TextField("Name",text: $name)
-                .background( Color.clear)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .shadow(color:.gray,radius: 5)
-                
-                .padding(.horizontal,10)
-               
-                    Rectangle()
+                HStack{
+           
+                        TextField("Name",text: $name)
+                            .background( Color.clear)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .shadow(color:.gray,radius: 5)
+                        
+                            .padding(.horizontal,10)
+                        
+                    
+                    
+                    Text("\(selectedEmoji?.value ?? "Add Emoji")")
+                        .foregroundColor(.accentColor)
+                        .onTapGesture {
+                            showEmojiPikcer = true
+                        }
+                        .font(.title3)
+                }
+                Rectangle()
                     .fill(.gray)
                     .frame(width: 350, height: 4)
                     .opacity(0.2)
+                    
+                   
+                
             }
           
             HStack{
@@ -215,6 +229,10 @@ struct NewFoodView: View {
                
         }
         .padding(.horizontal,20)
+        .sheet(isPresented: $showEmojiPikcer){
+            EmojiPickerView(selectedEmoji: $selectedEmoji)
+                .background(color.ignoresSafeArea())
+        }
         
         
     }

@@ -56,7 +56,7 @@ struct MealItem: View {
                                
                             ScrollView(.vertical,showsIndicators: false){
                                 VStack(alignment: .leading, spacing: 15){
-                                    ForEach(filteredFoods, id:\.name) { food in
+                                    ForEach(filteredFoods, id:\.id) { food in
                                         VStack{
                                             HStack(alignment: .center){
                                                 VStack(alignment: .leading,spacing: 10){
@@ -75,10 +75,15 @@ struct MealItem: View {
                                                 Spacer()
                                                 
                                                 // place for image in future
-                                                Circle()
-                                                    .fill(.white)
-                                                    .frame(width: 60,height: 60)
-                                                
+                                                ZStack{
+                                                    Circle()
+                                                        .fill(.white)
+                                                        
+                                                    Text("\(food.emoji)")
+                                                        .padding(5)
+                                                }
+                                                .frame(width: 40,height: 40)
+                                                    
                                                 
                                                 
                                             }
@@ -134,7 +139,7 @@ struct MealItem: View {
 struct MealItem_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        MealItem(foods: [Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]())], meal: "Dinner",color: Color.openGreen, nameSpace:  namespace){_ in
+        MealItem(foods: [Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients](),emoji: "🤣"),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]()),Food(name: "Baked sweet potato with salmon and grilled vegetables", meal: "Dinner", ingredients: [Ingredients]())], meal: "Dinner",color: Color.openGreen, nameSpace:  namespace){_ in
             
         }
     }

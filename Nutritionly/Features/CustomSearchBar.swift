@@ -13,16 +13,11 @@ struct CustomSearchBar: View {
     var search:()->Void
     var body: some View {
         HStack{
-            TextField("Search ",text: $searchText)
+            TextField("🔎 Search ",text: $searchText)
                 .onSubmit {
                     search()
                 }
-            Button{
-        
-                search()
-            }label: {
-                Text("🔎")
-            }
+           
         }
         .padding()
         .padding(.horizontal,10)

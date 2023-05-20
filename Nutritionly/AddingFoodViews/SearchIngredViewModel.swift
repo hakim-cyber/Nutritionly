@@ -63,36 +63,7 @@ class SearchIngredientViewModel:ObservableObject{
     
 }
 
-/*
- "foods": [
-     {
-       "fdcId": 174988,
-       "description": "Croissants, apple",
-       "commonNames": "",
-       "additionalDescriptions": "",
-       "dataType": "SR Legacy",
-       "ndbNumber": 18240,
-       "publishedDate": "2019-04-01",
-       "foodCategory": "Baked Products",
-       "allHighlightFields": "",
-       "score": 270.66928,
-       "microbes": [],
-       "foodNutrients": [
-         {
-           "nutrientId": 1062,
-           "nutrientName": "Energy",
-           "nutrientNumber": "268",
-           "unitName": "kJ",
-           "value": 1060,
-           "rank": 400,
-           "indentLevel": 1,
-           "foodNutrientId": 1904530,
-           "dataPoints": 0
-         },
- */
-/*
- kcal (208), protein (203), carbs (205), and fats (204)
- */
+
 struct SearchFood: Codable {
     let fdcId: Int?
     let description: String?

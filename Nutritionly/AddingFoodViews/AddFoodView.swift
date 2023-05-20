@@ -21,7 +21,7 @@ struct AddFoodView: View {
             if !showaddingNewFood{
                 ZStack{
                     Color.white.ignoresSafeArea()
-                        .matchedGeometryEffect(id: "white background", in: namespace)
+                      
                     VStack(spacing: 20){
                         HStack{
                             Button{
