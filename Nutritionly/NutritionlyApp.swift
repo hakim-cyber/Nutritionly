@@ -18,7 +18,7 @@ struct NutritionlyApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            testSearchView()
+            StartScreen()
                 .environmentObject(dataManager)
                 .environmentObject(usersStore)
                

@@ -10,8 +10,20 @@ import SwiftUI
 struct CustomSearchBar: View {
     @Binding var searchText:String
     var color:Color
+    var search:()->Void
     var body: some View {
-        TextField("🔎 Search ",text: $searchText)
+        HStack{
+            TextField("Search ",text: $searchText)
+                .onSubmit {
+                    search()
+                }
+            Button{
+        
+                search()
+            }label: {
+                Text("🔎")
+            }
+        }
         .padding()
         .padding(.horizontal,10)
         .background(color)
@@ -25,6 +37,8 @@ struct CustomSearchBar: View {
 
 struct CustomSearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomSearchBar(searchText: .constant(""),color:Color.openGreen)
+        CustomSearchBar(searchText: .constant(""),color:Color.openGreen){
+            
+        }
     }
 }

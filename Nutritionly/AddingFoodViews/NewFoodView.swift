@@ -13,7 +13,7 @@ struct NewFoodView: View {
     @State var name = ""
     @State var typeOfadding = TypeOfAddings.new
     @EnvironmentObject var dataManager:NutritionData_Manager
-    @State private var ingredients = [Ingredients(title: "name", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "ame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "hame", calorie: 0, protein: 0, fat: 0, carbs: 0),Ingredients(title: "nme", calorie: 0, protein: 0, fat: 0, carbs: 0)]
+    @State private var ingredients = [Ingredients]()
     var namespace:Namespace.ID
     var close:()->Void
     
@@ -72,7 +72,7 @@ struct NewFoodView: View {
                     }
                     .transition(.move(edge: .top))
                 }else{
-                    TotalFoodView(ingredients: ingredients, name: name, meal: meal){
+                    TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
                         dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal)
                         close()
                     }

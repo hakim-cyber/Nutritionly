@@ -36,7 +36,13 @@ class SearchIngredientViewModel:ObservableObject{
                     if let data = data {
                         do{
                             let decoded = try JSONDecoder().decode(SearchResponse.self ,from: data)
-                            self.searchResults = decoded.foods
+                            DispatchQueue.main.async{
+                                withAnimation (.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    self.searchResults = decoded.foods
+                                }
+                                
+                            }
+                            
                         }catch{
                             print(error)
                         }

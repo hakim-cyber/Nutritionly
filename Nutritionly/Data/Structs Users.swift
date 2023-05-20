@@ -32,13 +32,29 @@ struct Food:Codable{
     var ingredients:[Ingredients]
 }
 
+
 struct Ingredients:Codable{
-    var id = UUID()
+    var grams = 100
+    var id:Int
     var title:String
     var calorie:Int
     var protein:Int
     var fat:Int
     var carbs:Int
+    
+    var totalNutritions:[String:Int]{
+       let totalProtein = Int(protein * (grams / 100))
+        let totalCarb =  Int(carbs * (grams / 100))
+       let totalKcal =  Int(calorie * (grams / 100))
+        let totalFats =  Int(fat * (grams / 100))
+        return [
+        "p":totalProtein,
+        "c":totalCarb,
+        "f":totalFats,
+        "kcal":totalKcal
+        
+        ]
+    }
 }
 
 

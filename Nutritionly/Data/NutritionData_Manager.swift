@@ -53,7 +53,30 @@ class NutritionData_Manager:ObservableObject{
             }
         }
     }
-    
+    /*
+     var totals:[String:Int]{
+       var totalProtein = 0
+       var totalCarb = 0
+       var totalKcal = 0
+     var totalFats = 0
+         
+         for ingredient in ingredients {
+             totalProtein += Int(ingredient.protein * (ingredient.grams / 100))
+             totalCarb +=  Int(ingredient.carbs * (ingredient.grams / 100))
+             totalKcal +=  Int(ingredient.calorie * (ingredient.grams / 100))
+             totalFats +=  Int(ingredient.fat * (ingredient.grams / 100))
+             
+         }
+         
+         return [
+         "p":totalProtein,
+         "c":totalCarb,
+         "f":totalFats,
+         "kcal":totalKcal
+         
+         ]
+     }
+     */
     func AddNewFoodForDay(ingred:[Ingredients],name:String,meal:String){
         let food = Food(name: name, meal: meal, ingredients: ingred)
         
