@@ -13,21 +13,25 @@ struct StartScreen: View {
     @Namespace var namespace
    
     var body: some View {
-        if !buttonIsPressed{
-          content
-        }else{
-    
+        ZStack{
+            BackGround(namespace: namespace)
+            if !buttonIsPressed{
+                content
+            }else{
+                
                 LoginScreen( namespace: namespace)
+                    .transition(.move(edge: .bottom))
                 
-         
-           
                 
+                
+                
+            }
         }
     }
     var content:some View{
         
             ZStack{
-                BackGround(namespace: namespace)
+              
                     
                 VStack(alignment: .center){
                     Spacer()
@@ -52,7 +56,7 @@ struct StartScreen: View {
                 HStack{
                     Spacer()
                     RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                        withAnimation(.easeIn(duration: 2)) {
+                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
                             buttonIsPressed.toggle()
                         }
                       

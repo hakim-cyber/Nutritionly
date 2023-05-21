@@ -27,6 +27,7 @@ struct UserInformationView: View {
         if informationIsAdded{
             ContentView()
                
+               
         }else{
         ZStack{
             BackGround2(namespace: namespace,animated: animated)
@@ -266,11 +267,11 @@ struct UserInformationView: View {
                        
                        if document.exists {
                           
-                           withAnimation(.spring()){
+                           withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                                self.animated = true
                            }
                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                               withAnimation(.easeIn(duration: 1)) {
+                               withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
                                    self.informationIsAdded = true
                                }
                            }

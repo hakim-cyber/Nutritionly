@@ -30,8 +30,8 @@ struct BackgroundShape2: Shape {
         path.move(to: CGPoint(x: 0, y:0))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addQuadCurve(to: CGPoint(x: rect.midX , y: rect.maxY ), control: CGPoint(x: rect.midX + 100, y: rect.maxY + 20))
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.maxY), control: CGPoint(x: rect.midX - 100 , y: rect.maxY - 30))
+        path.addQuadCurve(to: CGPoint(x: rect.midX , y: rect.maxY ), control: CGPoint(x: rect.midX + 100, y: rect.maxY - 20))
+        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.maxY), control: CGPoint(x: rect.midX - 100 , y: rect.maxY + 30))
         return path
     }
 }
@@ -79,14 +79,14 @@ struct BackGround2: View {
                             .frame(maxWidth:  .infinity , alignment: .top)
                             .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2.2)
                             .edgesIgnoringSafeArea(.top)
-                            .matchedGeometryEffect(id: "background1", in: namespace)
+                           
    
                         BackgroundShape()
                             .fill(Color.white)
                             .frame(maxWidth:  .infinity , alignment: .top)
-                            .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2.2)
+                            .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2)
                             .edgesIgnoringSafeArea(.top)
-                            .matchedGeometryEffect(id: "background2", in: namespace)
+                           
                            
                         
                         

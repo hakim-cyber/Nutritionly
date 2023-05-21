@@ -18,6 +18,7 @@ struct LoginScreen: View {
     var body: some View {
         if userIsLoggedIn{
             UserInformationView(namespace: namespace)
+                .transition(.move(edge: .bottom))
                
         }else{
             LogView
@@ -25,7 +26,7 @@ struct LoginScreen: View {
     }
     var LogView:some View{
         ZStack{
-            BackGround(namespace: namespace)
+          
              
                     
                
@@ -97,7 +98,7 @@ struct LoginScreen: View {
                     .onAppear{
                         Auth.auth().addStateDidChangeListener{auth,user in
                             if user != nil{
-                                withAnimation(.easeIn(duration: 2)){
+                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                                 userIsLoggedIn.toggle()
                             }
                             }
