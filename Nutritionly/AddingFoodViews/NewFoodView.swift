@@ -25,12 +25,14 @@ struct NewFoodView: View {
     var close:()->Void
     
     @State private var showsearchView = false
+ 
     @State private var showtotalView = false
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
             color.ignoresSafeArea()
             if !showsearchView{
+       
                 if !showtotalView{
                     ZStack{
                         color.ignoresSafeArea()
@@ -52,7 +54,7 @@ struct NewFoodView: View {
                                 // recents view
                                 RecentsView(selectedFood: $selectedFood)
                                     .transition(.move(edge: .trailing))
-                                   
+                                
                             }
                             Spacer()
                             
@@ -94,14 +96,15 @@ struct NewFoodView: View {
                     .transition(.move(edge: .top))
                 }else{
                     
-                        TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
-                            dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal,emoji: selectedEmoji?.value)
-                            close()
-                        }
-                        .transition(.move(edge: .top))
+                    TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
+                        dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal,emoji: selectedEmoji?.value)
+                        close()
+                    }
+                    .transition(.move(edge: .top))
                     
                 }
                 
+              
             }else{
                 SearchIngredientsView(color: color){selected in
                     withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
@@ -159,10 +162,13 @@ struct NewFoodView: View {
                     .fontDesign(.rounded)
                     .fontWeight(.bold)
                   
-                Button{
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                        showsearchView = true
-                    }
+         
+                    Button{
+                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            showsearchView = true
+                        }
+                    
+                   
                 }label: {
                     Image(systemName: "plus")
                         .font(.caption)

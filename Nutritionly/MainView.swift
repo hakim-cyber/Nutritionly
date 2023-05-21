@@ -18,39 +18,40 @@ struct MainView: View {
 @Namespace var namespace
     
     var body: some View {
-        ZStack{
-            Color.white.ignoresSafeArea()
-               
-            
-            VStack(spacing:25){
+       
+            ZStack{
+                Color.white.ignoresSafeArea()
                 
-                HStack{
-                    VStack(alignment: .leading, spacing: 10){
-                        Text("have a good day!")
-                            .foregroundColor(.black)
-                            .font(.system(size: 23))
-                            .fontDesign(.rounded)
-                            .fontWeight(.bold)
-                        Text("how was your day? let's tell us what did you do ")
-                            .foregroundColor(.gray)
-                            .font(.system(size: 13))
-                            .fontDesign(.rounded)
-                            .fontWeight(.bold)
-                    }
-                    .padding(.horizontal, 10)
-                    Spacer()
-                    Button{
-                        
-                    }label: {
-                        Image(systemName: "bell.fill")
-                            .foregroundColor(.black)
-                    }
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15,style: .continuous)
-                        .fill(Color.openGreen)
-                        
+                if !showAddView{
+                VStack(spacing:25){
                     
+                    HStack{
+                        VStack(alignment: .leading, spacing: 10){
+                            Text("have a good day!")
+                                .foregroundColor(.black)
+                                .font(.system(size: 23))
+                                .fontDesign(.rounded)
+                                .fontWeight(.bold)
+                            Text("how was your day? let's tell us what did you do ")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 13))
+                                .fontDesign(.rounded)
+                                .fontWeight(.bold)
+                        }
+                        .padding(.horizontal, 10)
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Image(systemName: "bell.fill")
+                                .foregroundColor(.black)
+                        }
+                    }
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 15,style: .continuous)
+                            .fill(Color.openGreen)
+                        
+                        
                         HStack{
                             VStack(alignment: .leading, spacing: 15){
                                 Text("today")
@@ -85,140 +86,141 @@ struct MainView: View {
                                 Spacer()
                                 
                             }
-                           
+                            
                             Spacer()
                             CustomProgressView(progress: dataManager.progressCalories)
                         }
-                      .padding(30)
-                }
-                 .frame(width: screen.width / 1.1,height:200 )
-                
-                HStack{
-                    Text("activity")
-                    .foregroundColor(.black)
-                    .font(.system(size: 20))
-                    .fontDesign(.rounded)
-                    .fontWeight(.bold)
-                    
-                    Spacer()
-                    Button{
-                        // additional
-                    }label:{
-                        Image(systemName: "ellipsis")
-                            .font(.system(size: 18))
-                            .foregroundColor(.black)
+                        .padding(30)
                     }
+                    .frame(width: screen.width / 1.1,height:200 )
                     
-                }
-                .padding(.horizontal, 10)
-                HStack{
-                    ZStack{
-                        // walking hours
+                    HStack{
+                        Text("activity")
+                            .foregroundColor(.black)
+                            .font(.system(size: 20))
+                            .fontDesign(.rounded)
+                            .fontWeight(.bold)
                         
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.openGreen.opacity(0.1))
+                        Spacer()
+                        Button{
+                            // additional
+                        }label:{
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 18))
+                                .foregroundColor(.black)
+                        }
+                        
+                    }
+                    .padding(.horizontal, 10)
+                    HStack{
+                        ZStack{
+                            // walking hours
                             
-                        
-                        VStack{
-                        
-                            HStack{
-                                Image(systemName: "figure.walk")
-                                    .padding(9)
-                                    .background(Color.openGreen)
-                                    .clipShape(Circle())
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.openGreen.opacity(0.1))
+                            
+                            
+                            VStack{
+                                
+                                HStack{
+                                    Image(systemName: "figure.walk")
+                                        .padding(9)
+                                        .background(Color.openGreen)
+                                        .clipShape(Circle())
                                     Text("\(dataManager.steps) ")
                                         .fontDesign(.default)
                                         .fontWeight(.bold)
+                                    Spacer()
+                                    
+                                }
+                                
                                 Spacer()
-                                  
                             }
+                            .padding(10)
                             
-                            Spacer()
                         }
-                        .padding(10)
-                        
-                    }
-                    .frame(width: screen.width / 2.1,height:160 )
-                    ZStack{
-                        // workouts hour
-                        
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.red.opacity(0.1))
+                        .frame(width: screen.width / 2.1,height:160 )
+                        ZStack{
+                            // workouts hour
                             
-                        VStack{
-                        
-                            HStack{
-                                Image(systemName: "dumbbell")
-                                    .padding(9)
-                                    .background(Color.orange)
-                                    .clipShape(Circle())
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.red.opacity(0.1))
+                            
+                            VStack{
+                                
+                                HStack{
+                                    Image(systemName: "dumbbell")
+                                        .padding(9)
+                                        .background(Color.orange)
+                                        .clipShape(Circle())
                                     Text("\(dataManager.minuteToHourText()) ")
                                         .fontDesign(.default)
                                         .fontWeight(.bold)
+                                    Spacer()
+                                    
+                                }
+                                
                                 Spacer()
-                                  
+                            }
+                            .padding(10)
+                            
+                        }
+                        .frame(width: screen.width / 2.1,height:160 )
+                    }
+                    ZStack{
+                        // weight loss
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.yellow.opacity(0.1))
+                        VStack{
+                            
+                            HStack{
+                                Image(systemName: "chart.bar.xaxis")
+                                    .padding(9)
+                                    .background(Color.yellow)
+                                    .clipShape(Circle())
+                                
+                                Spacer()
+                                
                             }
                             
                             Spacer()
                         }
                         .padding(10)
-                        
                     }
-                    .frame(width: screen.width / 2.1,height:160 )
-                }
-                ZStack{
-                    // weight loss
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.yellow.opacity(0.1))
-                    VStack{
-                                           
-                                               HStack{
-                                                   Image(systemName: "chart.bar.xaxis")
-                                                       .padding(9)
-                                                       .background(Color.yellow)
-                                                       .clipShape(Circle())
-                                                       
-                                                   Spacer()
-                                                     
-                                               }
-                                               
-                                               Spacer()
-                                           }
-                                           .padding(10)
-                }
-                .frame(width: screen.width / 1.05,height:130 )
-                
-                
-                Button{
-                    // add food
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                        showAddView = true
+                    .frame(width: screen.width / 1.05,height:130 )
+                    
+                    
+                    Button{
+                        // add food
+                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            showAddView = true
+                        }
+                        
+                        
+                        
+                    }label:{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 40)
+                                .fill(.black)
+                            
+                            Text("add food")
+                                .font(.system(size: 20))
+                                .fontDesign(.monospaced)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.white)
+                            
+                        }
+                        .frame(width: screen.width / 1.08,height: 60)
                     }
                     
-                  
-                   
-                }label:{
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 40)
-                            .fill(.black)
-                         
-                        Text("add food")
-                            .font(.system(size: 20))
-                            .fontDesign(.monospaced)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                        
-                    }
-                    .frame(width: screen.width / 1.08,height: 60)
                 }
-               
-            }
-            .padding(.top)
-            .padding(.horizontal)
-            .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
-                // function for everyday 00;00
-            }
-            if showAddView{
+                .padding(.top)
+                .padding(.horizontal)
+                .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
+                    // function for everyday 00;00
+                }
+                .transition(.move(edge: .top))
+            }else{
                 AddFoodView(namespace:namespace){
                     withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                         showAddView = false
