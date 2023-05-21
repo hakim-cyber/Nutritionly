@@ -75,6 +75,7 @@ struct NewFoodView: View {
                                         dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal,emoji: selectedFood.emoji)
                                     }
                                     close()
+                                  
                                 }
                             }
                             
@@ -97,8 +98,10 @@ struct NewFoodView: View {
                 }else{
                     
                     TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
+                        
                         dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal,emoji: selectedEmoji?.value)
                         close()
+                       
                     }
                     .transition(.move(edge: .top))
                     

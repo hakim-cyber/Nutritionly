@@ -16,11 +16,14 @@ struct CustomProgressView: View {
                 .stroke(.black,lineWidth: 5.0)
                 .opacity(0.20)
                 .overlay(alignment:.bottom){
-                    Rectangle()
-                        .fill(Color.black)
-                        .frame(width:100,height:  max(0,progress * 100))
-                        .animation(.spring(), value: progress)
+                    Circle()
+                        .trim(from: 0,to: progress == 1.0 ? progress: progress * 0.9)
+                        .fill(Color.blue.opacity(0.7))
+                        .rotationEffect(.degrees(-90))
+                      
+                        
                 }
+                .animation(.interactiveSpring(response: 0.6,dampingFraction: 0.6), value: progress)
             
           
                
@@ -34,9 +37,11 @@ struct CustomProgressView: View {
                 .fontDesign(.monospaced)
                 .fontWeight(.bold)
                 .padding(.bottom,25)
-                .animation(.spring(), value: progress)
+               
+               
                
         }
+        
     }
 }
 
