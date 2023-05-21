@@ -11,14 +11,14 @@ import SwiftUI
 class NutritionData_Manager:ObservableObject{
     //Nutrition Todays
     
-    @AppStorage("caloriesNeed")  var caloriesNeed = 0
-    @AppStorage("caloriesTaken") var caloriesTaken = 0
-    @AppStorage("proteinNeed") var proteinNeed = 0
-    @AppStorage("proteinTaken") var proteinTaken = 0
-    @AppStorage("carbohydratesNeed") var carbohydratesNeed = 0
-    @AppStorage("carbohydratesTaken") var carbohydratesTaken = 0
-    @AppStorage("fatsNeed") var fatsNeed = 0
-    @AppStorage("fatsTaken") var fatsTaken = 0
+    @AppStorage("caloriesNeed")  var caloriesNeed = 2000
+   
+    @AppStorage("proteinNeed") var proteinNeed = 80
+   
+    @AppStorage("carbohydratesNeed") var carbohydratesNeed = 120
+  
+    @AppStorage("fatsNeed") var fatsNeed = 70
+   
     
     // BurningInformation Todays
     
@@ -35,6 +35,32 @@ class NutritionData_Manager:ObservableObject{
     let keyforRecentFoods = "recentFoods"
     @Published var foodsOfDay = [Food]()
     @Published var recentFoodsOfUser = [Food]()
+    
+    var totalNutritOfDay:[String:Int]{
+        var calories = 0
+        var proteins = 0
+        var carbs = 0
+        var fats = 0
+        
+        for food in foodsOfDay {
+            for ingred in food.ingredients{
+                calories += ingred.totalNutritions["kcal"] ?? 0
+                proteins += ingred.totalNutritions["p"] ?? 0
+                carbs += ingred.totalNutritions["c"] ?? 0
+                fats += ingred.totalNutritions["f"] ?? 0
+            }
+        }
+        
+        return [
+            "kcal":calories,
+            "p":proteins,
+            "c":carbs,
+            "f":fats,
+        
+        
+        ]
+        
+    }
     
     //load all needed data when open
     init(){
@@ -74,19 +100,22 @@ class NutritionData_Manager:ObservableObject{
     func AddNewFoodForDay(ingred:[Ingredients],name:String,meal:String,emoji:String?){
         let food = Food(name: name, meal: meal, ingredients: ingred,emoji: emoji ?? "")
         
-        foodsOfDay.append(food)
         
-        if !(recentFoodsOfUser.contains(where: {$0.ingredients == food.ingredients})){
-            recentFoodsOfUser.append(food)
-            saveRecentFoods()
+        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+            foodsOfDay.append(food)
+            
+            if !(recentFoodsOfUser.contains(where: {$0.ingredients == food.ingredients})){
+                recentFoodsOfUser.append(food)
+                saveRecentFoods()
+            }
+            
+            saveFoodsOfDay()
         }
-        
-        saveFoodsOfDay()
     }
     
     
     var progressCalories:Double{
-       Double( caloriesTaken) /  Double( caloriesNeed )
+       Double( totalNutritOfDay["kcal"] ?? 0) /  Double( caloriesNeed )
     }
     
     func minuteToHourText()->String{
@@ -98,10 +127,10 @@ class NutritionData_Manager:ObservableObject{
     
     var nutritionsArray:[Nutrition]{
        
-        let fats = Nutrition(name: "Fats", count: fatsTaken, shortName: "g")
-        let cals = Nutrition(name: "Calories", count: fatsTaken, shortName: "kcal")
-        let prot = Nutrition(name: "Proteins", count: fatsTaken, shortName: "g")
-        let carb = Nutrition(name: "Carb", count: fatsTaken, shortName: "g")
+        let fats = Nutrition(name: "Fats", count: totalNutritOfDay["f"] ?? 0, shortName: "g")
+        let cals = Nutrition(name: "Calories", count: totalNutritOfDay["kcal"] ?? 0, shortName: "kcal")
+        let prot = Nutrition(name: "Proteins", count: totalNutritOfDay["p"] ?? 0, shortName: "g")
+        let carb = Nutrition(name: "Carb", count: totalNutritOfDay["c"] ?? 0, shortName: "g")
         
         return [fats,carb,prot,cals]
     }

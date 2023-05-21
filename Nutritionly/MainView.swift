@@ -15,6 +15,8 @@ struct MainView: View {
     @EnvironmentObject var userStore: UserStore
     @State var screen = UIScreen.main.bounds
     @State private var showAddView = false
+    @State private var animateProgress = false
+    
 @Namespace var namespace
     
     var body: some View {
@@ -59,7 +61,7 @@ struct MainView: View {
                                     .fontDesign(.monospaced)
                                     .fontWeight(.heavy)
                                 HStack{
-                                    Text("\(dataManager.caloriesTaken)/\(dataManager.caloriesNeed)")
+                                    Text("\(dataManager.totalNutritOfDay["kcal"] ?? 0)/\(dataManager.caloriesNeed)")
                                         .fontDesign(.monospaced)
                                         .fontWeight(.bold)
                                     Text("kcal")
@@ -69,28 +71,29 @@ struct MainView: View {
                                     
                                     Text("p")
                                         .foregroundColor(.secondary)
-                                    Text("\(dataManager.proteinTaken)g")
+                                    Text("\(dataManager.totalNutritOfDay["p"] ?? 0)g")
                                         .fontDesign(.monospaced)
                                         .fontWeight(.bold)
                                     Text("c")
                                         .foregroundColor(.secondary)
-                                    Text("\(dataManager.carbohydratesTaken)g")
+                                    Text("\(dataManager.totalNutritOfDay["c"] ?? 0)g")
                                         .fontDesign(.monospaced)
                                         .fontWeight(.bold)
                                     Text("f")
                                         .foregroundColor(.secondary)
-                                    Text("\(dataManager.fatsTaken)g")
+                                    Text("\(dataManager.totalNutritOfDay["f"] ?? 0)g")
                                         .fontDesign(.monospaced)
                                         .fontWeight(.bold)
                                 }
+                               
                                 Spacer()
                                 
                             }
                             
                             Spacer()
-                            CustomProgressView(progress: dataManager.progressCalories)
+                            CustomProgressView(progress: animateProgress ? 0.0 : dataManager.progressCalories)
                         }
-                        .padding(30)
+                        .padding(20)
                     }
                     .frame(width: screen.width / 1.1,height:200 )
                     
@@ -224,6 +227,15 @@ struct MainView: View {
                 AddFoodView(namespace:namespace){
                     withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                         showAddView = false
+                        
+                        animateProgress = true
+                        
+                        DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 0.2) {
+                            animateProgress = false
+                        }
+                         
+                        
+                        
                     }
                 }
                 .environmentObject(dataManager)

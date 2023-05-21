@@ -34,6 +34,7 @@ struct CustomSwitch: View {
                 ForEach(Array(TypeOfAddings.allCases) , id:\.self){ type in
                     Spacer()
                     Text(textOFType(type:type))
+                        .foregroundColor(.white)
                         .onTapGesture {
                             withAnimation(.spring()){
                                 typeOfadding = type

@@ -40,6 +40,7 @@ struct NewFoodView: View {
                         VStack(spacing: 25){
                             HStack{
                                 Image(systemName: "arrow.backward")
+                                    .foregroundColor(.white)
                                     .onTapGesture {
                                         close()
                                     }
@@ -75,6 +76,7 @@ struct NewFoodView: View {
                                         dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal,emoji: selectedFood.emoji)
                                     }
                                     close()
+                                  
                                 }
                             }
                             
@@ -97,8 +99,10 @@ struct NewFoodView: View {
                 }else{
                     
                     TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
+                        
                         dataManager.AddNewFoodForDay(ingred: ingredients, name: name, meal: meal,emoji: selectedEmoji?.value)
                         close()
+                       
                     }
                     .transition(.move(edge: .top))
                     
@@ -139,12 +143,12 @@ struct NewFoodView: View {
                         
                     
                     
-                    Text("\(selectedEmoji?.value ?? "Add Emoji")")
-                        .foregroundColor(.accentColor)
+                  Image(systemName: "photo.on.rectangle.angled")
+                        .foregroundColor(.white)
                         .onTapGesture {
                             showEmojiPikcer = true
                         }
-                        .font(.title3)
+                        .font(.title2)
                 }
                 Rectangle()
                     .fill(.gray)
@@ -157,7 +161,7 @@ struct NewFoodView: View {
           
             HStack{
                 Text("Ingredients")
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
                     .font(.system(size: 23))
                     .fontDesign(.rounded)
                     .fontWeight(.bold)
@@ -172,6 +176,7 @@ struct NewFoodView: View {
                 }label: {
                     Image(systemName: "plus")
                         .font(.caption)
+                        .foregroundColor(.white)
                         .padding(5)
                         .background(Circle().stroke(.gray))
                 }
@@ -191,6 +196,7 @@ struct NewFoodView: View {
                             VStack{
                                 HStack{
                                     Text(ingred.title)
+                                        .foregroundColor(.black)
                                     Spacer()
                                    
                                 }
@@ -200,20 +206,24 @@ struct NewFoodView: View {
                                         Text("p")
                                             .foregroundColor(.secondary)
                                         Text("\(ingred.protein)g")
+                                       
                                             .fontDesign(.monospaced)
                                             .fontWeight(.bold)
                                         Text("c")
-                                            .foregroundColor(.secondary)
+                                          
                                         Text("\(ingred.carbs)g")
+                                          
                                             .fontDesign(.monospaced)
                                             .fontWeight(.bold)
                                         Text("f")
                                             .foregroundColor(.secondary)
                                         Text("\(ingred.fat)g")
+                                          
                                             .fontDesign(.monospaced)
                                             .fontWeight(.bold)
                                         
                                         Text("\(ingred.calorie)kcal")
+                                          
                                             .fontDesign(.monospaced)
                                             .fontWeight(.bold)
                                       
