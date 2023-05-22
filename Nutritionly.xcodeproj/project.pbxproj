@@ -21,6 +21,8 @@
 		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
+		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
+		08AA44FC2A1BFD5200537DD5 /* Water IntakeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */; };
 		08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0EE2A15168900CEA256 /* NewFoodView.swift */; };
 		08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */; };
 		08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */; };
@@ -55,6 +57,9 @@
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
+		08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nutritionly.entitlements; sourceTree = "<group>"; };
+		08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Water IntakeCard.swift"; sourceTree = "<group>"; };
 		08AEC0EE2A15168900CEA256 /* NewFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFoodView.swift; sourceTree = "<group>"; };
 		08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -108,9 +113,11 @@
 		082CC9592A0F95F000D7F345 /* Nutritionly */ = {
 			isa = PBXGroup;
 			children = (
+				08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
 				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
+				08AA44F72A1BEC0C00537DD5 /* FullCards */,
 				082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */,
 				089CF08D2A10310400061597 /* StartingViews */,
 				082CC96A2A0F972000D7F345 /* Features */,
@@ -153,6 +160,15 @@
 				082CC9712A0FF25D00D7F345 /* LoginScreen.swift */,
 			);
 			path = StartingViews;
+			sourceTree = "<group>";
+		};
+		08AA44F72A1BEC0C00537DD5 /* FullCards */ = {
+			isa = PBXGroup;
+			children = (
+				08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */,
+				08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */,
+			);
+			path = FullCards;
 			sourceTree = "<group>";
 		};
 		08DB01832A16CD9300DCA54A /* AddingFoodViews */ = {
@@ -271,6 +287,7 @@
 			files = (
 				082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */,
 				08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */,
+				08AA44FC2A1BFD5200537DD5 /* Water IntakeCard.swift in Sources */,
 				08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */,
 				08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */,
 				08DB01802A16BAFB00DCA54A /* Custom checkMark.swift in Sources */,
@@ -291,6 +308,7 @@
 				08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */,
 				08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */,
 				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
+				08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */,
 				08F367BC2A12CDD000180195 /* UserStore.swift in Sources */,
 				08DB01822A16C63A00DCA54A /* TotalFoodView.swift in Sources */,
 			);
@@ -418,6 +436,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nutritionly/Nutritionly.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nutritionly/Preview Content\"";
@@ -450,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nutritionly/Nutritionly.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nutritionly/Preview Content\"";

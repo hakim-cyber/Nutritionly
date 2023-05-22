@@ -10,13 +10,17 @@ import NotificationCenter
 import Firebase
 import FirebaseFirestoreSwift
 
-
+enum cards{
+    case nutrition,steps,workout,weight,waterIntake
+}
 struct MainView: View {
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
     @State var screen = UIScreen.main.bounds
     @State private var showAddView = false
     @State private var animateProgress = false
+    @State private var showFullCard = false
+    @State private var selectedCard:cards?
     
 @Namespace var namespace
     
@@ -133,7 +137,8 @@ struct MainView: View {
                                         .foregroundColor(.white)
                                         .background(Color.openGreen)
                                         .clipShape(Circle())
-                                    Text("activity")
+                                    Text("Steps")
+                                        .foregroundColor(Color.openGreen)
                                         .fontDesign(.rounded)
                                         .fontWeight(.medium)
                                     Spacer()
@@ -141,58 +146,87 @@ struct MainView: View {
                                 }
                                 
                                 Spacer()
-                                HStack{
+                                HStack(alignment: .center){
                                     Text("\(dataManager.userStepCount)")
+                                        .font(.title)
                                         .fontDesign(.monospaced)
                                         .fontWeight(.bold)
                                     Text("steps")
-                                    Spacer()
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                  Spacer()
                                 }
-                                .padding(.horizontal)
+                                .padding(.horizontal,8)
                                 Spacer()
                             }
                             .padding(10)
                             
                         }
                         .frame(width: screen.width / 2.1,height:110 )
+                        .onTapGesture {
+                            if !dataManager.isAuthorized{
+                                dataManager.healthRequest()
+                            }
+                        }
                         ZStack{
                             // workouts hour
-                            
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.red.opacity(0.5),lineWidth:3)
-                            
-                            VStack{
-                                
-                                HStack(spacing: 0){
-                                    Image(systemName: "dumbbell")
-                                        .font(.caption)
-                                        .foregroundColor(.white)
-                                        .padding(9)
-                                        .background(Color.orange)
-                                        .clipShape(Circle())
-                                    Text("workouts")
-                                        .fontDesign(.rounded)
-                                        .fontWeight(.medium)
-                                  Spacer()
+                           
+                                if selectedCard != .workout{
+                                   
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.red.opacity(0.5),lineWidth:3)
                                     
-                                }
+                                    VStack{
+                                        
+                                        HStack(spacing: 0){
+                                            Image(systemName: "dumbbell")
+                                                .font(.caption)
+                                                .foregroundColor(.white)
+                                                .padding(9)
+                                                .background(Color.orange)
+                                                .clipShape(Circle())
+                                            Text("Workout")
+                                                .fontDesign(.rounded)
+                                                .fontWeight(.medium)
+                                            Spacer()
+                                            
+                                        }
+                                        
+                                        Spacer()
+                                        HStack(alignment: .center){
+                                            Text("\(dataManager.workoutMinutes)")
+                                                .font(.title)
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.bold)
+                                            Text("mins")
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal)
+                                        Spacer()
+                                    }
+                                    .padding(.vertical,10)
+                                    .padding(.horizontal,5)
                                 
-                                Spacer()
-                                HStack{
-                                    Text("\(dataManager.workoutMinutes)")
-                                        .fontDesign(.monospaced)
-                                        .fontWeight(.bold)
-                                    Text("mins")
-                                    Spacer()
-                                }
-                                .padding(.horizontal)
-                                Spacer()
+                            }else{
+                                WorkoutCardView()
+                                    .environmentObject(dataManager)
                             }
-                            .padding(.vertical,10)
-                            .padding(.horizontal,5)
                             
                         }
                         .frame(width: screen.width / 2.1,height:110 )
+                        .onTapGesture (count:2){
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                showFullCard.toggle()
+                                if showFullCard{
+                                    selectedCard = .workout
+                                }else{
+                                    selectedCard = nil
+                                }
+                            }
+                        }
+                        .rotation3DEffect(Angle(degrees: showFullCard ? 360:0), axis: (x:0, y:1, z:0))
                     }
                     ZStack{
                         // weight loss
@@ -215,7 +249,7 @@ struct MainView: View {
                         }
                         .padding(10)
                     }
-                    .frame(width: screen.width / 1.05,height:130 )
+                    .frame(width: screen.width / 1.05,height:130)
                     
                     Spacer()
                     Button{
@@ -256,6 +290,7 @@ struct MainView: View {
                     }
                 }
                
+                  
             }else{
                 AddFoodView(namespace:namespace){
                     withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8)){
