@@ -10,6 +10,7 @@ import NotificationCenter
 import Firebase
 import FirebaseFirestoreSwift
 
+
 struct MainView: View {
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
@@ -120,64 +121,88 @@ struct MainView: View {
                             // walking hours
                             
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.openGreen.opacity(0.1))
+                                .stroke(Color.openGreen,lineWidth:3)
                             
                             
                             VStack{
                                 
                                 HStack{
                                     Image(systemName: "figure.walk")
+                                        .font(.caption)
                                         .padding(9)
+                                        .foregroundColor(.white)
                                         .background(Color.openGreen)
                                         .clipShape(Circle())
-                                    Text("\(dataManager.steps) ")
-                                        .fontDesign(.default)
-                                        .fontWeight(.bold)
+                                    Text("activity")
+                                        .fontDesign(.rounded)
+                                        .fontWeight(.medium)
                                     Spacer()
                                     
                                 }
                                 
                                 Spacer()
+                                HStack{
+                                    Text("\(dataManager.userStepCount)")
+                                        .fontDesign(.monospaced)
+                                        .fontWeight(.bold)
+                                    Text("steps")
+                                    Spacer()
+                                }
+                                .padding(.horizontal)
+                                Spacer()
                             }
                             .padding(10)
                             
                         }
-                        .frame(width: screen.width / 2.1,height:160 )
+                        .frame(width: screen.width / 2.1,height:110 )
                         ZStack{
                             // workouts hour
                             
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.red.opacity(0.1))
+                                .stroke(Color.red.opacity(0.5),lineWidth:3)
                             
                             VStack{
                                 
-                                HStack{
+                                HStack(spacing: 0){
                                     Image(systemName: "dumbbell")
+                                        .font(.caption)
+                                        .foregroundColor(.white)
                                         .padding(9)
                                         .background(Color.orange)
                                         .clipShape(Circle())
-                                    Text("\(dataManager.minuteToHourText()) ")
-                                        .fontDesign(.default)
-                                        .fontWeight(.bold)
-                                    Spacer()
+                                    Text("workouts")
+                                        .fontDesign(.rounded)
+                                        .fontWeight(.medium)
+                                  Spacer()
                                     
                                 }
                                 
                                 Spacer()
+                                HStack{
+                                    Text("\(dataManager.workoutMinutes)")
+                                        .fontDesign(.monospaced)
+                                        .fontWeight(.bold)
+                                    Text("mins")
+                                    Spacer()
+                                }
+                                .padding(.horizontal)
+                                Spacer()
                             }
-                            .padding(10)
+                            .padding(.vertical,10)
+                            .padding(.horizontal,5)
                             
                         }
-                        .frame(width: screen.width / 2.1,height:160 )
+                        .frame(width: screen.width / 2.1,height:110 )
                     }
                     ZStack{
                         // weight loss
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.yellow.opacity(0.1))
+                            .stroke(Color.yellow,lineWidth:3)
                         VStack{
                             
                             HStack{
                                 Image(systemName: "chart.bar.xaxis")
+                                    .foregroundColor(.white)
                                     .padding(9)
                                     .background(Color.yellow)
                                     .clipShape(Circle())
@@ -192,7 +217,7 @@ struct MainView: View {
                     }
                     .frame(width: screen.width / 1.05,height:130 )
                     
-                    
+                    Spacer()
                     Button{
                         // add food
                         withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
@@ -223,6 +248,13 @@ struct MainView: View {
                     // function for everyday 00;00
                 }
                 .transition(.move(edge: .top))
+                .onAppear{
+                    if !dataManager.isAuthorized{
+                        dataManager.healthRequest()
+                    }else{
+                        dataManager.readStepsTakenToday()
+                    }
+                }
                
             }else{
                 AddFoodView(namespace:namespace){

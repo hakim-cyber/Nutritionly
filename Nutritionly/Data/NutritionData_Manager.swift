@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import HealthKit
 
 class NutritionData_Manager:ObservableObject{
     //Nutrition Todays
@@ -23,7 +24,7 @@ class NutritionData_Manager:ObservableObject{
     // BurningInformation Todays
     
     @AppStorage("workoutMinutes") var workoutMinutes = 0
-    @AppStorage("steps") var steps = 0
+  
     
     // meals
     let meals = ["Breakfast","Lunch","Dinner","Snack"]
@@ -35,6 +36,12 @@ class NutritionData_Manager:ObservableObject{
     let keyforRecentFoods = "recentFoods"
     @Published var foodsOfDay = [Food]()
     @Published var recentFoodsOfUser = [Food]()
+    
+    // healthKit
+    
+    private var healthStore = HKHealthStore()
+    @Published var userStepCount = ""
+    @Published var isAuthorized = false
     
     var totalNutritOfDay:[String:Int]{
         var calories = 0
@@ -66,6 +73,8 @@ class NutritionData_Manager:ObservableObject{
     init(){
        loadFoodsOfDay()
         loadRecentfoods()
+            //health kit
+        changeAuthorizationStatus()
     }
 //saving and loading foods
     func saveFoodsOfDay(){
@@ -134,4 +143,74 @@ class NutritionData_Manager:ObservableObject{
         
         return [fats,carb,prot,cals]
     }
+    
+    
+    
+    func healthRequest(){
+        setUpHealthRequest(healthStore: healthStore){
+            self.changeAuthorizationStatus()
+            self.readStepsTakenToday()
+        }
+    }
+    func changeAuthorizationStatus(){
+        guard let stepQtyType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
+        let status = self.healthStore.authorizationStatus(for: stepQtyType)
+        
+        switch status{
+        case .notDetermined:
+            isAuthorized = false
+        case .sharingDenied:
+            isAuthorized = false
+        case .sharingAuthorized:
+            isAuthorized = true
+        @unknown default:
+            isAuthorized = false
+        }
+    }
+    func readStepsTakenToday(){
+        readStepCount(forToday: Date(), healthStore: healthStore){step in
+            if step != 0.0{
+                DispatchQueue.main.async {
+                               self.userStepCount = String(format: "%.0f", step)
+                           }
+            }
+        }
+    }
+    
+    func setUpHealthRequest(healthStore:HKHealthStore,readSteps:@escaping ()-> Void){
+    // then specify data we want to read
+        // then ask for permission
+        if HKHealthStore.isHealthDataAvailable(), let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
+            healthStore.requestAuthorization(toShare: [stepCount], read: [stepCount]){succes, error in
+                if succes{
+                    readSteps()
+                }else if error != nil{
+                    // handle error here
+                }
+                
+                
+            }
+        }
+    }
+    
+    
+    func readStepCount(forToday:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
+        guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)else{return}
+        
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now,options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            guard let result = result ,let sum = result.sumQuantity()else{
+                completion(0.0)
+                return
+            }
+            
+            completion(sum.doubleValue(for: HKUnit.count()))
+        }
+        healthStore.execute(query)
+    }
+    
 }
