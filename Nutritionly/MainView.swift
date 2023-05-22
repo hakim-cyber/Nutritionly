@@ -223,9 +223,10 @@ struct MainView: View {
                     // function for everyday 00;00
                 }
                 .transition(.move(edge: .top))
+               
             }else{
                 AddFoodView(namespace:namespace){
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8)){
                         showAddView = false
                         
                         animateProgress = true
@@ -233,9 +234,6 @@ struct MainView: View {
                         DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 0.2) {
                             animateProgress = false
                         }
-                         
-                        
-                        
                     }
                 }
                 .environmentObject(dataManager)
