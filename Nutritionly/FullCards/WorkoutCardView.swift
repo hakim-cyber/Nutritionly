@@ -51,6 +51,7 @@ struct WorkoutCardView: View {
                         .padding(.vertical,2)
                         .labelsHidden()
                         .keyboardType(.numberPad)
+                        .scrollDismissesKeyboard(.immediately)
                         
                         
                 }

@@ -19,6 +19,7 @@ class NutritionData_Manager:ObservableObject{
     @AppStorage("carbohydratesNeed") var carbohydratesNeed = 120
   
     @AppStorage("fatsNeed") var fatsNeed = 70
+    @AppStorage("drinkedWater") var drinkedWater = 0
    
     
     // BurningInformation Todays
@@ -155,16 +156,20 @@ class NutritionData_Manager:ObservableObject{
     func changeAuthorizationStatus(){
         guard let stepQtyType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
         let status = self.healthStore.authorizationStatus(for: stepQtyType)
-        
-        switch status{
-        case .notDetermined:
-            isAuthorized = false
-        case .sharingDenied:
-            isAuthorized = false
-        case .sharingAuthorized:
-            isAuthorized = true
-        @unknown default:
-            isAuthorized = false
+        DispatchQueue.main.async {
+            
+            switch status{
+            case .notDetermined:
+                self.isAuthorized = false
+            case .sharingDenied:
+                self.isAuthorized = false
+            case .sharingAuthorized:
+                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                    self.isAuthorized = true
+                }
+            @unknown default:
+                self.isAuthorized = false
+            }
         }
     }
     func readStepsTakenToday(){
@@ -172,6 +177,10 @@ class NutritionData_Manager:ObservableObject{
             if step != 0.0{
                 DispatchQueue.main.async {
                                self.userStepCount = String(format: "%.0f", step)
+                           }
+            }else{
+                DispatchQueue.main.async {
+                               self.userStepCount = String(format: "%.0f", 0)
                            }
             }
         }
