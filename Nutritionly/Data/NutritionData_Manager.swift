@@ -117,6 +117,8 @@ class NutritionData_Manager:ObservableObject{
     
     
     
+      
+    
     
 //saving and loading foods
     
