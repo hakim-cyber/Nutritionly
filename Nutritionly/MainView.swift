@@ -278,6 +278,10 @@ struct MainView: View {
                         .padding(.horizontal)
                         .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
                             // function for everyday 00;00
+                            
+                                dataManager.addTodayToStore(store: userStore)
+                                dataManager.resetallInfo()
+                            
                         }
                        
                        

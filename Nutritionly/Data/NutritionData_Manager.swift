@@ -19,12 +19,15 @@ class NutritionData_Manager:ObservableObject{
     @AppStorage("carbohydratesNeed") var carbohydratesNeed = 120
   
     @AppStorage("fatsNeed") var fatsNeed = 70
+    
     @AppStorage("drinkedWater") var drinkedWater = 0
    
     
     // BurningInformation Todays
     
     @AppStorage("workoutMinutes") var workoutMinutes = 0
+    
+    @AppStorage("weightOfToday") var weightOfToday = 0
   
     
     // meals
@@ -41,7 +44,7 @@ class NutritionData_Manager:ObservableObject{
     // healthKit
     
     private var healthStore = HKHealthStore()
-    @Published var userStepCount = ""
+    @Published var userStepCount = 0
     @Published var isAuthorized = false
     
     var totalNutritOfDay:[String:Int]{
@@ -77,7 +80,46 @@ class NutritionData_Manager:ObservableObject{
             //health kit
         changeAuthorizationStatus()
     }
+    //start new day and new infos and upload all info to firebase
+  
+    
+    func resetallInfo(){
+        DispatchQueue.main.async {
+            // reset date
+            self.workoutMinutes = 0
+            self.weightOfToday = 0
+            self.drinkedWater = 0
+            self.foodsOfDay = []
+            self.saveFoodsOfDay()
+            self.readStepsTakenToday()
+            
+        }
+    }
+    
+    func addTodayToStore(store:UserStore){
+       
+        // read steps taken yesterday
+        DispatchQueue.main.async {
+            
+           
+            
+            self.readStepCount(for: Date.now - 120, healthStore: self.healthStore){step in
+                if let order = store.userForApp.first?.days.count{
+                    let day = Day(weightOFDay: self.weightOfToday, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step))
+                    
+                    store.addDayToUser(day: day, to: store.userForApp.first!)
+                }
+            }
+           
+            
+        }
+    }
+    
+    
+    
+    
 //saving and loading foods
+    
     func saveFoodsOfDay(){
         if let encoded = try? JSONEncoder().encode(foodsOfDay){
             UserDefaults.standard.set(encoded, forKey: keyforFoodsOfDay)
@@ -173,14 +215,14 @@ class NutritionData_Manager:ObservableObject{
         }
     }
     func readStepsTakenToday(){
-        readStepCount(forToday: Date(), healthStore: healthStore){step in
+        readStepCount(for: Date(), healthStore: healthStore){step in
             if step != 0.0{
                 DispatchQueue.main.async {
-                               self.userStepCount = String(format: "%.0f", step)
+                               self.userStepCount = Int(step)
                            }
             }else{
                 DispatchQueue.main.async {
-                               self.userStepCount = String(format: "%.0f", 0)
+                               self.userStepCount = 0
                            }
             }
         }
@@ -203,10 +245,10 @@ class NutritionData_Manager:ObservableObject{
     }
     
     
-    func readStepCount(forToday:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
+    func readStepCount(for Today:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)else{return}
         
-        let now = Date()
+        let now = Today
         let startOfDay = Calendar.current.startOfDay(for: now)
         
         let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now,options: .strictStartDate)
