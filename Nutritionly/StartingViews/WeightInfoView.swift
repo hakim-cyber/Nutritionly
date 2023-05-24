@@ -11,6 +11,7 @@ struct WeightInfoView: View {
     @AppStorage("weightOfToday") var weightOfToday = 0.0
     @State private var weight = 0.0
     @State private var screen = UIScreen.main.bounds
+    @State private var offset = CGSize.zero
     @FocusState private var amountIsFocused: Bool
     var close:(Double)->Void
     var body: some View {
@@ -25,8 +26,8 @@ struct WeightInfoView: View {
             VStack(spacing: 0){
                 HStack{
                     Spacer()
-                    Text("Weight")
-                        .font(.title)
+                    Text("Today's Weight")
+                        .font(.title2)
                         .fontDesign(.monospaced)
                         .fontWeight(.bold)
                     Spacer()
@@ -34,37 +35,56 @@ struct WeightInfoView: View {
                         
                 }
                 Spacer()
-                TextField("", value: $weight,format:.number)
-                    .padding()
-                    .background(Color.backgroundColor)
-                    .focused($amountIsFocused)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .shadow(color:.gray,radius: 5)
-                    .padding()
-                    .labelsHidden()
-                    .keyboardType(.decimalPad)
-                    .scrollDismissesKeyboard(.immediately)
+                HStack{
+                    TextField("", value: $weight,format:.number)
+                        .padding()
+                        .background(Color.backgroundColor)
+                        .focused($amountIsFocused)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .shadow(color:.gray,radius: 5)
+                        
+                        .labelsHidden()
+                        .keyboardType(.decimalPad)
+                        .scrollDismissesKeyboard(.immediately)
+                  
+                }
+                .padding()
                 Spacer()
                
             }
             .padding()
         }
+        .rotationEffect(.degrees(Double(offset.width / 5)))
+        .offset(x: offset.width * 5, y: 0)
+        .opacity(2 - Double(abs(offset.width / 50)))
         .frame(width: screen.width/1.2,height: 200)
-        .toolbar {
-                       ToolbarItemGroup(placement: .keyboard) {
+        .gesture(
+                   DragGesture()
+                       .onChanged { gesture in
+                           offset = gesture.translation
                           
-                               Spacer()
-                            
-                                   Button("Done") {
-                                       amountIsFocused = false
-                                    close(weight)
+                       }
+                       .onEnded { _ in
+                           if abs(offset.width) > 100 {
+                              
+                              
+                                   withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                                       amountIsFocused = true
+                                       if weight > 0.0{
+                                           close(weight)
+                                       }else{
+                                           offset = CGSize.zero
+                                       }
                                    }
-                               
-                           }
                            
-                       
-                   }
+                               
+                           } else {
+                               offset = .zero
+                           }
+                       }
+               )
+     
     }
 }
 
