@@ -21,12 +21,14 @@ struct StartScreen: View {
                 
                 LoginScreen( namespace: namespace)
                     .transition(.move(edge: .bottom))
+                    
                 
                 
                 
                 
             }
         }
+      
     }
     var content:some View{
         
@@ -72,6 +74,8 @@ struct StartScreen: View {
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
         StartScreen()
+            .environmentObject(NutritionData_Manager())
+            .environmentObject(UserStore())
     }
 }
 
