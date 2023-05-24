@@ -36,6 +36,8 @@
 		08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB01842A17E0DE00DCA54A /* SearchIngredViewModel.swift */; };
 		08DB01882A17E2ED00DCA54A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 08DB01872A17E2ED00DCA54A /* Alamofire */; };
 		08ED21D42A1E2002004A0064 /* WeightInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D32A1E2002004A0064 /* WeightInfoView.swift */; };
+		08ED21D62A1E9DA8004A0064 /* WeightProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D52A1E9DA8004A0064 /* WeightProgressCard.swift */; };
+		08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D72A1EA134004A0064 /* weightProgressChart.swift */; };
 		08F367B72A12CADF00180195 /* Structs Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367B62A12CADF00180195 /* Structs Users.swift */; };
 		08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */; };
 		08F367BC2A12CDD000180195 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BB2A12CDD000180195 /* UserStore.swift */; };
@@ -72,6 +74,8 @@
 		08DB01812A16C63A00DCA54A /* TotalFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalFoodView.swift; sourceTree = "<group>"; };
 		08DB01842A17E0DE00DCA54A /* SearchIngredViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngredViewModel.swift; sourceTree = "<group>"; };
 		08ED21D32A1E2002004A0064 /* WeightInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInfoView.swift; sourceTree = "<group>"; };
+		08ED21D52A1E9DA8004A0064 /* WeightProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightProgressCard.swift; sourceTree = "<group>"; };
+		08ED21D72A1EA134004A0064 /* weightProgressChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weightProgressChart.swift; sourceTree = "<group>"; };
 		08F367B62A12CADF00180195 /* Structs Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs Users.swift"; sourceTree = "<group>"; };
 		08F367BB2A12CDD000180195 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		08F367BF2A1419BB00180195 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */,
 				08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */,
+				08ED21D92A1EA13F004A0064 /* wweightProgress */,
 			);
 			path = FullCards;
 			sourceTree = "<group>";
@@ -186,6 +191,15 @@
 				08DB01812A16C63A00DCA54A /* TotalFoodView.swift */,
 			);
 			path = AddingFoodViews;
+			sourceTree = "<group>";
+		};
+		08ED21D92A1EA13F004A0064 /* wweightProgress */ = {
+			isa = PBXGroup;
+			children = (
+				08ED21D52A1E9DA8004A0064 /* WeightProgressCard.swift */,
+				08ED21D72A1EA134004A0064 /* weightProgressChart.swift */,
+			);
+			path = wweightProgress;
 			sourceTree = "<group>";
 		};
 		08F367842A12A73600180195 /* Data */ = {
@@ -303,6 +317,7 @@
 				08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */,
 				08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */,
 				08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */,
+				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
 				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,
@@ -310,6 +325,7 @@
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,
 				08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */,
+				08ED21D62A1E9DA8004A0064 /* WeightProgressCard.swift in Sources */,
 				08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */,
 				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
 				08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */,

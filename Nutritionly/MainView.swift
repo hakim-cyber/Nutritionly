@@ -247,28 +247,8 @@ struct MainView: View {
                             }
                             Water_IntakeCard()
                                 .environmentObject(dataManager)
-                            ZStack{
-                                // weight loss
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.yellow,lineWidth:3)
-                                VStack{
-                                    
-                                    HStack{
-                                        Image(systemName: "chart.bar.xaxis")
-                                            .foregroundColor(.white)
-                                            .padding(9)
-                                            .background(Color.yellow)
-                                            .clipShape(Circle())
-                                        
-                                        Spacer()
-                                        
-                                    }
-                                    
-                                    Spacer()
-                                }
-                                .padding(10)
-                            }
-                            .frame(width: screen.width / 1.05,height:130)
+                           WeightProgressCard()
+                                .environmentObject(userStore)
                             
                             Spacer()
                            
@@ -366,6 +346,7 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(NutritionData_Manager())
+            .environmentObject(UserStore())
             .preferredColorScheme(.light)
     }
 }

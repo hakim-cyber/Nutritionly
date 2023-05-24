@@ -14,6 +14,7 @@ import FirebaseFirestoreSwift
 
 class UserStore:ObservableObject{
     @Published var userForApp = [User]()
+    
     let db = Firestore.firestore()
     
     

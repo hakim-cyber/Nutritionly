@@ -20,10 +20,12 @@ struct User:Codable{
 
 struct Day:Codable{
     var weightOFDay:Double
+   var date:String
     var order:Int
     var foods:[Food]
     var workoutMinutes:Int
     var walkingSteps:Int
+    var waterIntake:Int
 }
 struct Food:Codable{
     var id = UUID()

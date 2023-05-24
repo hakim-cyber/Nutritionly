@@ -175,12 +175,14 @@ class NutritionData_Manager:ObservableObject{
         
         DispatchQueue.main.async {
             print("\(self.loadLastKnownDate()) adding day")
-            if let endOfDay = self.endOfDay(from: self.loadLastKnownDate() ){
+            if let endOfDay = self.endOfDay(from:  self.loadLastKnownDate()){
              
                 print("\(endOfDay)")
-                self.readStepCount(for: endOfDay, healthStore: self.healthStore){step in
+                self.readStepCount(for: endOfDay, healthStore: self.healthStore){ [self]step in
                     if let order = store.userForApp.first?.days.count{
-                        let day = Day(weightOFDay: self.weightOfToday, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step))
+                     
+                        let datestring = self.dateToString(date: endOfDay)
+                        let day = Day(weightOFDay: self.weightOfToday, date: datestring, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step), waterIntake: self.drinkedWater)
                         
                         store.addDayToUser(day: day, to: store.userForApp.first!)
                         self.resetallInfo()
@@ -202,7 +204,21 @@ class NutritionData_Manager:ObservableObject{
     
     
 //saving and loading foods
-    
+    func dateToString(date:Date)->String{
+        let dateFormatter = DateFormatter()
+
+        // Convert Date to String
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    func stringToDate(string:String)->Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let reverseDate = dateFormatter.date(from: string)
+        return reverseDate ?? Date.now
+       
+    }
     func saveFoodsOfDay(){
         if let encoded = try? JSONEncoder().encode(foodsOfDay){
             UserDefaults.standard.set(encoded, forKey: keyforFoodsOfDay)
