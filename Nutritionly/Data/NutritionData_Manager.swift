@@ -29,7 +29,7 @@ class NutritionData_Manager:ObservableObject{
     
     @AppStorage("workoutMinutes") var workoutMinutes = 0
     
-    @AppStorage("weightOfToday") var weightOfToday = 0
+    @AppStorage("weightOfToday") var weightOfToday = 0.0
   
     
     // meals
@@ -155,12 +155,14 @@ class NutritionData_Manager:ObservableObject{
     func resetallInfo(){
         DispatchQueue.main.async {
             // reset date
-            self.workoutMinutes = 0
-            self.weightOfToday = 0
-            self.drinkedWater = 0
-            self.foodsOfDay = []
-            self.saveFoodsOfDay()
-            self.readStepsTakenToday()
+            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                self.workoutMinutes = 0
+                self.weightOfToday = 0
+                self.drinkedWater = 0
+                self.foodsOfDay = []
+                self.saveFoodsOfDay()
+                self.readStepsTakenToday()
+            }
         
         }
     }
@@ -181,6 +183,7 @@ class NutritionData_Manager:ObservableObject{
                         let day = Day(weightOFDay: self.weightOfToday, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step))
                         
                         store.addDayToUser(day: day, to: store.userForApp.first!)
+                        self.resetallInfo()
                         self.updateLastKnownDate()
                     }
                 }

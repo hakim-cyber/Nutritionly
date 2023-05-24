@@ -12,7 +12,7 @@ struct UserInformationView: View {
     @EnvironmentObject var userStore: UserStore
     
     @State private var height: Int = 150
-    @State private var weight: Int = 50
+    @AppStorage("weightOfToday") var weightOfToday = 0.0
     @State private var age: Int = 12
     @State private var selectedGender:String = "Male"
    
@@ -98,7 +98,7 @@ struct UserInformationView: View {
                             .shadow(color: .black,radius: 10)
                         VStack(spacing: 20){
                             Text("Weight")
-                            Text("\(weight)")
+                            Text("\(weightOfToday.formatted())")
                                 .font(.system(size: 50))
                                 .fontWeight(.heavy)
                             Spacer()
@@ -106,7 +106,7 @@ struct UserInformationView: View {
                                 Button{
                                     
                                     
-                                    self.weight += 1
+                                    self.weightOfToday += 1.0
                                     
                                     
                                 }label: {
@@ -119,9 +119,9 @@ struct UserInformationView: View {
                                     }
                                 }
                                 Button{
-                                    if weight != 0{
+                                    if weightOfToday != 0.0{
                                         
-                                        self.weight -= 1
+                                        self.weightOfToday -= 1.0
                                         
                                     }
                                 }label: {

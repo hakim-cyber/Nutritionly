@@ -19,7 +19,7 @@ struct User:Codable{
 }
 
 struct Day:Codable{
-    var weightOFDay:Int
+    var weightOFDay:Double
     var order:Int
     var foods:[Food]
     var workoutMinutes:Int

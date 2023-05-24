@@ -314,7 +314,7 @@ struct MainView: View {
                                 // new day
                                 
                                 dataManager.addTodayToStore(store: userStore)
-                                dataManager.resetallInfo()
+                             
                                
                                 
                                
@@ -348,6 +348,13 @@ struct MainView: View {
                     .transition(.move(edge:  .bottom))
                     
                     
+                }
+                
+                if dataManager.weightOfToday == 0.0{
+                    WeightInfoView(){weight in
+                        dataManager.weightOfToday = weight
+                    }
+                        .transition(.move(edge: .top))
                 }
                 
             }
