@@ -10,6 +10,8 @@ import SwiftUI
 import HealthKit
 
 class NutritionData_Manager:ObservableObject{
+    
+  
     //Nutrition Todays
     
     @AppStorage("caloriesNeed")  var caloriesNeed = 2000
@@ -79,10 +81,77 @@ class NutritionData_Manager:ObservableObject{
         loadRecentfoods()
             //health kit
         changeAuthorizationStatus()
+       
+      
+        
     }
     //start new day and new infos and upload all info to firebase
+    func endOfDay(from date: Date) -> Date? {
+           var calendar = Calendar.current
+           calendar.timeZone = TimeZone.current
+           
+           // Get the components of the current date
+           let components = calendar.dateComponents([.year, .month, .day], from: date)
+           
+           // Create the date components for the end of the day
+           var endOfDayComponents = DateComponents()
+           endOfDayComponents.year = components.year
+           endOfDayComponents.month = components.month
+           endOfDayComponents.day = components.day
+           endOfDayComponents.hour = 23
+           endOfDayComponents.minute = 59
+           endOfDayComponents.second = 00
+           
+           // Get the end of the day date
+           let endOfDay = calendar.date(from: endOfDayComponents)
+           
+           return endOfDay
+       }
+    func checkIfNewDay()->Bool {
+            // Get the current date
+      
+            let currentDate = Date()
+            
+            // Compare the day components of the dates
+            let calendar = Calendar.current
+            let lastKnownDay = calendar.component(.day, from: loadLastKnownDate() )
+            let currentDay = calendar.component(.day, from: currentDate)
+            
+            if lastKnownDay != currentDay {
+                print("It's a new day!")
+                print(loadLastKnownDate())
+                return true
+              
+            } else {
+                // Same day
+                print("Same day")
+                return false
+           
+            }
+        }
+    func updateLastKnownDate() {
+            // Update the last known date with the current date
+        
+      let newDate = Date()
+        saveLastKnownDate(newDate: newDate)
+        }
   
-    
+    func saveLastKnownDate(newDate: Date) {
+        if let encoded = try? JSONEncoder().encode(newDate) {
+            UserDefaults.standard.set(encoded, forKey: "lastOpened")
+            print("\(newDate) saving")
+        }
+    }
+    func loadLastKnownDate() -> Date {
+        if let data = UserDefaults.standard.data(forKey:"lastOpened") {
+            if let decoded = try? JSONDecoder().decode(Date.self, from: data) {
+                return decoded
+            }
+        }
+        // Return the current date as a fallback if there's no saved date
+        print("no saved")
+        return Date()
+    }
     func resetallInfo(){
         DispatchQueue.main.async {
             // reset date
@@ -92,27 +161,36 @@ class NutritionData_Manager:ObservableObject{
             self.foodsOfDay = []
             self.saveFoodsOfDay()
             self.readStepsTakenToday()
-            
+        
         }
     }
+    
+    
     
     func addTodayToStore(store:UserStore){
        
         // read steps taken yesterday
+        
         DispatchQueue.main.async {
-            
-           
-            
-            self.readStepCount(for: Date.now - 120, healthStore: self.healthStore){step in
-                if let order = store.userForApp.first?.days.count{
-                    let day = Day(weightOFDay: self.weightOfToday, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step))
-                    
-                    store.addDayToUser(day: day, to: store.userForApp.first!)
+            print("\(self.loadLastKnownDate()) adding day")
+            if let endOfDay = self.endOfDay(from: self.loadLastKnownDate() ){
+             
+                print("\(endOfDay)")
+                self.readStepCount(for: endOfDay, healthStore: self.healthStore){step in
+                    if let order = store.userForApp.first?.days.count{
+                        let day = Day(weightOFDay: self.weightOfToday, order: order, foods: self.foodsOfDay, workoutMinutes: self.workoutMinutes, walkingSteps: Int(step))
+                        
+                        store.addDayToUser(day: day, to: store.userForApp.first!)
+                        self.updateLastKnownDate()
+                    }
                 }
+                
+            }else{
+                print("error end of day")
             }
-           
-            
+                
         }
+     
     }
     
     

@@ -276,14 +276,8 @@ struct MainView: View {
                         }
                         .padding(.top)
                         .padding(.horizontal)
-                        .onReceive(NotificationCenter.default.publisher(for: Notification.Name.NSCalendarDayChanged).receive(on: DispatchQueue.main)){_ in
-                            // function for everyday 00;00
-                            
-                                dataManager.addTodayToStore(store: userStore)
-                                dataManager.resetallInfo()
-                            
-                        }
-                       
+                      
+                        
                        
                      
                     }
@@ -313,10 +307,29 @@ struct MainView: View {
                     }
                     .transition(.move(edge: .top))
                     .onAppear{
+
+                            
+                            
+                            if   dataManager.checkIfNewDay(){
+                                // new day
+                                
+                                dataManager.addTodayToStore(store: userStore)
+                                dataManager.resetallInfo()
+                               
+                                
+                               
+                                
+                            }else{
+                                dataManager.updateLastKnownDate()
+                                // same day
+                        }
+                       
+                     
                         if dataManager.isAuthorized{
                             dataManager.readStepsTakenToday()
                         }
                     }
+                    
                     
                     
                 }else{
