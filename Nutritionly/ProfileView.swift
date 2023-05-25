@@ -50,7 +50,7 @@ struct ProfileView: View {
                                     Spacer()
                                 }
                                 NavigationLink{
-                                    ProfileView()
+                         ProfiledData()
                                 }label: {
                                     HStack(alignment: .firstTextBaseline){
                                         Image(systemName: "person")

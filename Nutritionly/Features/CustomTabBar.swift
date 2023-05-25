@@ -25,7 +25,7 @@ struct CustomTabBar: View {
     
     @State private var screen = UIScreen.main.bounds
     @State private var animate = false
-   
+    @Namespace var namespace
     var body: some View {
         VStack{
            
@@ -46,7 +46,7 @@ struct CustomTabBar: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 18))
                                 .onTapGesture{
-                                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8)){
+                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.9)){
                                         selectedTab = tab
                                     }
                                 }
@@ -72,8 +72,8 @@ struct CustomTabBar: View {
                 
             }
             .frame(height: 72)
-            .frame(maxWidth: screen.width/1.6)
-            .background(.black)
+            .frame(maxWidth: screen.width/1.5)
+            .background(Color.black)
             .cornerRadius(40)
             .padding(.horizontal,10)
            

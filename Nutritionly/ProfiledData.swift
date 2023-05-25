@@ -50,6 +50,7 @@ struct ProfiledData: View {
             }
             
         }
+      
     }
     var user:User{
         userstore.fetchUserUsingThisApp()
