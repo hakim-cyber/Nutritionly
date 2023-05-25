@@ -19,6 +19,7 @@
 		082CC97B2A0FFDC000D7F345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */; };
 		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
 		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
+		087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF642A1FE96B0092911B /* CustomTabBar.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
@@ -60,6 +61,7 @@
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		087ABF642A1FE96B0092911B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
 		08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nutritionly.entitlements; sourceTree = "<group>"; };
 		08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Water IntakeCard.swift"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		082CC96A2A0F972000D7F345 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				087ABF642A1FE96B0092911B /* CustomTabBar.swift */,
 				08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */,
 				08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */,
 				08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */,
@@ -318,6 +321,7 @@
 				08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */,
 				08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */,
 				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
+				087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */,
 				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,

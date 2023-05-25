@@ -14,6 +14,7 @@ enum cards{
     case nutrition,steps,workout,weight,waterIntake
 }
 struct MainView: View {
+    
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
     @State var screen = UIScreen.main.bounds
@@ -21,6 +22,8 @@ struct MainView: View {
     @State private var animateProgress = false
     @State private var showFullCard = false
     @State private var selectedCard:cards?
+    
+    var adding:()->Void
     
 @Namespace var namespace
     
@@ -46,15 +49,26 @@ struct MainView: View {
                                         .fontDesign(.rounded)
                                         .fontWeight(.bold)
                                 }
-                                .padding(.horizontal, 10)
+                               
                                 Spacer()
                                 Button{
+                                    // add food
+                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                        showAddView = true
+                                        
+                                    }
                                     
-                                }label: {
-                                    Image(systemName: "bell.fill")
-                                        .foregroundColor(.black)
+                                    
+                                    
+                                }label:{
+                                    Image(systemName: "plus")
+                                        .padding(5)
+                                        .font(.title3)
+                                        .foregroundColor(Color.black)
+                                        .background(Circle().stroke(.black))
                                 }
                             }
+                            .padding(.horizontal, 10)
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15,style: .continuous)
                                     .fill(Color.openGreen)
@@ -159,11 +173,11 @@ struct MainView: View {
                                                 Spacer()
                                             }else{
                                                 Button("Configure"){
-                                                  
-                                                        
-                                                        if !dataManager.isAuthorized{
-                                                            dataManager.healthRequest()
-                                                        }
+                                                    
+                                                    
+                                                    if !dataManager.isAuthorized{
+                                                        dataManager.healthRequest()
+                                                    }
                                                     
                                                     
                                                 }
@@ -184,7 +198,7 @@ struct MainView: View {
                                 }
                                 .rotation3DEffect(Angle(degrees: dataManager.isAuthorized ? 360:0), axis: (x:0, y:1, z:0))
                                 .frame(width: screen.width / 2.1,height:110 )
-                               
+                                
                                 ZStack{
                                     // workouts hour
                                     
@@ -247,43 +261,19 @@ struct MainView: View {
                             }
                             Water_IntakeCard()
                                 .environmentObject(dataManager)
-                           WeightProgressCard()
+                            WeightProgressCard()
                                 .environmentObject(userStore)
                             
                             Spacer()
-                           
+                            
                             
                         }
                         .padding(.top)
                         .padding(.horizontal)
-                      
                         
-                       
-                     
-                    }
-                    .safeAreaInset(edge: .bottom){
-                        Button{
-                            // add food
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                                showAddView = true
-                            }
-                            
-                            
-                            
-                        }label:{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 40)
-                                    .fill(.black)
-                                
-                                Text("add food")
-                                    .font(.system(size: 20))
-                                    .fontDesign(.monospaced)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.white)
-                                
-                            }
-                            .frame(width: screen.width / 1.08,height: 60)
-                        }
+                        
+                        
+                        
                     }
                     .transition(.move(edge: .top))
                     .onAppear{
@@ -338,13 +328,20 @@ struct MainView: View {
                 }
                 
             }
+            .onChange(of: showAddView){_ in
+   
+                    adding()
+                
+            }
         
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(){
+            
+        }
             .environmentObject(NutritionData_Manager())
             .environmentObject(UserStore())
             .preferredColorScheme(.light)
