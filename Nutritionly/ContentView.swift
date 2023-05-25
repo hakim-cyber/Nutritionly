@@ -37,7 +37,7 @@ struct ContentView: View {
                             .transition(.move(edge: .trailing))
                     }
                     if tab == .person{
-                        Text("Profile")
+                       ProfileView()
                             .tag(tab)
                             .transition(.move(edge: .trailing))
                     }

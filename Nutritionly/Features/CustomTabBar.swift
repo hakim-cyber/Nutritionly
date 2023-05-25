@@ -46,7 +46,7 @@ struct CustomTabBar: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 18))
                                 .onTapGesture{
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8)){
                                         selectedTab = tab
                                     }
                                 }
@@ -72,22 +72,11 @@ struct CustomTabBar: View {
                 
             }
             .frame(height: 72)
-            .frame(maxWidth: screen.width/1.8)
+            .frame(maxWidth: screen.width/1.6)
             .background(.black)
             .cornerRadius(40)
             .padding(.horizontal,10)
-            .onChange(of: selectedTab){_ in
-                DispatchQueue.main.async {
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                        animate = true
-                        
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                            
-                            animate = false
-                        }
-                    }
-                }
-            }
+           
           
            
         }

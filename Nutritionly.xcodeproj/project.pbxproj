@@ -20,6 +20,8 @@
 		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
 		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF642A1FE96B0092911B /* CustomTabBar.swift */; };
+		087ABF672A1FF9710092911B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF662A1FF9710092911B /* ProfileView.swift */; };
+		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
@@ -62,6 +64,8 @@
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		087ABF642A1FE96B0092911B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		087ABF662A1FF9710092911B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		087ABF682A1FFF650092911B /* ProfiledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiledData.swift; sourceTree = "<group>"; };
 		08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
 		08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nutritionly.entitlements; sourceTree = "<group>"; };
 		08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Water IntakeCard.swift"; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
+				087ABF662A1FF9710092911B /* ProfileView.swift */,
+				087ABF682A1FFF650092911B /* ProfiledData.swift */,
 				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
 				08AA44F72A1BEC0C00537DD5 /* FullCards */,
 				082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */,
@@ -323,6 +329,7 @@
 				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
 				087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */,
 				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
+				087ABF672A1FF9710092911B /* ProfileView.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,
 				08ED21D42A1E2002004A0064 /* WeightInfoView.swift in Sources */,
@@ -332,6 +339,7 @@
 				08ED21D62A1E9DA8004A0064 /* WeightProgressCard.swift in Sources */,
 				08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */,
 				084F29A22A10F6070071D321 /* ProgressView.swift in Sources */,
+				087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */,
 				08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */,
 				08F367BC2A12CDD000180195 /* UserStore.swift in Sources */,
 				08DB01822A16C63A00DCA54A /* TotalFoodView.swift in Sources */,
