@@ -14,13 +14,16 @@ import FirebaseFirestoreSwift
 
 class UserStore:ObservableObject{
     @Published var userForApp = [User]()
-    
+ 
     let db = Firestore.firestore()
     
     
     init(){
        fetchUserUsingThisApp()
     }
+   
+   
+   
     func addDayToUser(day:Day,to user:User){
         var userForAdd = user
         userForAdd.days.append(day)

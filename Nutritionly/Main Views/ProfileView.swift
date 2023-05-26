@@ -31,7 +31,9 @@ struct ProfileView: View {
                         }
                         
                         Spacer()
-                        
+                        Text("\(user.days.count) days")
+                            .font(.callout)
+                            .foregroundColor(.secondary)
                     }
                     VStack(spacing: 20){
                         // pictures and name email

@@ -22,6 +22,7 @@
 		087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF642A1FE96B0092911B /* CustomTabBar.swift */; };
 		087ABF672A1FF9710092911B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF662A1FF9710092911B /* ProfileView.swift */; };
 		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
+		087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6A2A20D9F00092911B /* StatsView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
@@ -66,6 +67,7 @@
 		087ABF642A1FE96B0092911B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		087ABF662A1FF9710092911B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		087ABF682A1FFF650092911B /* ProfiledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiledData.swift; sourceTree = "<group>"; };
+		087ABF6A2A20D9F00092911B /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
 		08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nutritionly.entitlements; sourceTree = "<group>"; };
 		08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Water IntakeCard.swift"; sourceTree = "<group>"; };
@@ -128,9 +130,7 @@
 				08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
-				087ABF662A1FF9710092911B /* ProfileView.swift */,
-				087ABF682A1FFF650092911B /* ProfiledData.swift */,
-				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
+				087ABF6C2A2159530092911B /* Main Views */,
 				08AA44F72A1BEC0C00537DD5 /* FullCards */,
 				082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */,
 				089CF08D2A10310400061597 /* StartingViews */,
@@ -165,6 +165,17 @@
 				082CC96F2A0FA5BF00D7F345 /* RoundedButtton.swift */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		087ABF6C2A2159530092911B /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				087ABF6A2A20D9F00092911B /* StatsView.swift */,
+				087ABF662A1FF9710092911B /* ProfileView.swift */,
+				087ABF682A1FFF650092911B /* ProfiledData.swift */,
+				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
+			);
+			path = "Main Views";
 			sourceTree = "<group>";
 		};
 		089CF08D2A10310400061597 /* StartingViews */ = {
@@ -322,6 +333,7 @@
 				08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
 				08F367C42A141FF200180195 /* MealItem.swift in Sources */,
+				087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */,
 				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
 				08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */,
 				08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */,

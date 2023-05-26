@@ -32,14 +32,16 @@ struct ContentView: View {
                     
                     if tab == .chart{
                       
-                       Text("Stats")
+                      StatsView()
                             .tag(tab)
                             .transition(.move(edge: .trailing))
+                            .preferredColorScheme(.light)
                     }
                     if tab == .person{
                        ProfileView()
                             .tag(tab)
                             .transition(.move(edge: .trailing))
+                            .preferredColorScheme(.light)
                     }
                 }
             }
