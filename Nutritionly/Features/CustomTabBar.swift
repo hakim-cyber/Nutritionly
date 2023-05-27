@@ -33,20 +33,13 @@ struct CustomTabBar: View {
                 ForEach(Tab.allCases,id:\.rawValue){tab in
                     Spacer()
                     ZStack{
-                        if selectedTab == tab{
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .fill(.ultraThinMaterial)
-                                .frame(height: 36)
-                                .frame(maxWidth: (screen.width/1.8)/2.6)
-                            
-                        }
-                        HStack(alignment: .firstTextBaseline){
+                       
+                        VStack(alignment: .center){
                             Image(systemName: selectedTab == tab ? fillImage : imageTab(tab: tab))
                                 .foregroundColor(.white)
                                 .font(.system(size: 18))
                                 .onTapGesture{
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.9)){
+                                    withAnimation(.easeInOut(duration: 0.3)){
                                         selectedTab = tab
                                     }
                                 }
