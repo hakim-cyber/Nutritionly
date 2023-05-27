@@ -27,14 +27,15 @@
 		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
 		087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6A2A20D9F00092911B /* StatsView.swift */; };
 		087ABF6E2A22102D0092911B /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6D2A22102D0092911B /* GoalView.swift */; };
-		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
-		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
 		08AA44FC2A1BFD5200537DD5 /* Water IntakeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */; };
+		08AA62892A22B61A002D9DBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA62882A22B61A002D9DBF /* FirebaseAuth */; };
+		08AA628B2A22B61A002D9DBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA628A2A22B61A002D9DBF /* FirebaseFirestore */; };
+		08AA628D2A22B61A002D9DBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA628C2A22B61A002D9DBF /* FirebaseFirestoreSwift */; };
+		08AA62902A22B62F002D9DBF /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA628F2A22B62F002D9DBF /* EmojiPicker */; };
 		08AEC0EF2A15168900CEA256 /* NewFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0EE2A15168900CEA256 /* NewFoodView.swift */; };
 		08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F02A1517DD00CEA256 /* CustomSwitch.swift */; };
 		08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEC0F22A15259500CEA256 /* CustomSearchBar.swift */; };
-		08AF76672A19503E00ABC818 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 08AF76662A19503E00ABC818 /* EmojiPicker */; };
 		08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA5B032A19395A001B2174 /* RecentsView.swift */; };
 		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
 		08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */; };
@@ -46,7 +47,6 @@
 		08ED21D62A1E9DA8004A0064 /* WeightProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D52A1E9DA8004A0064 /* WeightProgressCard.swift */; };
 		08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D72A1EA134004A0064 /* weightProgressChart.swift */; };
 		08F367B72A12CADF00180195 /* Structs Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367B62A12CADF00180195 /* Structs Users.swift */; };
-		08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */; };
 		08F367BC2A12CDD000180195 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BB2A12CDD000180195 /* UserStore.swift */; };
 		08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367BF2A1419BB00180195 /* AddFoodView.swift */; };
 		08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367C12A141B8900180195 /* NutritionsLine.swift */; };
@@ -103,10 +103,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */,
-				089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */,
-				08AF76672A19503E00ABC818 /* EmojiPicker in Frameworks */,
-				08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */,
+				08AA62892A22B61A002D9DBF /* FirebaseAuth in Frameworks */,
+				08AA62902A22B62F002D9DBF /* EmojiPicker in Frameworks */,
+				08AA628B2A22B61A002D9DBF /* FirebaseFirestore in Frameworks */,
+				08AA628D2A22B61A002D9DBF /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,10 +274,10 @@
 			);
 			name = Nutritionly;
 			packageProductDependencies = (
-				089CF0892A10300700061597 /* FirebaseAuth */,
-				089CF08B2A10300700061597 /* FirebaseFirestore */,
-				08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */,
-				08AF76662A19503E00ABC818 /* EmojiPicker */,
+				08AA62882A22B61A002D9DBF /* FirebaseAuth */,
+				08AA628A2A22B61A002D9DBF /* FirebaseFirestore */,
+				08AA628C2A22B61A002D9DBF /* FirebaseFirestoreSwift */,
+				08AA628F2A22B62F002D9DBF /* EmojiPicker */,
 			);
 			productName = Nutritionly;
 			productReference = 082CC9572A0F95F000D7F345 /* Nutritionly.app */;
@@ -308,8 +308,8 @@
 			);
 			mainGroup = 082CC94E2A0F95F000D7F345;
 			packageReferences = (
-				089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
+				08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				08AA628E2A22B62F002D9DBF /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 			);
 			productRefGroup = 082CC9582A0F95F000D7F345 /* Products */;
 			projectDirPath = "";
@@ -585,7 +585,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -593,7 +593,7 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+		08AA628E2A22B62F002D9DBF /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
 			requirement = {
@@ -604,25 +604,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		089CF0892A10300700061597 /* FirebaseAuth */ = {
+		08AA62882A22B61A002D9DBF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		089CF08B2A10300700061597 /* FirebaseFirestore */ = {
+		08AA628A2A22B61A002D9DBF /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		08AF76662A19503E00ABC818 /* EmojiPicker */ = {
+		08AA628C2A22B61A002D9DBF /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
-			productName = EmojiPicker;
-		};
-		08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		08AA628F2A22B62F002D9DBF /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08AA628E2A22B62F002D9DBF /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
