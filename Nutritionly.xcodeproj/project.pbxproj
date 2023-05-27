@@ -19,6 +19,9 @@
 		082CC97B2A0FFDC000D7F345 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */; };
 		082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC97C2A1007F200D7F345 /* UserInformationView.swift */; };
 		084F29A22A10F6070071D321 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
+		086D4F922A223D9500E3E63F /* TargetWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D4F912A223D9500E3E63F /* TargetWeightView.swift */; };
+		086D4F952A228F6500E3E63F /* MultipleSectionWeightPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D4F942A228F6500E3E63F /* MultipleSectionWeightPicker.swift */; };
+		086D4F972A2295CD00E3E63F /* AvtivityLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D4F962A2295CD00E3E63F /* AvtivityLevelView.swift */; };
 		087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF642A1FE96B0092911B /* CustomTabBar.swift */; };
 		087ABF672A1FF9710092911B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF662A1FF9710092911B /* ProfileView.swift */; };
 		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
@@ -65,6 +68,9 @@
 		082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		082CC97C2A1007F200D7F345 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
 		084F29A12A10F6070071D321 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		086D4F912A223D9500E3E63F /* TargetWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetWeightView.swift; sourceTree = "<group>"; };
+		086D4F942A228F6500E3E63F /* MultipleSectionWeightPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSectionWeightPicker.swift; sourceTree = "<group>"; };
+		086D4F962A2295CD00E3E63F /* AvtivityLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvtivityLevelView.swift; sourceTree = "<group>"; };
 		087ABF642A1FE96B0092911B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		087ABF662A1FF9710092911B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		087ABF682A1FFF650092911B /* ProfiledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiledData.swift; sourceTree = "<group>"; };
@@ -169,6 +175,15 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		086D4F932A223DA300E3E63F /* target weight views */ = {
+			isa = PBXGroup;
+			children = (
+				086D4F912A223D9500E3E63F /* TargetWeightView.swift */,
+				086D4F942A228F6500E3E63F /* MultipleSectionWeightPicker.swift */,
+			);
+			path = "target weight views";
+			sourceTree = "<group>";
+		};
 		087ABF6C2A2159530092911B /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +203,8 @@
 				08ED21D32A1E2002004A0064 /* WeightInfoView.swift */,
 				082CC9712A0FF25D00D7F345 /* LoginScreen.swift */,
 				087ABF6D2A22102D0092911B /* GoalView.swift */,
+				086D4F962A2295CD00E3E63F /* AvtivityLevelView.swift */,
+				086D4F932A223DA300E3E63F /* target weight views */,
 			);
 			path = StartingViews;
 			sourceTree = "<group>";
@@ -336,8 +353,10 @@
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
 				08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
+				086D4F972A2295CD00E3E63F /* AvtivityLevelView.swift in Sources */,
 				08F367C42A141FF200180195 /* MealItem.swift in Sources */,
 				087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */,
+				086D4F922A223D9500E3E63F /* TargetWeightView.swift in Sources */,
 				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
 				08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */,
 				08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */,
@@ -345,6 +364,7 @@
 				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
 				087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */,
 				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
+				086D4F952A228F6500E3E63F /* MultipleSectionWeightPicker.swift in Sources */,
 				087ABF672A1FF9710092911B /* ProfileView.swift in Sources */,
 				082CC9722A0FF25D00D7F345 /* LoginScreen.swift in Sources */,
 				08F367B72A12CADF00180195 /* Structs Users.swift in Sources */,

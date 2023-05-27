@@ -10,80 +10,102 @@ import SwiftUI
 struct GoalView: View {
    @AppStorage("goal") var selectedGoal = "InShape"
     let goals = ["Lose","InShape","Gain"]
+    @State private var next = false
     var body: some View {
         ZStack{
-            VStack(spacing: 20){
-                Text("What you would like to achive ?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                Spacer()
-                ForEach(goals,id:\.self){goal in
-                    ZStack{
-                       
-                  
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(.ultraThinMaterial)
-                            .frame(height: 78)
-                          
-                            .overlay(alignment:.trailing){
-                                HStack{
-                                    Image(goal.lowercased())
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 110)
-                                        .mask(RoundedRectangle(cornerRadius: 15)
-                                            .fill(.ultraThinMaterial)
-                                            .frame(height: 78))
-                                        .edgesIgnoringSafeArea(.all)
-                                }
-                            }
-                            .clipped(antialiased:false)
-                            .shadow(color:selectedGoal == goal ? .green : .white, radius: 10)
+        if next{
+            TargetWeightView()
+                .transition(.move(edge: .bottom))
+        }else{
+           
+                VStack(spacing: 20){
+                    Text("What you would like to achive ?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    ForEach(goals,id:\.self){goal in
+                        ZStack{
                             
-                           
-                        VStack{
-                            HStack{
-                                if goal == "Lose"{
-                                    Text("Lose weight")
-                                    .padding(.horizontal,10)
-                                    .padding()
-                                    Spacer()
+                            
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(.ultraThinMaterial)
+                                .frame(height: 78)
+                            
+                                .overlay(alignment:.trailing){
+                                    HStack{
+                                        Image(goal.lowercased())
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 110)
+                                            .mask(RoundedRectangle(cornerRadius: 15)
+                                                .fill(.ultraThinMaterial)
+                                                .frame(height: 78))
+                                            .edgesIgnoringSafeArea(.all)
+                                    }
+                                }
+                                .clipped(antialiased:false)
+                                .shadow(color:selectedGoal == goal ? .green : .white, radius: 10)
+                            
+                            
+                            VStack{
+                                HStack{
+                                    if goal == "Lose"{
+                                        Text("Lose weight")
+                                            .padding(.horizontal,10)
+                                            .padding()
+                                        Spacer()
+                                        
+                                    }
+                                    if goal == "Gain"{
+                                        Text("Gain weight")
+                                            .padding(.horizontal,10)
+                                            .padding()
+                                        Spacer()
+                                    }
+                                    if goal == "InShape"{
+                                        Text("Stay In shape")
+                                            .padding(.horizontal,10)
+                                            .padding()
+                                        Spacer()
+                                    }
                                     
                                 }
-                                if goal == "Gain"{
-                                    Text("Gain weight")
-                                    .padding(.horizontal,10)
-                                    .padding()
-                                    Spacer()
-                                }
-                                if goal == "InShape"{
-                                    Text("Stay In shape")
-                                    .padding(.horizontal,10)
-                                    .padding()
-                                    Spacer()
-                                }
-                                
+                            }
+                            
+                            
+                            
+                            
+                        }
+                        .onTapGesture {
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                selectedGoal = goal
                             }
                         }
-                      
-                        
-                       
                         
                     }
-                    .onTapGesture {
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                            selectedGoal = goal
-                        }
-                    }
-                  
+                    Spacer()
+                    Spacer()
                 }
-                Spacer()
-                Spacer()
+                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                .padding(.top)
+                .padding(.horizontal)
+                .transition(.move(edge: .top))
+                .safeAreaInset(edge: .bottom){
+                    HStack{
+                        Spacer()
+                        RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                next = true
+                            }
+                            
+                        })
+                        .padding(20)
+                        .font(.title2)
+                    }
+                }
+                
             }
-            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
-            .padding(.top)
-            .padding(.horizontal)
         }
     }
 }
