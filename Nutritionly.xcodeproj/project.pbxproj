@@ -42,7 +42,6 @@
 		08DB01802A16BAFB00DCA54A /* Custom checkMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */; };
 		08DB01822A16C63A00DCA54A /* TotalFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB01812A16C63A00DCA54A /* TotalFoodView.swift */; };
 		08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB01842A17E0DE00DCA54A /* SearchIngredViewModel.swift */; };
-		08DB01882A17E2ED00DCA54A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 08DB01872A17E2ED00DCA54A /* Alamofire */; };
 		08ED21D42A1E2002004A0064 /* WeightInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D32A1E2002004A0064 /* WeightInfoView.swift */; };
 		08ED21D62A1E9DA8004A0064 /* WeightProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D52A1E9DA8004A0064 /* WeightProgressCard.swift */; };
 		08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED21D72A1EA134004A0064 /* weightProgressChart.swift */; };
@@ -105,7 +104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */,
-				08DB01882A17E2ED00DCA54A /* Alamofire in Frameworks */,
 				089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */,
 				08AF76672A19503E00ABC818 /* EmojiPicker in Frameworks */,
 				08F367BA2A12CB3900180195 /* FirebaseFirestoreSwift in Frameworks */,
@@ -279,7 +277,6 @@
 				089CF0892A10300700061597 /* FirebaseAuth */,
 				089CF08B2A10300700061597 /* FirebaseFirestore */,
 				08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */,
-				08DB01872A17E2ED00DCA54A /* Alamofire */,
 				08AF76662A19503E00ABC818 /* EmojiPicker */,
 			);
 			productName = Nutritionly;
@@ -312,7 +309,6 @@
 			mainGroup = 082CC94E2A0F95F000D7F345;
 			packageReferences = (
 				089CF0882A10300700061597 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				08DB01862A17E2ED00DCA54A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 			);
 			productRefGroup = 082CC9582A0F95F000D7F345 /* Products */;
@@ -605,14 +601,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		08DB01862A17E2ED00DCA54A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -630,11 +618,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08AF76652A19503E00ABC818 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
 			productName = EmojiPicker;
-		};
-		08DB01872A17E2ED00DCA54A /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 08DB01862A17E2ED00DCA54A /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		08F367B92A12CB3900180195 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
