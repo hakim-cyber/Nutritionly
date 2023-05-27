@@ -11,13 +11,19 @@ import Charts
 struct StatsView: View {
     @EnvironmentObject var userstore:UserStore
     
-@State private var currentTab = "Kcal"
+    @State private var currentTab = "Kcal"
     
     @State private var statsItems = [StatsItem]()
     let tabs = ["Kcal","🏋️ Workout","⚖️ Weight","💧 Water"]
+    
     @State var currentActive:StatsItem?
     @State var plotWidth:CGFloat = 0
     @State var isLineGraph = false
+    
+    
+    
+    @State private var screen = UIScreen.main.bounds
+    
     @Namespace var nameSpace
     var body: some View {
         NavigationStack{
@@ -43,6 +49,7 @@ struct StatsView: View {
                     
                     Toggle("Line Graph",isOn: $isLineGraph)
                         .padding(.top)
+                
                  
                 }
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
@@ -174,7 +181,6 @@ struct StatsView: View {
         .frame(height: 70)
     }
 
-    
     func animateGraph(fromChange:Bool = false){
         for (index,_) in statsItems.enumerated(){
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(index) * (fromChange ? 0.03:0.05)){

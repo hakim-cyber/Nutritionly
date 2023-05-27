@@ -21,7 +21,9 @@ struct UserInformationView: View {
    @State var screen =  UIScreen.main.bounds
     
     @State var informationIsAdded = false
+    @State var checked = false
     @State var animated = false
+    @State private var next = false
     var namespace:Namespace.ID
     var body: some View {
         if informationIsAdded{
@@ -29,206 +31,215 @@ struct UserInformationView: View {
                
                
         }else{
-        ZStack{
-            BackGround2(namespace: namespace,animated: animated)
-       
-                 
-               
-            
-            VStack(spacing:30){
-                HStack{
-                    ZStack{
-                        // age
-                        RoundedRectangle(cornerRadius: 15,style: .continuous)
-                            .fill(.white)
-                            .padding(.horizontal,10)
-                            .shadow(color: .black,radius: 10)
-                        
-                        VStack(spacing: 20){
-                            Text("Age")
-                            Text("\(age)")
-                                .font(.system(size: 50))
-                                .fontWeight(.heavy)
-                            Spacer()
-                            HStack(spacing: 20){
-                                Button{
-                                    if age != 80{
-                                        
-                                        self.age += 1
-                                        
-                                    }
-                                }label: {
-                                    ZStack{
-                                        Circle()
-                                            .stroke(.gray,lineWidth:1)
-                                            .frame(width:30,height: 30)
-                                        Image(systemName: "plus")
-                                        
-                                    }
-                                }
-                                Button{
-                                    if age != 0{
-                                        
-                                        self.age -= 1
-                                        
-                                    }
-                                }label: {
-                                    ZStack{
-                                        Circle()
-                                            .stroke(.gray,lineWidth:1)
-                                            .frame(width:30,height: 30)
-                                        Image(systemName: "minus")
-                                        
-                                    }
-                                }
-                            }
-                            
-                            
-                        }
-                        .padding()
-                        
-                    }
-                    .frame(width: UIScreen.main.bounds.width/2 - 20,height: 220)
-                    ZStack{
-                        // weight
-                        RoundedRectangle(cornerRadius: 15,style: .continuous)
-                            .fill(.white)
-                            .frame(width: screen.width/2.2,height: 220)
-                            .padding(.horizontal,10)
-                            .shadow(color: .black,radius: 10)
-                        VStack(spacing: 20){
-                            Text("Weight")
-                            Text("\(weightOfToday.formatted())")
-                                .font(.system(size: 50))
-                                .fontWeight(.heavy)
-                            Spacer()
-                            HStack(spacing: 20){
-                                Button{
-                                    
-                                    
-                                    self.weightOfToday += 1.0
-                                    
-                                    
-                                }label: {
-                                    ZStack{
-                                        Circle()
-                                            .stroke(.gray,lineWidth:1)
-                                            .frame(width:30,height: 30)
-                                        Image(systemName: "plus")
-                                        
-                                    }
-                                }
-                                Button{
-                                    if weightOfToday != 0.0{
-                                        
-                                        self.weightOfToday -= 1.0
-                                        
-                                    }
-                                }label: {
-                                    ZStack{
-                                        Circle()
-                                            .stroke(.gray,lineWidth:1)
-                                            .frame(width:30,height: 30)
-                                        Image(systemName: "minus")
-                                        
-                                    }
-                                }
-                            }
-                            
-                            
-                        }
-                        .padding()
-                    }
-                    .frame(width: screen.width/2.2,height: 220)
-                    
-                }
+            ZStack{
+                BackGround2(namespace: namespace,animated: animated)
                 
-                ZStack{
-                    // height
-                    RoundedRectangle(cornerRadius: 15,style: .continuous)
-                        .fill(.white)
-                        .padding(.horizontal,10)
-                        .shadow(color: .black,radius: 10)
-                    
-                    VStack{
-                        Text("Height")
-                        Text("cm")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        Picker(selection: $height, label: Text("Data")) {
-                        
-                            ForEach(0...250, id: \.self) { high in
-                                Text("\(high)")
-                                }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(.wheel)
-                        .clipped()
-                    }
-                    .padding()
-                }
-                .frame(width: screen.width / 1.2,height:200 )
-                ZStack{
-                    // gender
-                    RoundedRectangle(cornerRadius: 15,style: .continuous)
-                        .fill(.white)
-                        .padding(.horizontal,10)
-                        .shadow(color: .black,radius: 10)
-                    VStack{
-                        Text("Gender")
-                            .bold()
-                        Spacer()
+                
+                
+                if next{
+                    GoalView()
+                        .transition(.move(edge: .bottom))
+                }else{
+                    VStack(spacing:30){
                         HStack{
-                            Text("i'm")
-                                .font(.system(size: 50))
-                                .padding(.leading,20)
-                                .fontWeight(.heavy)
-                            Spacer()
-                            
-                            Picker("", selection: $selectedGender){
-                                ForEach(genders, id: \.self){ 
-                                    Text($0)
+                            ZStack{
+                                // age
+                                RoundedRectangle(cornerRadius: 15,style: .continuous)
+                                    .fill(.white)
+                                    .padding(.horizontal,10)
+                                    .shadow(color: .black,radius: 10)
+                                
+                                VStack(spacing: 20){
+                                    Text("Age")
+                                    Text("\(age)")
+                                        .font(.system(size: 50))
+                                        .fontWeight(.heavy)
+                                    Spacer()
+                                    HStack(spacing: 20){
+                                        Button{
+                                            if age != 80{
+                                                
+                                                self.age += 1
+                                                
+                                            }
+                                        }label: {
+                                            ZStack{
+                                                Circle()
+                                                    .stroke(.gray,lineWidth:1)
+                                                    .frame(width:30,height: 30)
+                                                Image(systemName: "plus")
+                                                
+                                            }
+                                        }
+                                        Button{
+                                            if age != 0{
+                                                
+                                                self.age -= 1
+                                                
+                                            }
+                                        }label: {
+                                            ZStack{
+                                                Circle()
+                                                    .stroke(.gray,lineWidth:1)
+                                                    .frame(width:30,height: 30)
+                                                Image(systemName: "minus")
+                                                
+                                            }
+                                        }
+                                    }
+                                    
+                                    
                                 }
+                                .padding()
                                 
                             }
-                            .frame(maxWidth: 220)
-                            .pickerStyle(.segmented)
-                            .padding(.trailing,20)
+                            .frame(width: UIScreen.main.bounds.width/2 - 20,height: 220)
+                            ZStack{
+                                // weight
+                                RoundedRectangle(cornerRadius: 15,style: .continuous)
+                                    .fill(.white)
+                                    .frame(width: screen.width/2.2,height: 220)
+                                    .padding(.horizontal,10)
+                                    .shadow(color: .black,radius: 10)
+                                VStack(spacing: 20){
+                                    Text("Weight")
+                                    Text("\(weightOfToday.formatted())")
+                                        .font(.system(size: 50))
+                                        .fontWeight(.heavy)
+                                    Spacer()
+                                    HStack(spacing: 20){
+                                        Button{
+                                            
+                                            
+                                            self.weightOfToday += 1.0
+                                            
+                                            
+                                        }label: {
+                                            ZStack{
+                                                Circle()
+                                                    .stroke(.gray,lineWidth:1)
+                                                    .frame(width:30,height: 30)
+                                                Image(systemName: "plus")
+                                                
+                                            }
+                                        }
+                                        Button{
+                                            if weightOfToday != 0.0{
+                                                
+                                                self.weightOfToday -= 1.0
+                                                
+                                            }
+                                        }label: {
+                                            ZStack{
+                                                Circle()
+                                                    .stroke(.gray,lineWidth:1)
+                                                    .frame(width:30,height: 30)
+                                                Image(systemName: "minus")
+                                                
+                                            }
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                                .padding()
+                            }
+                            .frame(width: screen.width/2.2,height: 220)
                             
                         }
                         
+                        ZStack{
+                            // height
+                            RoundedRectangle(cornerRadius: 15,style: .continuous)
+                                .fill(.white)
+                                .padding(.horizontal,10)
+                                .shadow(color: .black,radius: 10)
+                            
+                            VStack{
+                                Text("Height")
+                                Text("cm")
+                                    .font(.callout)
+                                    .foregroundColor(.secondary)
+                                
+                                Spacer()
+                                Picker(selection: $height, label: Text("Data")) {
+                                    
+                                    ForEach(0...250, id: \.self) { high in
+                                        Text("\(high)")
+                                    }
+                                }
+                                .labelsHidden()
+                                .pickerStyle(.wheel)
+                                .clipped()
+                            }
+                            .padding()
+                        }
+                        .frame(width: screen.width / 1.2,height:200 )
+                        ZStack{
+                            // gender
+                            RoundedRectangle(cornerRadius: 15,style: .continuous)
+                                .fill(.white)
+                                .padding(.horizontal,10)
+                                .shadow(color: .black,radius: 10)
+                            VStack{
+                                Text("Gender")
+                                    .bold()
+                                Spacer()
+                                HStack{
+                                    Text("i'm")
+                                        .font(.system(size: 50))
+                                        .padding(.leading,20)
+                                        .fontWeight(.heavy)
+                                    Spacer()
+                                    
+                                    Picker("", selection: $selectedGender){
+                                        ForEach(genders, id: \.self){
+                                            Text($0)
+                                        }
+                                        
+                                    }
+                                    .frame(maxWidth: 220)
+                                    .pickerStyle(.segmented)
+                                    .padding(.trailing,20)
+                                    
+                                }
+                                
+                                
+                            }
+                            .padding(10)
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width / 1.2,height:100 )
+                        
                         
                     }
-                    .padding(10)
-                    
+                    .safeAreaInset(edge: .bottom){
+                        HStack{
+                            Spacer()
+                            RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
+                                
+                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    next = true
+                                }
+                                
+                                
+                                
+                            })
+                            .disabled(checked == false)
+                            .padding(20)
+                            .font(.title2)
+                        }
+                    }
+                    .onAppear{
+                        DispatchQueue.main.async {
+                            checkInforationIsAdded()
+                            checked = true
+                        }
+                       
+                        
+                    }
                 }
-                .frame(width: UIScreen.main.bounds.width / 1.2,height:100 )
-                
-                
             }
-            
-        }
-        .safeAreaInset(edge: .bottom){
-            HStack{
-                Spacer()
-                RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                  
-                        storeUserInformation()
-                    
-                    
-                    
-                })
-                .padding(20)
-                .font(.title2)
-            }
-        }
-        .onAppear{
-           
-                checkInforationIsAdded()
-            
-        }
     }
            
     }
@@ -268,6 +279,7 @@ struct UserInformationView: View {
                        if document.exists {
                           
                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                             
                                self.animated = true
                            }
                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -276,11 +288,12 @@ struct UserInformationView: View {
                                }
                            }
                        } else {
-                           
+                         
                            return
                          
                        }
                    }else{
+                     
                        return
                    }
                    

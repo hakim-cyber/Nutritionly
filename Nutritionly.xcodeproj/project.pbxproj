@@ -23,6 +23,7 @@
 		087ABF672A1FF9710092911B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF662A1FF9710092911B /* ProfileView.swift */; };
 		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
 		087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6A2A20D9F00092911B /* StatsView.swift */; };
+		087ABF6E2A22102D0092911B /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6D2A22102D0092911B /* GoalView.swift */; };
 		089CF08A2A10300700061597 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF0892A10300700061597 /* FirebaseAuth */; };
 		089CF08C2A10300700061597 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 089CF08B2A10300700061597 /* FirebaseFirestore */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
@@ -68,6 +69,7 @@
 		087ABF662A1FF9710092911B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		087ABF682A1FFF650092911B /* ProfiledData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiledData.swift; sourceTree = "<group>"; };
 		087ABF6A2A20D9F00092911B /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		087ABF6D2A22102D0092911B /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
 		08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nutritionly.entitlements; sourceTree = "<group>"; };
 		08AA44FB2A1BFD5200537DD5 /* Water IntakeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Water IntakeCard.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				082CC9682A0F96C800D7F345 /* StartScreen.swift */,
 				08ED21D32A1E2002004A0064 /* WeightInfoView.swift */,
 				082CC9712A0FF25D00D7F345 /* LoginScreen.swift */,
+				087ABF6D2A22102D0092911B /* GoalView.swift */,
 			);
 			path = StartingViews;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */,
+				087ABF6E2A22102D0092911B /* GoalView.swift in Sources */,
 				08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */,
 				08AA44FC2A1BFD5200537DD5 /* Water IntakeCard.swift in Sources */,
 				08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */,
