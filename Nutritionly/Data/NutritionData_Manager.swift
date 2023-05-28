@@ -28,6 +28,7 @@ class NutritionData_Manager:ObservableObject{
     // BurningInformation Todays
     
     @AppStorage("workoutMinutes") var workoutMinutes = 0
+    @AppStorage("requestweight") var requestweight = false
     
     @AppStorage("weightOfToday") var weightOfToday = 0.0
   
@@ -157,7 +158,8 @@ class NutritionData_Manager:ObservableObject{
             // reset date
             withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
                 self.workoutMinutes = 0
-                self.weightOfToday = 0
+                self.weightOfToday = 0.0
+                self.requestweight = true
                 self.drinkedWater = 0
                 self.foodsOfDay = []
                 self.saveFoodsOfDay()

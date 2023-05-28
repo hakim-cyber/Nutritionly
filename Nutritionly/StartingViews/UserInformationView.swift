@@ -10,9 +10,11 @@ import Firebase
 struct UserInformationView: View {
    
     @EnvironmentObject var userStore: UserStore
+    @EnvironmentObject var dataManager :NutritionData_Manager
     
+    @State private var weight = 0.0
     @AppStorage("height")  var height: Int = 150
-    @AppStorage("weightOfToday") var weightOfToday = 0.0
+    
     @AppStorage("age") var age: Int = 12
     @AppStorage("gender")  var selectedGender:String = "Male"
    
@@ -103,7 +105,7 @@ struct UserInformationView: View {
                                     .shadow(color: .black,radius: 10)
                                 VStack(spacing: 20){
                                     Text("Weight")
-                                    Text("\(weightOfToday.formatted())")
+                                    Text("\(weight.formatted())")
                                         .font(.system(size: 50))
                                         .fontWeight(.heavy)
                                     Spacer()
@@ -111,7 +113,7 @@ struct UserInformationView: View {
                                         Button{
                                             
                                             
-                                            self.weightOfToday += 1.0
+                                            self.weight += 1.0
                                             
                                             
                                         }label: {
@@ -124,9 +126,9 @@ struct UserInformationView: View {
                                             }
                                         }
                                         Button{
-                                            if weightOfToday != 0.0{
+                                            if weight != 0.0{
                                                 
-                                                self.weightOfToday -= 1.0
+                                                self.weight -= 1.0
                                                 
                                             }
                                         }label: {
@@ -219,6 +221,7 @@ struct UserInformationView: View {
                             RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
                                 
                                 withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    dataManager.weightOfToday = weight
                                     next = true
                                 }
                                 
@@ -289,5 +292,6 @@ struct UserInformationView_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
         UserInformationView(namespace: namespace)
+            .environmentObject(NutritionData_Manager())
     }
 }

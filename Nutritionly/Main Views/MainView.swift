@@ -325,7 +325,7 @@ struct MainView: View {
                     
                 }
                 
-                if dataManager.weightOfToday == 0.0{
+                if dataManager.requestweight{
                     WeightInfoView(){weight in
                         dataManager.weightOfToday = weight
                     }

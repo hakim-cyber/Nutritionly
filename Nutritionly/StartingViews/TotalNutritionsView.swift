@@ -13,7 +13,6 @@ struct TotalNutritionsView: View {
     @AppStorage("targetweight") var targetweight = 0.0
     @AppStorage("goal") var selectedGoal = "InShape"
     @AppStorage("height")  var height: Int = 150
-    @AppStorage("weightOfToday") var weightOfToday = 0.0
     @AppStorage("age") var age: Int = 12
     @AppStorage("gender")  var selectedGender:String = "Male"
     
@@ -102,7 +101,7 @@ struct TotalNutritionsView: View {
             }
         }
         .onAppear{
-            calculateNutritionNeeds(age: age, height: Double(height), weight: weightOfToday, activityLevel: activityMultiplier, goal: selectedGoal, speedOption: speedMultiplier)
+            calculateNutritionNeeds(age: age, height: Double(height), weight: dataManager.weightOfToday, activityLevel: activityMultiplier, goal: selectedGoal, speedOption: speedMultiplier)
         }
     }
         
