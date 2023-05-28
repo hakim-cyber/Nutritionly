@@ -91,21 +91,26 @@ struct MainView: View {
                                             
                                             Text("p")
                                                 .foregroundColor(.secondary)
-                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0)g")
-                                                .fontDesign(.monospaced)
+                                                .fixedSize()
+                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0 )/\(dataManager.proteinNeed) g")
                                                 .fontWeight(.bold)
+                                                .fixedSize()
                                             Text("c")
                                                 .foregroundColor(.secondary)
-                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0)g")
-                                                .fontDesign(.monospaced)
+                                                .fixedSize()
+                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0)/\(dataManager.carbohydratesNeed) g")
                                                 .fontWeight(.bold)
+                                                .fixedSize()
                                             Text("f")
+                                                .fixedSize()
                                                 .foregroundColor(.secondary)
-                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0)g")
-                                                .fontDesign(.monospaced)
+                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0)/\(dataManager.fatsNeed) g")
                                                 .fontWeight(.bold)
+                                                .fixedSize()
                                         }
                                         
+                                        
+                                        .scaledToFit()
                                         Spacer()
                                         
                                     }

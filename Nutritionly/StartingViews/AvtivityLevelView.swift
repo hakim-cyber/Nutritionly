@@ -37,7 +37,8 @@ struct ActivityLevelView: View {
     var body: some View {
         ZStack{
             if next{
-                
+                SpeedOptionView()
+                    .transition(.move(edge: .bottom))
             }else{
                 
                 VStack(spacing: 20){

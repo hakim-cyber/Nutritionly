@@ -110,7 +110,7 @@ struct ProfileView: View {
     var user:User{
         userstore.fetchUserUsingThisApp()
       
-            return userstore.userForApp.first ?? User(name: "Hakim", email: "emaildsdjsdskdskdj.com", height: 120, age: 16, gender: "Male", days: [Day]())
+        return userstore.userForApp.first ?? User(name: "Hakim", email: "emaildsdjsdskdskdj.com", height: 120, age: 16, gender: "Male", targetWeight: 70.0, days: [Day]())
         
     }
 }

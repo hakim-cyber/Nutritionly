@@ -15,6 +15,7 @@ struct User:Codable{
     var height:Int
     var age:Int
     var gender:String
+    var targetWeight:Double
     var days:[Day]
 }
 

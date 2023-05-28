@@ -31,7 +31,7 @@ struct CustomProgressView: View {
         .frame(width: 100,height: 100)
         .clipShape(Circle())
         .overlay(alignment: .bottom){
-            Text("\(max(0,progress * 100) ,format: .number)%")
+            Text("\(max(0,progress * 100).rounded().formatted())%")
                 .foregroundColor(.white)
                 .font(.system(size: 20))
                 .fontDesign(.monospaced)

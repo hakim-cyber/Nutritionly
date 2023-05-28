@@ -11,10 +11,10 @@ struct UserInformationView: View {
    
     @EnvironmentObject var userStore: UserStore
     
-    @State private var height: Int = 150
+    @AppStorage("height")  var height: Int = 150
     @AppStorage("weightOfToday") var weightOfToday = 0.0
-    @State private var age: Int = 12
-    @State private var selectedGender:String = "Male"
+    @AppStorage("age") var age: Int = 12
+    @AppStorage("gender")  var selectedGender:String = "Male"
    
 
     @State var genders = ["Male","Female"]
@@ -243,24 +243,7 @@ struct UserInformationView: View {
     }
            
     }
-    private func storeUserInformation(){
-        do{
-            guard let uid = Auth.auth().currentUser?.uid else{return}
-            guard let email = Auth.auth().currentUser?.email else{return}
-            
-            let user = User(id:uid,name: "", email: email, height: height, age: age, gender: selectedGender, days: [Day]())
-        
-            //adding user to firebase
-            
-            userStore.updateorAddUser(user: user)
-           
-                checkInforationIsAdded()
-            
-        }catch{
-            print("errror")
-        }
-        
-    }
+   
     func checkInforationIsAdded(){
                guard let uid = Auth.auth().currentUser?.uid else{return}
         guard let email = Auth.auth().currentUser?.email else{return}
