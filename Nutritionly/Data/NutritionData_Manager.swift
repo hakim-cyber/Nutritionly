@@ -332,7 +332,7 @@ class NutritionData_Manager:ObservableObject{
     func setUpHealthRequest(healthStore:HKHealthStore,readSteps:@escaping ()-> Void){
     // then specify data we want to read
         // then ask for permission
-        if HKHealthStore.isHealthDataAvailable(), let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
+        if HKHealthStore.isHealthDataAvailable(),let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
             healthStore.requestAuthorization(toShare: [stepCount], read: [stepCount]){succes, error in
                 if succes{
                     readSteps()
