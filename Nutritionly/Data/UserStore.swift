@@ -9,11 +9,14 @@ import Foundation
 import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 
 
 class UserStore:ObservableObject{
     @Published var userForApp = [User]()
+    
+    @Published  var userIsLoggedIn = false
  
     let db = Firestore.firestore()
     
@@ -22,7 +25,20 @@ class UserStore:ObservableObject{
        fetchUserUsingThisApp()
     }
    
-   
+    func logOut(){
+        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+
+                do{
+                    
+                    try Auth.auth().signOut()
+                    self.userIsLoggedIn = false
+                    
+                }catch{
+                    print("\(error) signing out error")
+                }
+            }
+        
+    }
    
     func addDayToUser(day:Day,to user:User){
         var userForAdd = user

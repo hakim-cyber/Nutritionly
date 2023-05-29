@@ -35,6 +35,7 @@ struct ProfileView: View {
                             .font(.callout)
                             .foregroundColor(.secondary)
                     }
+                    Divider()
                     VStack(spacing: 20){
                         // pictures and name email
                         
@@ -86,9 +87,17 @@ struct ProfileView: View {
                                             .font(.system(size: 15))
                                             .foregroundColor(.black)
                                     }
+                                   
                                 }
-                                
-                                
+                                Button{
+                                  
+                                        userstore.logOut()
+                                    
+                                }label: {
+                                    Label("Log Out", systemImage:  "trash")
+                                        .foregroundColor(.red)
+                                }
+                               
                                 Spacer()
                             }
                             .padding(.horizontal,20)

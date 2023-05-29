@@ -11,17 +11,20 @@ import Firebase
 struct LoginScreen: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var userIsLoggedIn = false
+
     @State private var isEmailValid = false
- 
+    
+    @EnvironmentObject var userStore:UserStore
+    
     var namespace:Namespace.ID
     var body: some View {
-        if userIsLoggedIn{
+        if userStore.userIsLoggedIn{
             UserInformationView(namespace: namespace)
                 .transition(.move(edge: .bottom))
                
         }else{
             LogView
+                .transition(.move(edge: .bottom))
         }
     }
     var LogView:some View{
@@ -99,7 +102,7 @@ struct LoginScreen: View {
                         Auth.auth().addStateDidChangeListener{auth,user in
                             if user != nil{
                                 withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                                userIsLoggedIn.toggle()
+                                    userStore.userIsLoggedIn.toggle()
                             }
                             }
                         }
@@ -142,5 +145,6 @@ struct LoginScreen_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
         LoginScreen(namespace: namespace)
+            .environmentObject(UserStore())
     }
 }

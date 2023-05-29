@@ -80,38 +80,44 @@ struct MainView: View {
                                             .font(.system(size: 40))
                                             .fontDesign(.monospaced)
                                             .fontWeight(.heavy)
+                                        
                                         HStack{
                                             Text("\(dataManager.totalNutritOfDay["kcal"] ?? 0)/\(dataManager.caloriesNeed)")
                                                 .fontDesign(.monospaced)
                                                 .fontWeight(.bold)
+                                            
                                             Text("kcal")
                                                 .foregroundColor(.secondary)
                                         }
+                                      
                                         HStack{
                                             
                                             Text("p")
                                                 .foregroundColor(.secondary)
-                                                .fixedSize()
-                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0 )/\(dataManager.proteinNeed) g")
+                                             
+                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0 ) g")
                                                 .fontWeight(.bold)
-                                                .fixedSize()
+                                              
+                                            
                                             Text("c")
                                                 .foregroundColor(.secondary)
-                                                .fixedSize()
-                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0)/\(dataManager.carbohydratesNeed) g")
+                                               
+                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0) g")
+                                              
                                                 .fontWeight(.bold)
-                                                .fixedSize()
+                                              
                                             Text("f")
-                                                .fixedSize()
+                                              
                                                 .foregroundColor(.secondary)
-                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0)/\(dataManager.fatsNeed) g")
+                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0) g")
                                                 .fontWeight(.bold)
-                                                .fixedSize()
+                                              
+                                               
                                         }
                                         
                                         
-                                        .scaledToFit()
                                         Spacer()
+                                      
                                         
                                     }
                                     
@@ -120,8 +126,8 @@ struct MainView: View {
                                 }
                                 .padding(20)
                             }
-                            .frame(width: screen.width / 1.1,height:200 )
-                            
+                            .frame(height:200)
+                            .padding(.horizontal)
                             HStack{
                                 Text("activity")
                                     .foregroundColor(.black)
@@ -325,7 +331,7 @@ struct MainView: View {
                     
                 }
                 
-                if dataManager.requestweight{
+                if dataManager.weightOfToday == 0.0{
                     WeightInfoView(){weight in
                         dataManager.weightOfToday = weight
                     }
