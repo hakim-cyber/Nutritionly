@@ -241,6 +241,7 @@ struct UserInformationView: View {
                        
                         
                     }
+                    .padding(.top)
                 }
             }
     }

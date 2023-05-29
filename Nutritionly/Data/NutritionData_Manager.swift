@@ -48,6 +48,7 @@ class NutritionData_Manager:ObservableObject{
     
     private var healthStore = HKHealthStore()
     @Published var userStepCount = 0
+    @Published var userCalorieBurnedTodaysSteps = 0
     @Published var isAuthorized = false
     
     var totalNutritOfDay:[String:Int]{
@@ -74,6 +75,15 @@ class NutritionData_Manager:ObservableObject{
         
         ]
         
+    }
+    
+    
+    var calorieBurneWorkout:Int{
+        let averageCaloriesPerMinute = 8.0
+        
+      let caloriesBurned = averageCaloriesPerMinute * Double(workoutMinutes)
+        
+        return Int(caloriesBurned)
     }
     
     //load all needed data when open
@@ -294,10 +304,13 @@ class NutritionData_Manager:ObservableObject{
         setUpHealthRequest(healthStore: healthStore){
             self.changeAuthorizationStatus()
             self.readStepsTakenToday()
+            self.readCalorieBurnedToday()
         }
     }
     func changeAuthorizationStatus(){
         guard let stepQtyType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
+        guard let calorieBurnedType = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)else{return}
+        
         let status = self.healthStore.authorizationStatus(for: stepQtyType)
         DispatchQueue.main.async {
             
@@ -315,6 +328,7 @@ class NutritionData_Manager:ObservableObject{
             }
         }
     }
+  
     func readStepsTakenToday(){
         readStepCount(for: Date(), healthStore: healthStore){step in
             if step != 0.0{
@@ -328,12 +342,19 @@ class NutritionData_Manager:ObservableObject{
             }
         }
     }
+    func readCalorieBurnedToday(){
+        readCalorieBurned(for:  Date(), healthStore: healthStore){cal in
+            DispatchQueue.main.async {
+                           self.userCalorieBurnedTodaysSteps = Int(cal)
+                       }
+        }
+    }
     
     func setUpHealthRequest(healthStore:HKHealthStore,readSteps:@escaping ()-> Void){
     // then specify data we want to read
         // then ask for permission
-        if HKHealthStore.isHealthDataAvailable(),let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
-            healthStore.requestAuthorization(toShare: [stepCount], read: [stepCount]){succes, error in
+        if HKHealthStore.isHealthDataAvailable(),let calorieBurned = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned) ,let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
+            healthStore.requestAuthorization(toShare: [stepCount,calorieBurned], read: [stepCount,calorieBurned]){succes, error in
                 if succes{
                     readSteps()
                 }else if error != nil{
@@ -348,7 +369,6 @@ class NutritionData_Manager:ObservableObject{
     
     func readStepCount(for Today:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)else{return}
-        
         let now = Today
         let startOfDay = Calendar.current.startOfDay(for: now)
         
@@ -361,6 +381,24 @@ class NutritionData_Manager:ObservableObject{
             }
             
             completion(sum.doubleValue(for: HKUnit.count()))
+        }
+        healthStore.execute(query)
+    }
+    func readCalorieBurned(for Today:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
+        guard let calorieBurnedType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)else{return}
+        
+        let now = Today
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now,options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: calorieBurnedType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            guard let result = result ,let sum = result.sumQuantity()else{
+                completion(0.0)
+                return
+            }
+            
+            completion(sum.doubleValue(for: HKUnit.kilocalorie()))
         }
         healthStore.execute(query)
     }

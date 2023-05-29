@@ -168,6 +168,9 @@ struct MainView: View {
                                                 .fontDesign(.rounded)
                                                 .fontWeight(.medium)
                                             Spacer()
+                                            Text("🔥\(dataManager.userCalorieBurnedTodaysSteps)")
+                                                .fontDesign(.monospaced)
+                                                .fontWeight(.medium)
                                             
                                         }
                                         
@@ -182,6 +185,7 @@ struct MainView: View {
                                                     .font(.caption)
                                                     .foregroundColor(.secondary)
                                                 Spacer()
+                                              
                                             }else{
                                                 Button("Configure"){
                                                     
@@ -231,6 +235,9 @@ struct MainView: View {
                                                     .fontDesign(.rounded)
                                                     .fontWeight(.medium)
                                                 Spacer()
+                                                Text("🔥\(dataManager.calorieBurneWorkout)")
+                                                    .fontDesign(.monospaced)
+                                                    .fontWeight(.medium)
                                                 
                                             }
                                             
