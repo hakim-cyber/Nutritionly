@@ -102,12 +102,11 @@ struct UserInformationView: View {
                                 .padding()
                                 
                             }
-                            .frame(width: UIScreen.main.bounds.width/2 - 20,height: 220)
+                            .frame(width: screen.width/2.1,height: screen.height / 3.3 )
                             ZStack{
                                 // weight
                                 RoundedRectangle(cornerRadius: 15,style: .continuous)
                                     .fill(.white)
-                                    .frame(width: screen.width/2.2,height: 220)
                                     .padding(.horizontal,10)
                                     .shadow(color: .black,radius: 10)
                                 VStack(spacing: 20){
@@ -121,7 +120,7 @@ struct UserInformationView: View {
                                 }
                                 .padding()
                             }
-                            .frame(width: screen.width/2.2,height: 220)
+                            .frame(width: screen.width/2.1,height: screen.height / 3.2 )
                             
                         }
                         
@@ -151,7 +150,7 @@ struct UserInformationView: View {
                             }
                             .padding()
                         }
-                        .frame(width: screen.width / 1.2,height:200 )
+                        .frame(width: screen.width / 1.1,height:screen.height/5 )
                         ZStack{
                             // gender
                             RoundedRectangle(cornerRadius: 15,style: .continuous)
@@ -216,7 +215,7 @@ struct UserInformationView: View {
                        
                         
                     }
-                    .padding(.top)
+                    .padding(.vertical)
                 }
             }
     }
