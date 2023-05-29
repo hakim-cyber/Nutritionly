@@ -12,7 +12,10 @@ struct UserInformationView: View {
     @EnvironmentObject var userStore: UserStore
     @EnvironmentObject var dataManager :NutritionData_Manager
     
-    @State private var weight = 0.0
+  
+    @State private var weightInt = 50
+    @State private var weightDouble = 1
+    
     @AppStorage("height")  var height: Int = 150
     
     @AppStorage("age") var age: Int = 12
@@ -26,6 +29,10 @@ struct UserInformationView: View {
     @State var checked = false
     @State var animated = false
     @State private var next = false
+    
+    var weight:Double{
+        Double(weightInt) + Double(weightDouble) / 10
+    }
     var namespace:Namespace.ID
     var body: some View {
         if informationIsAdded{
@@ -106,41 +113,9 @@ struct UserInformationView: View {
                                 VStack(spacing: 20){
                                     Text("Weight")
                                     Text("\(weight.formatted())")
-                                        .font(.system(size: 50))
+                                        .font(.system(size: 30))
                                         .fontWeight(.heavy)
-                                    Spacer()
-                                    HStack(spacing: 20){
-                                        Button{
-                                            
-                                            
-                                            self.weight += 1.0
-                                            
-                                            
-                                        }label: {
-                                            ZStack{
-                                                Circle()
-                                                    .stroke(.gray,lineWidth:1)
-                                                    .frame(width:30,height: 30)
-                                                Image(systemName: "plus")
-                                                
-                                            }
-                                        }
-                                        Button{
-                                            if weight != 0.0{
-                                                
-                                                self.weight -= 1.0
-                                                
-                                            }
-                                        }label: {
-                                            ZStack{
-                                                Circle()
-                                                    .stroke(.gray,lineWidth:1)
-                                                    .frame(width:30,height: 30)
-                                                Image(systemName: "minus")
-                                                
-                                            }
-                                        }
-                                    }
+                                  MultipleSectionWeightPicker(weightInt: $weightInt, weightDouble: $weightDouble)
                                     
                                     
                                 }
