@@ -53,7 +53,7 @@ class UserStore:ObservableObject{
     }
     func fetchUser(userId:String){
         let docRef = db.collection("users").document(userId)
-        
+    
         docRef.getDocument{document,error in
             if let error = error as NSError?{
                print("Error getting users document")
