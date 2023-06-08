@@ -11,7 +11,7 @@ import Firebase
 struct LoginScreen: View {
     @State private var email = ""
     @State private var password = ""
-
+@State private var error = ""
     @State private var isEmailValid = false
     
     @EnvironmentObject var userStore:UserStore
@@ -87,6 +87,9 @@ struct LoginScreen: View {
                                 .padding()
                         }
                         .disabled(!isEmailValid)
+                        Text(error)
+                            .foregroundColor(.red)
+                        
                         Button{
                             login()
                         }label: {
@@ -119,7 +122,8 @@ struct LoginScreen: View {
     func login(){
         Auth.auth().signIn(withEmail: email, password: password){result , error in
             if error != nil{
-                print(error?.localizedDescription as Any)
+                self.error = (error?.localizedDescription ?? "") as String
+                return
             }
         }
     }
@@ -127,7 +131,7 @@ struct LoginScreen: View {
     func register(){
         Auth.auth().createUser(withEmail: email, password: password){result,error in
             if error != nil{
-                print(error?.localizedDescription as Any)
+                self.error = (error?.localizedDescription ?? "") as String
                 return
             }
           
