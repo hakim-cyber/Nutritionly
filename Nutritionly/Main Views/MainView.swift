@@ -33,7 +33,7 @@ struct MainView: View {
         
         let calorieBurned = self.dataManager.calculateCalorieBurned(from: steps, weight: weight, height: Double(height / 100), age: age)
         
-        return Int(calorieBurned)
+        return Int( max(0,calorieBurned))
     }
 @Namespace var namespace
     

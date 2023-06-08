@@ -111,7 +111,9 @@ struct ProfileView: View {
                 .padding(.horizontal,20)
                 .padding(.top)
             }
+                
         }
+            .navigationViewStyle(.stack)
     }
     var user:User{
         userstore.fetchUserUsingThisApp()
