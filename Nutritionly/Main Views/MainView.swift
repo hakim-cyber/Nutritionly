@@ -25,6 +25,16 @@ struct MainView: View {
     
     var adding:()->Void
     
+    var calorieBurnedSteps:Int{
+        let height = self.userStore.userForApp.first?.height ?? 0
+        let age = self.userStore.userForApp.first?.age ?? 0
+        let weight = self.dataManager.weightOfToday
+        let steps = self.dataManager.userStepCount
+        
+        let calorieBurned = self.dataManager.calculateCalorieBurned(from: steps, weight: weight, height: Double(height / 100), age: age)
+        
+        return Int(calorieBurned)
+    }
 @Namespace var namespace
     
     var body: some View {
@@ -168,7 +178,7 @@ struct MainView: View {
                                                 .fontDesign(.rounded)
                                                 .fontWeight(.medium)
                                             Spacer()
-                                            Text("🔥\(dataManager.userCalorieBurnedTodaysSteps)")
+                                            Text("🔥\(calorieBurnedSteps)")
                                                 .fontDesign(.monospaced)
                                                 .fontWeight(.medium)
                                             

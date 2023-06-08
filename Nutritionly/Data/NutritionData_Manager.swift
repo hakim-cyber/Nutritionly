@@ -91,7 +91,8 @@ class NutritionData_Manager:ObservableObject{
        loadFoodsOfDay()
         loadRecentfoods()
             //health kit
-        changeAuthorizationStatus()
+        changeAuthorizationStatusSteps()
+       
        
       
         
@@ -302,14 +303,15 @@ class NutritionData_Manager:ObservableObject{
     
     func healthRequest(){
         setUpHealthRequest(healthStore: healthStore){
-            self.changeAuthorizationStatus()
+            self.changeAuthorizationStatusSteps()
+            
             self.readStepsTakenToday()
-            self.readCalorieBurnedToday()
+            
         }
     }
-    func changeAuthorizationStatus(){
+    func changeAuthorizationStatusSteps(){
         guard let stepQtyType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
-        guard let calorieBurnedType = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)else{return}
+       
         
         let status = self.healthStore.authorizationStatus(for: stepQtyType)
         DispatchQueue.main.async {
@@ -329,6 +331,7 @@ class NutritionData_Manager:ObservableObject{
         }
     }
   
+  
     func readStepsTakenToday(){
         readStepCount(for: Date(), healthStore: healthStore){step in
             if step != 0.0{
@@ -342,21 +345,16 @@ class NutritionData_Manager:ObservableObject{
             }
         }
     }
-    func readCalorieBurnedToday(){
-        readCalorieBurned(for:  Date(), healthStore: healthStore){cal in
-            DispatchQueue.main.async {
-                           self.userCalorieBurnedTodaysSteps = Int(cal)
-                       }
-        }
-    }
+   
     
     func setUpHealthRequest(healthStore:HKHealthStore,readSteps:@escaping ()-> Void){
     // then specify data we want to read
         // then ask for permission
-        if HKHealthStore.isHealthDataAvailable(),let calorieBurned = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned) ,let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
-            healthStore.requestAuthorization(toShare: [stepCount,calorieBurned], read: [stepCount,calorieBurned]){succes, error in
+        if HKHealthStore.isHealthDataAvailable(),let stepCount = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount){
+            healthStore.requestAuthorization(toShare: [stepCount], read: [stepCount]){succes, error in
                 if succes{
                     readSteps()
+                    
                 }else if error != nil{
                     // handle error here
                 }
@@ -384,23 +382,51 @@ class NutritionData_Manager:ObservableObject{
         }
         healthStore.execute(query)
     }
-    func readCalorieBurned(for Today:Date , healthStore:HKHealthStore,completion:@escaping (Double) -> Void){
-        guard let calorieBurnedType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)else{return}
-        
-        let now = Today
-        let startOfDay = Calendar.current.startOfDay(for: now)
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now,options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: calorieBurnedType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
-            guard let result = result ,let sum = result.sumQuantity()else{
-                completion(0.0)
-                return
-            }
-            
-            completion(sum.doubleValue(for: HKUnit.kilocalorie()))
-        }
-        healthStore.execute(query)
-    }
+  
     
+    
+    func calculateCalorieBurned(from steps: Int, weight: Double, height: Double, age: Int) -> Double {
+        // Constants for calculations
+        var caloriesBurned = 0.0
+       
+            
+            
+            let stepsPerMile: Double = 2000  // Assuming an average of 2000 steps per mile
+            let strideLength: Double = calculateStrideLength(height: height)
+            let caloriesPerMile: Double = calculateCaloriesPerMile(weight: weight, strideLength: strideLength)
+            
+            // Calculate total distance in miles
+            let distanceInMiles = Double(steps) / stepsPerMile
+            
+            // Calculate estimated calories burned
+             caloriesBurned = caloriesPerMile * distanceInMiles
+           
+        
+        return caloriesBurned
+     
+    }
+
+    func calculateStrideLength(height: Double) -> Double {
+        // Calculation formula for stride length
+        let strideLength = height * 0.413
+        
+        return strideLength
+    }
+
+    func calculateCaloriesPerMile(weight: Double, strideLength: Double) -> Double {
+        // Constants for calculations
+        let weightMultiplier: Double = 0.57  // Average weight multiplier for calorie burned per mile
+        
+        // Calculate calories burned per mile
+        let caloriesPerMile = weightMultiplier * weight / strideLength
+        
+        return caloriesPerMile
+    }
+   
+
+
+
+
+
+
 }
