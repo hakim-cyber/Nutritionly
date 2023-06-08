@@ -218,6 +218,7 @@ struct UserInformationView: View {
                     .padding(.vertical)
                 }
             }
+            .foregroundColor(.black)
     }
            
     }

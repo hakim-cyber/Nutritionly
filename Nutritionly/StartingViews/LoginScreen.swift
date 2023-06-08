@@ -92,6 +92,7 @@ struct LoginScreen: View {
                         }label: {
                             Text("Already have an account? Login")
                                 .bold()
+                                .foregroundColor(.black)
                                 
                         }
                         .padding(.top)

@@ -55,7 +55,7 @@ class UserStore:ObservableObject{
         let docRef = db.collection("users").document(userId)
     
         docRef.getDocument{document,error in
-            if let error = error as NSError?{
+            if let error = error as! NSError?{
                print("Error getting users document")
             }else{
                 if let document = document{

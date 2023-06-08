@@ -16,7 +16,7 @@ struct weightProgressChart: View {
     var days:[Day]{
         userStore.fetchUserUsingThisApp()
         
-        var days = (userStore.userForApp.first?.days ?? [Day]()).sorted{$0.order < $1.order}
+        let days = (userStore.userForApp.first?.days ?? [Day]()).sorted{$0.order < $1.order}
         return days
     }
     var body: some View {

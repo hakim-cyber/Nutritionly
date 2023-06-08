@@ -55,6 +55,7 @@ struct WeightInfoView: View {
             }
             .padding()
         }
+        .foregroundColor(.black)
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
         .opacity(2 - Double(abs(offset.width / 50)))

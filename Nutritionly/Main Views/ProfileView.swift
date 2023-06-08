@@ -17,9 +17,6 @@ struct ProfileView: View {
                     BackGround(namespace: namespace)
                 VStack(spacing: 60){
                     HStack(spacing: 10){
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width: 50)
                         VStack(alignment: .leading){
                             Text("\(user.name)")
                                 .fontWeight(.bold)
@@ -71,7 +68,7 @@ struct ProfileView: View {
                                     }
                                 }
                                 NavigationLink{
-                                    
+                                    MyTargetView()
                                 }label: {
                                     HStack(alignment: .firstTextBaseline){
                                         Image(systemName: "target")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080CA6232A326EA800DA6523 /* MyTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA6222A326EA800DA6523 /* MyTargetView.swift */; };
 		082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */; };
 		082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC95C2A0F95F000D7F345 /* ContentView.swift */; };
 		082CC95F2A0F95F200D7F345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082CC95E2A0F95F200D7F345 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080CA6222A326EA800DA6523 /* MyTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTargetView.swift; sourceTree = "<group>"; };
 		082CC9572A0F95F000D7F345 /* Nutritionly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nutritionly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionlyApp.swift; sourceTree = "<group>"; };
 		082CC95C2A0F95F000D7F345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				087ABF6A2A20D9F00092911B /* StatsView.swift */,
 				087ABF662A1FF9710092911B /* ProfileView.swift */,
+				080CA6222A326EA800DA6523 /* MyTargetView.swift */,
 				087ABF682A1FFF650092911B /* ProfiledData.swift */,
 				08C79C4C2A10EECC00AC28CB /* MainView.swift */,
 			);
@@ -373,6 +376,7 @@
 				08ED21D42A1E2002004A0064 /* WeightInfoView.swift in Sources */,
 				08910BB72A23F204006DF3E1 /* TotalNutritionsView.swift in Sources */,
 				082CC9702A0FA5BF00D7F345 /* RoundedButtton.swift in Sources */,
+				080CA6232A326EA800DA6523 /* MyTargetView.swift in Sources */,
 				082CC9692A0F96C800D7F345 /* StartScreen.swift in Sources */,
 				08910BB52A23EAC6006DF3E1 /* SpeedOptionView.swift in Sources */,
 				08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */,

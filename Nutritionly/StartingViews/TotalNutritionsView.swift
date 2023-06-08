@@ -167,7 +167,7 @@ struct TotalNutritionsView: View {
     }
     func checkInforationIsAdded(){
                   guard let uid = Auth.auth().currentUser?.uid else{return}
-           guard let email = Auth.auth().currentUser?.email else{return}
+           
                   let db = Firestore.firestore()
                   let docRef = db.collection("users").document(uid)
                   
