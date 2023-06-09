@@ -18,6 +18,7 @@ struct TotalNutritionsView: View {
     
     
     @State var informationIsAdded = false
+    @State private var show = false
     
     @EnvironmentObject var dataManager:NutritionData_Manager
     @EnvironmentObject var userStore:UserStore
@@ -43,34 +44,38 @@ struct TotalNutritionsView: View {
                     }
                     Divider()
                     Spacer()
-                    VStack(spacing: 10){
-                        HStack{
-                            Text("Calorie")
-                            Spacer()
-                            Text("\(dataManager.caloriesNeed)")
-                                .fontWeight(.bold)
+                    if show{
+                        VStack(spacing: 10){
+                            HStack{
+                                Text("Calorie")
+                                Spacer()
+                                Text("\(dataManager.caloriesNeed)")
+                                    .fontWeight(.bold)
+                            }
+                            
+                            HStack{
+                                Text("Protein")
+                                Spacer()
+                                Text("\(dataManager.proteinNeed)")
+                                    .fontWeight(.bold)
+                            }
+                            HStack{
+                                Text("Carbohydrate")
+                                Spacer()
+                                Text("\(dataManager.carbohydratesNeed)")
+                                    .fontWeight(.bold)
+                            }
+                            HStack{
+                                Text("Fat")
+                                Spacer()
+                                Text("\(dataManager.fatsNeed)")
+                                    .fontWeight(.bold)
+                            }
                         }
-                        
-                        HStack{
-                            Text("Protein")
-                            Spacer()
-                            Text("\(dataManager.proteinNeed)")
-                                .fontWeight(.bold)
-                        }
-                        HStack{
-                            Text("Carbohydrate")
-                            Spacer()
-                            Text("\(dataManager.carbohydratesNeed)")
-                                .fontWeight(.bold)
-                        }
-                        HStack{
-                            Text("Fat")
-                            Spacer()
-                            Text("\(dataManager.fatsNeed)")
-                                .fontWeight(.bold)
-                        }
+                        Spacer()
+                    }else{
+                        ProgressView()
                     }
-                    Spacer()
                 }
                 .padding()
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
@@ -141,11 +146,17 @@ struct TotalNutritionsView: View {
            let carbohydrate = adjustedCalories * carbohydratePercentage / 4.0 // 1 gram of carbohydrate is 4 calories
            let protein = adjustedCalories * proteinPercentage / 4.0 // 1 gram of protein is 4 calories
            let fat = adjustedCalories * fatPercentage / 9.0 // 1 gram of fat is 9 calories
-           
-        dataManager.caloriesNeed = Int(adjustedCalories)
-        dataManager.carbohydratesNeed = Int(carbohydrate)
-        dataManager.fatsNeed = Int(fat)
-        dataManager.proteinNeed = Int(protein)
+        DispatchQueue.main.async {
+            
+            
+            self.dataManager.caloriesNeed = Int(adjustedCalories)
+            self.dataManager.carbohydratesNeed = Int(carbohydrate)
+            self.dataManager.fatsNeed = Int(fat)
+            self.dataManager.proteinNeed = Int(protein)
+            
+            self.show = true
+        }
+        
        }
     private func storeUserInformation(){
         do{
