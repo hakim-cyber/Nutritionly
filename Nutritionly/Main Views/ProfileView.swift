@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var userstore:UserStore
     @State private var screen = UIScreen.main.bounds
+    @State private var showAccontDeleteSheet = false
     @Namespace var namespace
     var body: some View {
             NavigationView{
@@ -91,10 +92,27 @@ struct ProfileView: View {
                                         userstore.logOut()
                                     
                                 }label: {
-                                    Label("Log Out", systemImage:  "trash")
-                                        .foregroundColor(.red)
+                                   Text("Sign Out")
+                                        .foregroundColor(.orange)
                                 }
-                               
+                                Button(role:.destructive){
+                                    // delete user
+                                    self.showAccontDeleteSheet = true
+                                    
+                                }label:{
+                                    Label("Delete", systemImage:  "trash")
+                                       
+                                }
+                                .confirmationDialog("Delete Account And Data", isPresented: $showAccontDeleteSheet){
+                                    Button("Yes, delete my account"){
+                                        Task{
+                                            await userstore.deleteAccount()
+                                        }
+                                    }
+                                    Button("Cancel",role:.cancel,action: {})
+                                }message: {
+                                    Text("Are you sure you want to delete your account and its data?")
+                                }
                                 Spacer()
                             }
                             .padding(.horizontal,20)

@@ -99,5 +99,34 @@ class UserStore:ObservableObject{
         }
     }
     
-    
+    func deleteUser() async throws{
+        guard let user = Auth.auth().currentUser else{
+            throw URLError(.badURL)
+        }
+        try await user.delete()
+        
+        
+    }
+    func deleteAccountInfo() async throws{
+        guard let user = Auth.auth().currentUser else{
+            throw URLError(.badURL)
+        }
+        try await db.collection("users").document(user.uid).delete()
+        
+        
+    }
+    func deleteAccount() async {
+        do{
+            try await deleteAccountInfo()
+            try await deleteUser()
+            DispatchQueue.main.async {
+                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                    self.userIsLoggedIn = false
+                }
+            }
+           
+        }catch{
+            print(error)
+        }
+    }
 }
