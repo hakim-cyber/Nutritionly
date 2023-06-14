@@ -51,6 +51,7 @@ class UserStore:ObservableObject{
         
         fetchUser(userId: idOfUser)
     }
+  
     func fetchUser(userId:String){
         let docRef = db.collection("users").document(userId)
     
