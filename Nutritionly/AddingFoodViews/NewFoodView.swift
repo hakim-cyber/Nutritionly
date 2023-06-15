@@ -143,12 +143,12 @@ struct NewFoodView: View {
                         
                     
                     
-                  Image(systemName: "photo.on.rectangle.angled")
+                    Text("\(selectedEmoji?.value ?? "📸")")
                         .foregroundColor(.white)
                         .onTapGesture {
                             showEmojiPikcer = true
                         }
-                        .font(.title2)
+                        .font(.title)
                 }
                 Rectangle()
                     .fill(.gray)
