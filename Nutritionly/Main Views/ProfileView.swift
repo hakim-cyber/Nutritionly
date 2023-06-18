@@ -107,7 +107,9 @@ struct ProfileView: View {
                                     Button("Yes, delete my account"){
                                         Task{
                                             await userstore.deleteAccount()
+                                            
                                         }
+                                    
                                     }
                                     Button("Cancel",role:.cancel,action: {})
                                 }message: {
