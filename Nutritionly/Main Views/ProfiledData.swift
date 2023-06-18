@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ProfiledData: View {
     @EnvironmentObject var userstore:UserStore
+    @State private var profilePhoto:UIImage?
+    @State private var showPicker = false
     var body: some View {
         Form{
             Section{
                 HStack(spacing: 10){
-                    Circle()
-                        .fill(.ultraThinMaterial)
+                   Image(uiImage: profilePhoto ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
                         .frame(width: 50)
+                        .onTapGesture {
+                            self.showPicker.toggle()
+                        }
+                    
                     VStack(alignment: .leading){
                         Text("\(user.name)")
                             .fontWeight(.bold)
@@ -50,7 +58,34 @@ struct ProfiledData: View {
             }
             
         }
+        .sheet(isPresented: $showPicker, content: {ImagePicker(image: $profilePhoto)})
+        .onAppear(perform: loadPhoto)
+        .onChange(of: self.profilePhoto){_ in
+            savePhoto()
+        }
       
+    }
+    func savePhoto(){
+        if let imageString = profilePhoto?.jpegData(compressionQuality: 0.75)?.base64EncodedString(){
+            if let encoded = try? JSONEncoder().encode(imageString){
+                
+                UserDefaults.standard.set(encoded, forKey: "photo")
+                print("saved")
+            }
+        }
+        
+    }
+    func loadPhoto(){
+        if let string = UserDefaults.standard.data(forKey: "photo"){
+            if let decoded = try? JSONDecoder().decode(String.self, from: string){
+                let data = Data(base64Encoded: decoded) ?? Data()
+                
+                let uiImage = UIImage(data: data) ?? UIImage()
+                print("loaded")
+                self.profilePhoto = uiImage
+            }
+            
+        }
     }
     var user:User{
         userstore.fetchUserUsingThisApp()
