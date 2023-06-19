@@ -22,8 +22,8 @@ struct NutritionlyWidgets: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             NutritionlyWidgetsEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Nutritionly Widget")
+        .description("See Your Nutrition Info")
         .supportedFamilies([.systemMedium])
         
     }
