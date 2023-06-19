@@ -16,10 +16,10 @@ struct RecentsView: View {
     var body: some View {
        
                 ScrollView(.vertical,showsIndicators: false){
-                    LazyVStack{
+                    LazyVStack(spacing: 10){
                         ForEach(Array(dataManager.recentFoodsOfUser.indices) , id:\.self){index in
                             HStack{
-                                CustomCheckMark(selected: isSelected(food: dataManager.recentFoodsOfUser[index]), size: 25)
+                                CustomCheckMark(selected: isSelected(food: dataManager.recentFoodsOfUser[index]), size: Int(screen.height / 34))
                                 
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 10,style: .continuous)
@@ -87,7 +87,25 @@ struct RecentsView: View {
                         }
                     }
                 }
-                
+                .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                               
+                           // Give a moment for the screen boundaries to change after
+                           // the device is rotated
+                           Task { @MainActor in
+                               try await Task.sleep(for: .seconds(0.001))
+                               withAnimation{
+                                   self.screen = UIScreen.main.bounds
+                               }
+                           }
+                       }
+                .onAppear{
+                    Task { @MainActor in
+                        try await Task.sleep(for: .seconds(0.001))
+                        withAnimation{
+                            self.screen = UIScreen.main.bounds
+                        }
+                    }
+                }
                 
     
       

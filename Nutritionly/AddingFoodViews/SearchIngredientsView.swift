@@ -31,7 +31,7 @@ struct SearchIngredientsView: View {
                 }
                 if !model.searchResults.isEmpty{
                     ScrollView(.vertical,showsIndicators: false){
-                        LazyVStack(spacing: 0){
+                        LazyVStack(spacing: 10){
                             ForEach(searchResult ,id:\.id){ingred in
                                 HStack{
                                     CustomCheckMark(selected: isSelected(ingred: ingred), size: 23)
@@ -127,6 +127,25 @@ struct SearchIngredientsView: View {
             }
         }
         .ignoresSafeArea(.keyboard)
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                       
+                   // Give a moment for the screen boundaries to change after
+                   // the device is rotated
+                   Task { @MainActor in
+                       try await Task.sleep(for: .seconds(0.001))
+                       withAnimation{
+                           self.screen = UIScreen.main.bounds
+                       }
+                   }
+               }
+        .onAppear{
+            Task { @MainActor in
+                try await Task.sleep(for: .seconds(0.001))
+                withAnimation{
+                    self.screen = UIScreen.main.bounds
+                }
+            }
+        }
        
     }
     

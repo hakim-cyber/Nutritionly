@@ -107,6 +107,8 @@ struct MealItem: View {
                 
             }
                 .padding(.horizontal)
+               
+               
         
            
         

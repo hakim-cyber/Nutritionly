@@ -73,6 +73,25 @@ struct AddFoodView: View {
                 .padding(.top)
                 .padding(.horizontal)
                 .opacity(showaddingNewFood ? 0 : 1)
+                .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                               
+                           // Give a moment for the screen boundaries to change after
+                           // the device is rotated
+                           Task { @MainActor in
+                               try await Task.sleep(for: .seconds(0.001))
+                               withAnimation{
+                                   self.screen = UIScreen.main.bounds
+                               }
+                           }
+                       }
+                .onAppear{
+                    Task { @MainActor in
+                        try await Task.sleep(for: .seconds(0.001))
+                        withAnimation{
+                            self.screen = UIScreen.main.bounds
+                        }
+                    }
+                }
             }else{
                 if let selectedMeal = selectedMeal{
                     NewFoodView(meal: selectedMeal , color: dataManager.mealsColors[selectedMeal] ?? Color.openGreen,namespace: namespace){

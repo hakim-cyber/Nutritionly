@@ -96,6 +96,25 @@ struct NewFoodView: View {
                         }
                     }
                     .transition(.move(edge: .top))
+                    .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                                   
+                               // Give a moment for the screen boundaries to change after
+                               // the device is rotated
+                               Task { @MainActor in
+                                   try await Task.sleep(for: .seconds(0.001))
+                                   withAnimation{
+                                       self.screen = UIScreen.main.bounds
+                                   }
+                               }
+                           }
+                    .onAppear{
+                        Task { @MainActor in
+                            try await Task.sleep(for: .seconds(0.001))
+                            withAnimation{
+                                self.screen = UIScreen.main.bounds
+                            }
+                        }
+                    }
                 }else{
                     
                     TotalFoodView(ingredients: $ingredients, name: name, meal: meal){
