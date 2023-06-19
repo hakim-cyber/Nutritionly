@@ -24,7 +24,7 @@ struct NutritionlyWidgets: Widget {
         }
         .configurationDisplayName("Nutritionly Widget")
         .description("See Your Nutrition Info")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemMedium,.systemSmall])
         
     }
 }
