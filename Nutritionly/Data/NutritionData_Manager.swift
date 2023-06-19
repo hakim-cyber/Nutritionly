@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import HealthKit
+import WidgetKit
 
 class NutritionData_Manager:ObservableObject{
     
@@ -66,6 +67,7 @@ class NutritionData_Manager:ObservableObject{
             }
         }
         
+        
         return [
             "kcal":calories,
             "p":proteins,
@@ -75,6 +77,17 @@ class NutritionData_Manager:ObservableObject{
         
         ]
         
+    }
+    var nutritNeed:[String:Int]{
+        
+       return [
+                    "kcal":caloriesNeed,
+                    "p":proteinNeed,
+                    "c":carbohydratesNeed,
+                    "f":fatsNeed,
+                
+                
+                ]
     }
     
     
@@ -237,9 +250,31 @@ class NutritionData_Manager:ObservableObject{
             UserDefaults.standard.set(encoded, forKey: keyforFoodsOfDay)
         }
     }
+    func saveNutritsOfDay(){
+        if let encoded = try? JSONEncoder().encode(totalNutritOfDay){
+            if let defaults = UserDefaults(suiteName: "group.me.hakim.Aliyev.Nutritionly"){
+                defaults.set(encoded, forKey: "nutritOfDay")
+              
+                
+                WidgetCenter.shared.reloadAllTimelines()
+                print("saveddd")
+            }
+        }
+    }
+    func saveNutritNeed(){
+        if let encoded = try? JSONEncoder().encode(nutritNeed){
+            if let defaults = UserDefaults(suiteName: "group.me.hakim.Aliyev.Nutritionly"){
+                defaults.set(encoded, forKey: "nutritNeed")
+              
+               
+                WidgetCenter.shared.reloadAllTimelines()
+                print("saveddd")
+            }
+        }
+    }
     func loadFoodsOfDay(){
         
-        if let data = UserDefaults.standard.data(forKey: keyforFoodsOfDay){
+        if let data =  UserDefaults.standard.data(forKey: keyforFoodsOfDay){
             if let decoded = try? JSONDecoder().decode([Food].self, from: data){
                 foodsOfDay = decoded
             }

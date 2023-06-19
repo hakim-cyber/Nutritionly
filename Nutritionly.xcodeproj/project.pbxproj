@@ -42,6 +42,21 @@
 		08BA5B042A19395A001B2174 /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA5B032A19395A001B2174 /* RecentsView.swift */; };
 		08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4C2A10EECC00AC28CB /* MainView.swift */; };
 		08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */; };
+		08D0EFA22A404F770038BB4D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D0EFA12A404F770038BB4D /* WidgetKit.framework */; };
+		08D0EFA42A404F770038BB4D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D0EFA32A404F770038BB4D /* SwiftUI.framework */; };
+		08D0EFA72A404F770038BB4D /* NutritionlyWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFA62A404F770038BB4D /* NutritionlyWidgetsBundle.swift */; };
+		08D0EFA92A404F770038BB4D /* NutritionlyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFA82A404F770038BB4D /* NutritionlyWidgets.swift */; };
+		08D0EFAC2A404F7A0038BB4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D0EFAB2A404F7A0038BB4D /* Assets.xcassets */; };
+		08D0EFAE2A404F7A0038BB4D /* NutritionlyWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFAA2A404F770038BB4D /* NutritionlyWidgets.intentdefinition */; };
+		08D0EFAF2A404F7A0038BB4D /* NutritionlyWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFAA2A404F770038BB4D /* NutritionlyWidgets.intentdefinition */; };
+		08D0EFB22A404F7A0038BB4D /* NutritionlyWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 08D0EFA02A404F770038BB4D /* NutritionlyWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		08D0EFBA2A4053360038BB4D /* TimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFB92A4053360038BB4D /* TimelineProvider.swift */; };
+		08D0EFBC2A4053630038BB4D /* TimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFBB2A4053630038BB4D /* TimelineEntry.swift */; };
+		08D0EFBE2A4053A30038BB4D /* WidgetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFBD2A4053A30038BB4D /* WidgetsView.swift */; };
+		08D0EFC52A405EF30038BB4D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC96D2A0FA35100D7F345 /* Color.swift */; };
+		08D0EFC72A4060BA0038BB4D /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */; };
+		08D0EFC82A4060BA0038BB4D /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */; };
+		08D0EFC92A40662C0038BB4D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */; };
 		08DB01802A16BAFB00DCA54A /* Custom checkMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */; };
 		08DB01822A16C63A00DCA54A /* TotalFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB01812A16C63A00DCA54A /* TotalFoodView.swift */; };
@@ -55,6 +70,30 @@
 		08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367C12A141B8900180195 /* NutritionsLine.swift */; };
 		08F367C42A141FF200180195 /* MealItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F367C32A141FF200180195 /* MealItem.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08D0EFB02A404F7A0038BB4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 082CC94F2A0F95F000D7F345 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08D0EF9F2A404F770038BB4D;
+			remoteInfo = NutritionlyWidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		08D0EFB32A404F7A0038BB4D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				08D0EFB22A404F7A0038BB4D /* NutritionlyWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		080CA6222A326EA800DA6523 /* MyTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTargetView.swift; sourceTree = "<group>"; };
@@ -91,6 +130,21 @@
 		08BA5B032A19395A001B2174 /* RecentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsView.swift; sourceTree = "<group>"; };
 		08C79C4C2A10EECC00AC28CB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		08C79C4E2A10EFBF00AC28CB /* NutritionData_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionData_Manager.swift; sourceTree = "<group>"; };
+		08D0EFA02A404F770038BB4D /* NutritionlyWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NutritionlyWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		08D0EFA12A404F770038BB4D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		08D0EFA32A404F770038BB4D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		08D0EFA62A404F770038BB4D /* NutritionlyWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionlyWidgetsBundle.swift; sourceTree = "<group>"; };
+		08D0EFA82A404F770038BB4D /* NutritionlyWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionlyWidgets.swift; sourceTree = "<group>"; };
+		08D0EFAA2A404F770038BB4D /* NutritionlyWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = NutritionlyWidgets.intentdefinition; sourceTree = "<group>"; };
+		08D0EFAB2A404F7A0038BB4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08D0EFAD2A404F7A0038BB4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08D0EFB92A4053360038BB4D /* TimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProvider.swift; sourceTree = "<group>"; };
+		08D0EFBB2A4053630038BB4D /* TimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntry.swift; sourceTree = "<group>"; };
+		08D0EFBD2A4053A30038BB4D /* WidgetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsView.swift; sourceTree = "<group>"; };
+		08D0EFC22A4055810038BB4D /* NutritionlyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutritionlyRelease.entitlements; sourceTree = "<group>"; };
+		08D0EFC32A4055B20038BB4D /* NutritionlyWidgetsExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutritionlyWidgetsExtensionRelease.entitlements; sourceTree = "<group>"; };
+		08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
+		08D0EFCA2A407AD30038BB4D /* NutritionlyWidgetsExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutritionlyWidgetsExtensionDebug.entitlements; sourceTree = "<group>"; };
 		08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngredientsView.swift; sourceTree = "<group>"; };
 		08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom checkMark.swift"; sourceTree = "<group>"; };
 		08DB01812A16C63A00DCA54A /* TotalFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalFoodView.swift; sourceTree = "<group>"; };
@@ -117,13 +171,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		08D0EF9D2A404F770038BB4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D0EFA42A404F770038BB4D /* SwiftUI.framework in Frameworks */,
+				08D0EFA22A404F770038BB4D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		082CC94E2A0F95F000D7F345 = {
 			isa = PBXGroup;
 			children = (
+				08D0EFCA2A407AD30038BB4D /* NutritionlyWidgetsExtensionDebug.entitlements */,
+				08D0EFC32A4055B20038BB4D /* NutritionlyWidgetsExtensionRelease.entitlements */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
+				08D0EFA52A404F770038BB4D /* NutritionlyWidgets */,
 				082CC9582A0F95F000D7F345 /* Products */,
 				08F367B82A12CB3900180195 /* Frameworks */,
 			);
@@ -133,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				082CC9572A0F95F000D7F345 /* Nutritionly.app */,
+				08D0EFA02A404F770038BB4D /* NutritionlyWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +207,7 @@
 		082CC9592A0F95F000D7F345 /* Nutritionly */ = {
 			isa = PBXGroup;
 			children = (
+				08D0EFC22A4055810038BB4D /* NutritionlyRelease.entitlements */,
 				083E27212A34C0C500460937 /* Info.plist */,
 				08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
@@ -153,6 +221,7 @@
 				08F367842A12A73600180195 /* Data */,
 				082CC95E2A0F95F200D7F345 /* Assets.xcassets */,
 				082CC9602A0F95F200D7F345 /* Preview Content */,
+				08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */,
 			);
 			path = Nutritionly;
 			sourceTree = "<group>";
@@ -228,6 +297,21 @@
 			path = FullCards;
 			sourceTree = "<group>";
 		};
+		08D0EFA52A404F770038BB4D /* NutritionlyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				08D0EFA62A404F770038BB4D /* NutritionlyWidgetsBundle.swift */,
+				08D0EFA82A404F770038BB4D /* NutritionlyWidgets.swift */,
+				08D0EFBD2A4053A30038BB4D /* WidgetsView.swift */,
+				08D0EFBB2A4053630038BB4D /* TimelineEntry.swift */,
+				08D0EFB92A4053360038BB4D /* TimelineProvider.swift */,
+				08D0EFAA2A404F770038BB4D /* NutritionlyWidgets.intentdefinition */,
+				08D0EFAB2A404F7A0038BB4D /* Assets.xcassets */,
+				08D0EFAD2A404F7A0038BB4D /* Info.plist */,
+			);
+			path = NutritionlyWidgets;
+			sourceTree = "<group>";
+		};
 		08DB01832A16CD9300DCA54A /* AddingFoodViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +348,8 @@
 		08F367B82A12CB3900180195 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08D0EFA12A404F770038BB4D /* WidgetKit.framework */,
+				08D0EFA32A404F770038BB4D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,10 +364,12 @@
 				082CC9532A0F95F000D7F345 /* Sources */,
 				082CC9542A0F95F000D7F345 /* Frameworks */,
 				082CC9552A0F95F000D7F345 /* Resources */,
+				08D0EFB32A404F7A0038BB4D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				08D0EFB12A404F7A0038BB4D /* PBXTargetDependency */,
 			);
 			name = Nutritionly;
 			packageProductDependencies = (
@@ -293,6 +381,23 @@
 			productName = Nutritionly;
 			productReference = 082CC9572A0F95F000D7F345 /* Nutritionly.app */;
 			productType = "com.apple.product-type.application";
+		};
+		08D0EF9F2A404F770038BB4D /* NutritionlyWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08D0EFB62A404F7A0038BB4D /* Build configuration list for PBXNativeTarget "NutritionlyWidgetsExtension" */;
+			buildPhases = (
+				08D0EF9C2A404F770038BB4D /* Sources */,
+				08D0EF9D2A404F770038BB4D /* Frameworks */,
+				08D0EF9E2A404F770038BB4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NutritionlyWidgetsExtension;
+			productName = NutritionlyWidgetsExtension;
+			productReference = 08D0EFA02A404F770038BB4D /* NutritionlyWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -306,6 +411,9 @@
 				TargetAttributes = {
 					082CC9562A0F95F000D7F345 = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					08D0EF9F2A404F770038BB4D = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -327,6 +435,7 @@
 			projectRoot = "";
 			targets = (
 				082CC9562A0F95F000D7F345 /* Nutritionly */,
+				08D0EF9F2A404F770038BB4D /* NutritionlyWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -339,6 +448,14 @@
 				082CC9622A0F95F200D7F345 /* Preview Assets.xcassets in Resources */,
 				082CC97B2A0FFDC000D7F345 /* GoogleService-Info.plist in Resources */,
 				082CC95F2A0F95F200D7F345 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08D0EF9E2A404F770038BB4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D0EFAC2A404F7A0038BB4D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +474,7 @@
 				08C79C4F2A10EFBF00AC28CB /* NutritionData_Manager.swift in Sources */,
 				08DB01802A16BAFB00DCA54A /* Custom checkMark.swift in Sources */,
 				082CC96C2A0F97A000D7F345 /* BackgroundShape.swift in Sources */,
+				08D0EFC72A4060BA0038BB4D /* PropertyWrapper.swift in Sources */,
 				082CC95B2A0F95F000D7F345 /* NutritionlyApp.swift in Sources */,
 				08F367C02A1419BB00180195 /* AddFoodView.swift in Sources */,
 				082CC96E2A0FA35100D7F345 /* Color.swift in Sources */,
@@ -370,6 +488,7 @@
 				08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */,
 				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
 				087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */,
+				08D0EFAF2A404F7A0038BB4D /* NutritionlyWidgets.intentdefinition in Sources */,
 				08AEC0F32A15259500CEA256 /* CustomSearchBar.swift in Sources */,
 				086D4F952A228F6500E3E63F /* MultipleSectionWeightPicker.swift in Sources */,
 				087ABF672A1FF9710092911B /* ProfileView.swift in Sources */,
@@ -392,7 +511,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		08D0EF9C2A404F770038BB4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D0EFAE2A404F7A0038BB4D /* NutritionlyWidgets.intentdefinition in Sources */,
+				08D0EFA72A404F770038BB4D /* NutritionlyWidgetsBundle.swift in Sources */,
+				08D0EFC52A405EF30038BB4D /* Color.swift in Sources */,
+				08D0EFBE2A4053A30038BB4D /* WidgetsView.swift in Sources */,
+				08D0EFBC2A4053630038BB4D /* TimelineEntry.swift in Sources */,
+				08D0EFA92A404F770038BB4D /* NutritionlyWidgets.swift in Sources */,
+				08D0EFC82A4060BA0038BB4D /* PropertyWrapper.swift in Sources */,
+				08D0EFBA2A4053360038BB4D /* TimelineProvider.swift in Sources */,
+				08D0EFC92A40662C0038BB4D /* ProgressView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08D0EFB12A404F7A0038BB4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08D0EF9F2A404F770038BB4D /* NutritionlyWidgetsExtension */;
+			targetProxy = 08D0EFB02A404F7A0038BB4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		082CC9632A0F95F200D7F345 /* Debug */ = {
@@ -512,6 +655,7 @@
 		082CC9662A0F95F200D7F345 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nutritionly/Nutritionly.entitlements;
@@ -550,9 +694,10 @@
 		082CC9672A0F95F200D7F345 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Nutritionly/Nutritionly.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Nutritionly/NutritionlyRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nutritionly/Preview Content\"";
@@ -585,6 +730,62 @@
 			};
 			name = Release;
 		};
+		08D0EFB42A404F7A0038BB4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NutritionlyWidgetsExtensionDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NLRT8KSZR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutritionlyWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NutritionlyWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.hakim.Aliyev.Nutritionly.NutritionlyWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		08D0EFB52A404F7A0038BB4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NutritionlyWidgetsExtensionRelease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NLRT8KSZR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutritionlyWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NutritionlyWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.hakim.Aliyev.Nutritionly.NutritionlyWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -602,6 +803,15 @@
 			buildConfigurations = (
 				082CC9662A0F95F200D7F345 /* Debug */,
 				082CC9672A0F95F200D7F345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08D0EFB62A404F7A0038BB4D /* Build configuration list for PBXNativeTarget "NutritionlyWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08D0EFB42A404F7A0038BB4D /* Debug */,
+				08D0EFB52A404F7A0038BB4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

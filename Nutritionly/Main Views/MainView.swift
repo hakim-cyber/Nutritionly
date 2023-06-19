@@ -9,11 +9,13 @@ import SwiftUI
 import NotificationCenter
 import Firebase
 import FirebaseFirestoreSwift
+import WidgetKit
 
 enum cards{
     case nutrition,steps,workout,weight,waterIntake
 }
 struct MainView: View {
+
     
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
@@ -22,6 +24,7 @@ struct MainView: View {
     @State private var animateProgress = false
     @State private var showFullCard = false
     @State private var selectedCard:cards?
+    @Environment(\.scenePhase) var scenePhase
     
     var adding:()->Void
     
@@ -361,7 +364,18 @@ struct MainView: View {
                     adding()
                 
             }
-        
+            .onChange(of: scenePhase) { phase in
+                        if phase == .background {
+                            // Save here
+                            
+                                            dataManager.saveNutritsOfDay()
+                                            dataManager.saveNutritNeed()
+                            WidgetCenter.shared.reloadAllTimelines()
+                           
+                        }
+                
+                    }
+            
     }
 }
 
