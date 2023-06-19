@@ -42,6 +42,25 @@ struct WeightProgressCard: View {
         }
         .frame(width: screen.width / 1.05,height:130)
         .onAppear(perform: loadDaysOfUser)
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                       
+                   // Give a moment for the screen boundaries to change after
+                   // the device is rotated
+                   Task { @MainActor in
+                       try await Task.sleep(for: .seconds(0.001))
+                       withAnimation{
+                           self.screen = UIScreen.main.bounds
+                       }
+                   }
+               }
+        .onAppear{
+            Task { @MainActor in
+                try await Task.sleep(for: .seconds(0.001))
+                withAnimation{
+                    self.screen = UIScreen.main.bounds
+                }
+            }
+        }
         
     }
     func loadDaysOfUser(){

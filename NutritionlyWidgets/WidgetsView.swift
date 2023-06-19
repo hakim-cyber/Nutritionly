@@ -73,6 +73,7 @@ struct NutritionlyWidgetsEntryView : View {
                         
                         
                     }
+                    Spacer()
                     CustomProgressView(progress:progressCalories )
                 }else if widgetFamily == .systemSmall  {
                     VStack{

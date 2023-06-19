@@ -330,6 +330,25 @@ struct MainView: View {
                             dataManager.readStepsTakenToday()
                         }
                     }
+                    .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                                   
+                               // Give a moment for the screen boundaries to change after
+                               // the device is rotated
+                               Task { @MainActor in
+                                   try await Task.sleep(for: .seconds(0.001))
+                                   withAnimation{
+                                       self.screen = UIScreen.main.bounds
+                                   }
+                               }
+                           }
+                    .onAppear{
+                        Task { @MainActor in
+                            try await Task.sleep(for: .seconds(0.001))
+                            withAnimation{
+                                self.screen = UIScreen.main.bounds
+                            }
+                        }
+                    }
                     
                     
                     

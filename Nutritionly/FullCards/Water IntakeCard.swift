@@ -73,6 +73,25 @@ struct Water_IntakeCard: View {
         .animation(.interactiveSpring(response: 0.6,dampingFraction: 0.6), value: drinkedCount)
        
         .frame(width: screen.width / 1.05,height:130 )
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                       
+                   // Give a moment for the screen boundaries to change after
+                   // the device is rotated
+                   Task { @MainActor in
+                       try await Task.sleep(for: .seconds(0.001))
+                       withAnimation{
+                           self.screen = UIScreen.main.bounds
+                       }
+                   }
+               }
+        .onAppear{
+            Task { @MainActor in
+                try await Task.sleep(for: .seconds(0.001))
+                withAnimation{
+                    self.screen = UIScreen.main.bounds
+                }
+            }
+        }
     }
     
     func calculateDrinked(index:Int)->Bool{
