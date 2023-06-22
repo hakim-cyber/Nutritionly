@@ -317,6 +317,7 @@ struct ManualIngredAdding: View {
                 
             })
         }
+      
         .preferredColorScheme(.light)
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
                        
@@ -350,8 +351,8 @@ struct ManualIngredAdding: View {
                 
             
         }
-        .preferredColorScheme(.light)
-        
+       
+      
         
     }
    
