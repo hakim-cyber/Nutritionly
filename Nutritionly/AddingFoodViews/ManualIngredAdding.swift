@@ -19,7 +19,7 @@ struct ManualIngredAdding: View {
     @State private var fat = 0
     
     
-    @State private var screen = UIScreen.main.bounds.size
+    @State private var screen = UIScreen.main.bounds
     
     @EnvironmentObject var datamanager:NutritionData_Manager
     var body: some View {
@@ -31,6 +31,7 @@ struct ManualIngredAdding: View {
                         select([])
                     }label: {
                         Image(systemName: "arrow.backward")
+                            .foregroundColor(.white)
                     }
                    
                 Spacer()
@@ -47,7 +48,7 @@ struct ManualIngredAdding: View {
                     ZStack{
                         // servingSize
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(.white)
+                            .fill(.regularMaterial)
                         
                         VStack(alignment: .leading){
                            Text("Serving Size (g)")
@@ -62,6 +63,7 @@ struct ManualIngredAdding: View {
                                 Picker("",selection: $serviceSize){
                                     ForEach(0...1000,id:\.self){
                                         Text("\($0)")
+                                            .foregroundColor(.black)
                                     }
                                 }
                                 .labelsHidden()
@@ -78,7 +80,7 @@ struct ManualIngredAdding: View {
                     ZStack{
                         //calorie per 100 gram
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(.white)
+                            .fill(.regularMaterial)
                         
                         VStack(alignment: .leading){
                            Text("Calorie (100g)")
@@ -119,7 +121,8 @@ struct ManualIngredAdding: View {
                     ZStack{
                         // carbs
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white)
+                            .fill(Color.yellow.gradient)
+                           
                         VStack(alignment: .leading){
                            Text("Carbs (100g)")
                                 .fontDesign(.monospaced)
@@ -146,8 +149,8 @@ struct ManualIngredAdding: View {
                     ZStack{
                         //fats
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(.pink)
-                            .colorMultiply(color)
+                            .fill(.pink.gradient)
+                          
                         VStack(alignment: .leading){
                            Text("Fats (100g)")
                                 .fontDesign(.monospaced)
@@ -175,8 +178,8 @@ struct ManualIngredAdding: View {
                     ZStack{
                         //protein
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(.mint)
-                            .colorMultiply(color)
+                            .fill(.mint.gradient)
+                            
                         VStack(alignment: .leading){
                            Text("Protein (100g)")
                                 .fontDesign(.monospaced)
@@ -229,36 +232,36 @@ struct ManualIngredAdding: View {
                         ProgressView(value: Double(carb) * (Double(serviceSize) / 100),total: Double(datamanager.carbohydratesNeed))
                             .frame(width: screen.width / 5)
                             .tint(.yellow)
-                            .colorMultiply(color)
+                           
                         Text("\(calculatePercent(value:carb , from:datamanager.carbohydratesNeed) )% CARBS")
                             .fontDesign(.monospaced)
                             .fontWeight(.bold)
-                            .foregroundColor(.yellow)
-                            .colorMultiply(color)
+                            .foregroundColor(Color.yellow)
+                           
                             .font(.system(size: 14))
                     }
                         VStack{
                             ProgressView(value: Double(fat) * (Double(serviceSize) / 100),total: Double(datamanager.fatsNeed))
                                 .frame(width: screen.width / 5)
                                 .tint(.pink)
-                                .colorMultiply(color)
+                             
                             Text("\(calculatePercent(value:fat , from:datamanager.fatsNeed) )% FAT")
                                 .fontDesign(.monospaced)
                                 .fontWeight(.bold)
                                 .foregroundColor(.pink)
-                                .colorMultiply(color)
+                               
                                 .font(.system(size: 14))
                         }
                             VStack{
                                 ProgressView(value: Double(protein) * (Double(serviceSize) / 100),total: Double(datamanager.proteinNeed))
                                     .frame(width: screen.width / 5)
                                     .tint(.mint)
-                                    .colorMultiply(color)
+                                   
                                 Text("\(calculatePercent(value:protein , from:datamanager.proteinNeed))% PROTEIN")
                                     .fontDesign(.monospaced)
                                     .fontWeight(.bold)
                                     .foregroundColor(.mint)
-                                    .colorMultiply(color)
+                                   
                                     .font(.system(size: 14))
                             }
                     
@@ -290,6 +293,26 @@ struct ManualIngredAdding: View {
             )
                 
             })
+        }
+        .preferredColorScheme(.light)
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                       
+                   // Give a moment for the screen boundaries to change after
+                   // the device is rotated
+                   Task { @MainActor in
+                       try await Task.sleep(for: .seconds(0.001))
+                       withAnimation{
+                           self.screen = UIScreen.main.bounds
+                       }
+                   }
+               }
+        .onAppear{
+            Task { @MainActor in
+                try await Task.sleep(for: .seconds(0.001))
+                withAnimation{
+                    self.screen = UIScreen.main.bounds
+                }
+            }
         }
         
         
