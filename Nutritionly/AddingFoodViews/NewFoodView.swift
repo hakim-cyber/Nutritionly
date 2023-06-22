@@ -25,13 +25,14 @@ struct NewFoodView: View {
     var close:()->Void
     
     @State private var showsearchView = false
+    @State private var showManualAddview = false
  
     @State private var showtotalView = false
     @State private var screen = UIScreen.main.bounds
     var body: some View {
         ZStack{
             color.ignoresSafeArea()
-            if !showsearchView{
+            if !showsearchView && !showManualAddview{
        
                 if !showtotalView{
                     ZStack{
@@ -129,18 +130,34 @@ struct NewFoodView: View {
                 
               
             }else{
-                SearchIngredientsView(color: color){selected in
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                        for select in selected{
-                            if !ingredients.contains(where: {$0.id == select.id}){
-                                ingredients.append(select)
+                if showManualAddview{
+                    ManualIngredAdding(color: color){selected in
+                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            for select in selected{
+                                if !ingredients.contains(where: {$0.id == select.id}){
+                                    ingredients.append(select)
+                                }
                             }
+                            showManualAddview = false
+                            
                         }
-                        showsearchView = false
-                        
                     }
+                    .transition(.move(edge: .bottom))
+                }else{
+                    SearchIngredientsView(color: color){selected in
+                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            for select in selected{
+                                if !ingredients.contains(where: {$0.id == select.id}){
+                                    ingredients.append(select)
+                                }
+                            }
+                            showsearchView = false
+                            
+                        }
+                    }
+                    .transition(.move(edge: .bottom))
+                    
                 }
-                .transition(.move(edge: .bottom))
             }
             
         }
@@ -186,10 +203,24 @@ struct NewFoodView: View {
                     .fontWeight(.bold)
                   
          
-                    Button{
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                            showsearchView = true
+                    Menu{
+                        Button{
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                showManualAddview = true
+                            }
+                        }label: {
+                            Text("Add Manual")
+                            Image(systemName: "hand.draw.fill")
                         }
+                        Button{
+                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                showsearchView = true
+                            }
+                        }label: {
+                            Text("Search Database")
+                            Image(systemName: "magnifyingglass")
+                        }
+                       
                     
                    
                 }label: {

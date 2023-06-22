@@ -280,7 +280,8 @@ struct ManualIngredAdding: View {
             .safeAreaInset(edge: .bottom, content: {
                 Button{
                 // save
-                    select([ingredient])
+                    let ingred = Ingredients(grams:serviceSize,id: UUID(), fdcId: 0, title: title, calorie: kcal, protein: protein, fat: fat, carbs: carb)
+                    select([ingred])
             }label:{
                 Text("Save")
                 .padding(.horizontal,30)
@@ -317,16 +318,21 @@ struct ManualIngredAdding: View {
         
         
     }
-    var ingredient:Ingredients{
-        Ingredients(grams:serviceSize,id: UUID(), fdcId: 0, title: title, calorie: kcal, protein: protein, fat: fat, carbs: carb)
-    }
+   
     func calculatePercent(value:Int,from:Int)->Int{
+
+        var percent = 0.0
+       
+            let valueTotal = Double(value) *  (Double(serviceSize) / 100)
+            
+             percent = (valueTotal / Double(from)) * 100
          
-        let valueTotal = Double(value) *  (Double(serviceSize) / 100)
+            
         
-        let percent = (valueTotal / Double(from)) * 100
         
-        return Int(percent.rounded())
+       
+            return Int(percent.rounded())
+        
         
         
     }
