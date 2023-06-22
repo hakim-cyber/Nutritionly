@@ -17,6 +17,7 @@ struct ManualIngredAdding: View {
     @State private var protein = 0
     @State private var carb = 0
     @State private var fat = 0
+    @FocusState var amountisFocused
     
     
     @State private var screen = UIScreen.main.bounds
@@ -37,12 +38,17 @@ struct ManualIngredAdding: View {
                 Spacer()
                 }
                 HStack{
+                    
+                    VStack{
+                        TextField("Add Title",text: $title)
+                            .font(.system(size: 20))
+                            .fontDesign(.monospaced)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                       
+                    }
                     Spacer()
-                    TextField("Title",text: $title)
-                        .font(.system(size: 20))
-                        .fontDesign(.monospaced)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.white)
+                   
                 }
                 HStack{
                     ZStack{
@@ -59,16 +65,21 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
+                            Spacer()
                            
-                                Picker("",selection: $serviceSize){
-                                    ForEach(0...1000,id:\.self){
-                                        Text("\($0)")
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .labelsHidden()
-                                .pickerStyle(.wheel)
+                            TextField("", value: $serviceSize,format:.number)
+                                .padding(10)
+                                .background(.ultraThinMaterial)
+                                .focused($amountisFocused)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                                .shadow(color:.gray,radius: 2)
                                 
+                                .labelsHidden()
+                                .keyboardType(.decimalPad)
+                                .scrollDismissesKeyboard(.immediately)
+                                .padding(.horizontal,10)
+                            Spacer()
                             
                         }
                        
@@ -91,32 +102,27 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
-                           
-                                Picker("",selection: $kcal){
-                                    ForEach(0...1500,id:\.self){
-                                        Text("\($0)")
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .labelsHidden()
-                                .pickerStyle(.wheel)
+                            Spacer()
+                            TextField("", value: $kcal,format:.number)
+                                .padding(10)
+                                .background(.ultraThinMaterial)
+                                .focused($amountisFocused)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                                .shadow(color:.gray,radius: 2)
                                 
+                                .labelsHidden()
+                                .keyboardType(.decimalPad)
+                                .scrollDismissesKeyboard(.immediately)
+                                .padding(.horizontal,10)
+                            Spacer()
                             
                         }
                     }
                     .frame(width: screen.width / 2.3,height: screen.height / 5)
                 }
                
-                HStack{
-                   
-                    Text("Nutrition")
-                        .font(.system(size: 20))
-                        .fontDesign(.monospaced)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.secondary.opacity(0.6))
-                    
-                    Spacer()
-                }
+               
               HStack {
                     ZStack{
                         // carbs
@@ -132,16 +138,21 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
-                           
-                                Picker("",selection: $carb){
-                                    ForEach(0...500,id:\.self){
-                                        Text("\($0)")
-                                            .foregroundColor(.white)
-                                    }
-                                }
-                                .labelsHidden()
-                                .pickerStyle(.wheel)
-                                
+                            Spacer()
+                            
+                            TextField("", value: $carb,format:.number)
+                                .padding(10)
+                                                          .background(.ultraThinMaterial)
+                                                          .focused($amountisFocused)
+                                                          .foregroundColor(.white)
+                                                          .cornerRadius(10)
+                                                          .shadow(color:.gray,radius: 5)
+                                                          
+                                                          .labelsHidden()
+                                                          .keyboardType(.decimalPad)
+                                                          .scrollDismissesKeyboard(.immediately)
+                                                          .padding(.horizontal,10)
+                            Spacer()
                             
                         }
                     }
@@ -160,17 +171,22 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
+                            Spacer()
                            
-                                Picker("",selection: $fat){
-                                    ForEach(0...450,id:\.self){
-                                        Text("\($0)")
-                                            .foregroundColor(.white)
-                                    }
-                                }
-                                .labelsHidden()
-                                .pickerStyle(.wheel)
+                            TextField("", value: $fat,format:.number)
+                                .padding(10)
+                                                          .background(.ultraThinMaterial)
+                                                          .focused($amountisFocused)
+                                                          .foregroundColor(.white)
+                                                          .cornerRadius(10)
+                                                          .shadow(color:.gray,radius: 5)
+                                                          
+                                                          .labelsHidden()
+                                                          .keyboardType(.decimalPad)
+                                                          .scrollDismissesKeyboard(.immediately)
+                                                          .padding(.horizontal,10)
                                 
-                            
+                            Spacer()
                         }
                        
                     }
@@ -189,15 +205,21 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
+                          Spacer()
                            
-                                Picker("",selection: $protein){
-                                    ForEach(0...500,id:\.self){
-                                        Text("\($0)")
-                                            .foregroundColor(.white)
-                                    }
-                                }
-                                .labelsHidden()
-                                .pickerStyle(.wheel)
+                            TextField("", value: $protein,format:.number)
+                                .padding(10)
+                                                                                    .background(.ultraThinMaterial)
+                                                                                    .focused($amountisFocused)
+                                                                                    .foregroundColor(.white)
+                                                                                    .cornerRadius(10)
+                                                                                    .shadow(color:.gray,radius: 5)
+                                                                                    
+                                                                                    .labelsHidden()
+                                                                                    .keyboardType(.decimalPad)
+                                                                                    .scrollDismissesKeyboard(.immediately)
+                                                                                    .padding(.horizontal,10)
+                           Spacer()
                                 
                             
                         }
@@ -211,12 +233,12 @@ struct ManualIngredAdding: View {
                         .font(.system(size: 16))
                         .fontDesign(.monospaced)
                         .fontWeight(.heavy)
-                        .foregroundColor(.secondary.opacity(0.6))
+                        .foregroundColor(.white)
                     Spacer()
                 }
                 HStack(spacing: 15){
                     VStack{
-                        ProgressView(value: Double(kcal) * (Double(serviceSize) / 100),total: Double(datamanager.caloriesNeed))
+                        ProgressView(value: max(0, Double(kcal) * (Double(serviceSize) / 100)),total: Double(datamanager.caloriesNeed))
                             .frame(width: screen.width / 5)
                             
                             .cornerRadius(30)
@@ -229,7 +251,7 @@ struct ManualIngredAdding: View {
                            
                     }
                     VStack{
-                        ProgressView(value: Double(carb) * (Double(serviceSize) / 100),total: Double(datamanager.carbohydratesNeed))
+                        ProgressView(value: max(0,Double(carb) * (Double(serviceSize) / 100)) ,total: Double(datamanager.carbohydratesNeed))
                             .frame(width: screen.width / 5)
                             .tint(.yellow)
                            
@@ -241,7 +263,7 @@ struct ManualIngredAdding: View {
                             .font(.system(size: 14))
                     }
                         VStack{
-                            ProgressView(value: Double(fat) * (Double(serviceSize) / 100),total: Double(datamanager.fatsNeed))
+                            ProgressView(value:max(0, Double(fat) * (Double(serviceSize) / 100)),total: Double(datamanager.fatsNeed))
                                 .frame(width: screen.width / 5)
                                 .tint(.pink)
                              
@@ -253,7 +275,7 @@ struct ManualIngredAdding: View {
                                 .font(.system(size: 14))
                         }
                             VStack{
-                                ProgressView(value: Double(protein) * (Double(serviceSize) / 100),total: Double(datamanager.proteinNeed))
+                                ProgressView(value: max(0,Double(protein) * (Double(serviceSize) / 100)),total: Double(datamanager.proteinNeed))
                                     .frame(width: screen.width / 5)
                                     .tint(.mint)
                                    
@@ -315,6 +337,20 @@ struct ManualIngredAdding: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+               
+                    Spacer()
+                 
+                        Button("Done") {
+                            amountisFocused = false
+                        }
+                    
+                }
+                
+            
+        }
+        .preferredColorScheme(.light)
         
         
     }
