@@ -45,6 +45,7 @@ struct ManualIngredAdding: View {
                             .fontDesign(.monospaced)
                             .fontWeight(.heavy)
                             .foregroundColor(.white)
+                            .focused($amountisFocused)
                        
                     }
                     Spacer()
