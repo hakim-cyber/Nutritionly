@@ -15,6 +15,7 @@ struct LoginScreen: View {
     @State private var isEmailValid = false
     
     @EnvironmentObject var userStore:UserStore
+    @Environment(\.colorScheme) var colorScheme
     
     var namespace:Namespace.ID
     var body: some View {
@@ -38,14 +39,14 @@ struct LoginScreen: View {
                 
                 Text("Email")
                     .font(.system(.subheadline, design: .default))
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                     .fontWeight(.regular)
                     .padding(.horizontal,10)
                     VStack(alignment: .center, spacing: 20){
                         TextField("", text: $email)
                             .padding()
                             .background(  Color.buttonAndForegroundColor)
-                            .foregroundColor(isEmailValid ? .white: .red)
+                            .foregroundColor(isEmailValid ? (colorScheme == .light ? Color.black : Color.white): .red)
                             .cornerRadius(30)
                             .shadow(color:.gray,radius: 5)
                             .padding(.horizontal,20)
@@ -58,7 +59,7 @@ struct LoginScreen: View {
                         VStack(alignment: .leading){
                             Text("Password")
                                 .font(.system(.subheadline, design: .default))
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                                 .fontWeight(.regular)
                                 .padding(.horizontal,10)
                         }
@@ -95,7 +96,7 @@ struct LoginScreen: View {
                         }label: {
                             Text("Already have an account? Login")
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                                 
                         }
                         .padding(.top)

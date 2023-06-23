@@ -47,7 +47,7 @@ struct StartScreen: View {
                     Spacer()
                     Spacer()
                 }
-                .foregroundColor(.black)
+                
                 .font(.system(size: 50))
                 .fontWeight(.heavy)
                 
