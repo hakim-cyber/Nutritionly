@@ -204,7 +204,7 @@ struct UserInformationView: View {
                                 
                                 
                             })
-                            .disabled(checked == false)
+                            .disabled(checked == false || informationIsAdded == true)
                             .padding(20)
                             .font(.title2)
                         }
@@ -212,7 +212,7 @@ struct UserInformationView: View {
                     .onAppear{
                         DispatchQueue.main.async {
                             checkInforationIsAdded()
-                            checked = true
+                           
                         }
                        
                         
@@ -249,8 +249,10 @@ struct UserInformationView: View {
                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
                                    self.informationIsAdded = true
+                                   
                                }
                            }
+                           checked = true 
                        } else {
                          
                            return
