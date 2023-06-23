@@ -419,44 +419,28 @@ class NutritionData_Manager:ObservableObject{
     }
   
     
-    
-    func calculateCalorieBurned(from steps: Int, weight: Double, height: Double, age: Int) -> Double {
-        // Constants for calculations
-        var caloriesBurned = 0.0
-       
-            
-            
-            let stepsPerMile: Double = 2000  // Assuming an average of 2000 steps per mile
-            let strideLength: Double = calculateStrideLength(height: height)
-            let caloriesPerMile: Double = calculateCaloriesPerMile(weight: weight, strideLength: strideLength)
-            
-            // Calculate total distance in miles
-            let distanceInMiles = Double(steps) / stepsPerMile
-            
-            // Calculate estimated calories burned
-             caloriesBurned = caloriesPerMile * distanceInMiles
-           
-        
-        return caloriesBurned
-     
+   
+
+    func calculateCaloriesBurned(weight: Double, steps: Int, height: Double, age: Int) -> Double {
+        // Constants for calorie calculation
+        let CALORIES_PER_STEP: Double = 0.04
+        let CALORIES_PER_KILOGRAM: Double = 0.5
+        let CALORIES_PER_CENTIMETER: Double = 0.02
+        let CALORIES_PER_YEAR: Double = 2.3
+
+        // Calculate calories burned based on weight, steps, height, and age
+        let calories = (weight * CALORIES_PER_KILOGRAM) +
+            (Double(steps) * CALORIES_PER_STEP) +
+            (height * CALORIES_PER_CENTIMETER) -
+            (Double(age) * CALORIES_PER_YEAR)
+
+        return calories
     }
 
-    func calculateStrideLength(height: Double) -> Double {
-        // Calculation formula for stride length
-        let strideLength = height * 0.413
-        
-        return strideLength
-    }
+   
 
-    func calculateCaloriesPerMile(weight: Double, strideLength: Double) -> Double {
-        // Constants for calculations
-        let weightMultiplier: Double = 0.57  // Average weight multiplier for calorie burned per mile
-        
-        // Calculate calories burned per mile
-        let caloriesPerMile = weightMultiplier * weight / strideLength
-        
-        return caloriesPerMile
-    }
+
+  
    
 
 

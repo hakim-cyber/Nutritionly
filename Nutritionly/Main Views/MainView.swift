@@ -42,7 +42,7 @@ struct MainView: View {
         let weight = self.dataManager.weightOfToday
         let steps = self.dataManager.userStepCount
         
-        let calorieBurned = self.dataManager.calculateCalorieBurned(from: steps, weight: weight, height: Double(height / 100), age: age)
+        let calorieBurned = self.dataManager.calculateCaloriesBurned(weight: weight, steps: steps, height: Double(height), age: age)
         
         return Int( max(0,calorieBurned))
     }
