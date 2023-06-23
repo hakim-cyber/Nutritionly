@@ -80,7 +80,7 @@ struct StatsView: View {
                     
                         LineMark(
                             x: .value("Days", item.date,unit: .day),
-                            y: .value(item.name,item.animate ? item.value : 0)
+                            y: .value(item.name,item.value)
                         )
                         .foregroundStyle(Color.openGreen.gradient)
                 }else{
@@ -159,7 +159,7 @@ struct StatsView: View {
     func entitiesListRow(item:StatsItem)->some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(colorScheme == .light ? Color.black.shadow(.drop(radius: 2)) : Color.white.shadow(.drop(radius: 2)))
+                .fill(colorScheme == .light ? Color.white.shadow(.drop(radius: 2)) : Color.black.shadow(.drop(radius: 2)))
             HStack{
                 VStack(alignment: .leading){
                     HStack{
@@ -181,9 +181,7 @@ struct StatsView: View {
   
     func refreshStatsItems(){
         var items = [StatsItem]()
-        let calendar = Calendar.current
-               let currentMonth = calendar.component(.month, from: Date())
-               let currentYear = calendar.component(.year, from: Date())
+       
         
         if let days = userstore.userForApp.first?.days{
             for day in days {
