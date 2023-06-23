@@ -113,7 +113,7 @@ struct StatsView: View {
                 }
             }
         }
-        .chartYScale(domain: 0...(max + max * 0.5))
+        .chartYScale(domain: 0...(max + max * 1.3))
         .frame(height: 250)
         .onAppear{
             animateGraph()
@@ -184,7 +184,7 @@ struct StatsView: View {
     func animateGraph(fromChange:Bool = false){
         for (index,_) in statsItems.enumerated(){
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(index) * (fromChange ? 0.03:0.05)){
-                withAnimation(fromChange ? .easeInOut(duration: 0.8):.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)){
+                withAnimation(fromChange ? .easeInOut(duration: 0.8):.easeInOut(duration: 1.0)){
                     statsItems[index].animate = true
                 }
             }
@@ -192,7 +192,14 @@ struct StatsView: View {
     }
     func refreshStatsItems(){
         var items = [StatsItem]()
-        if let days = userstore.userForApp.first?.days{
+        let calendar = Calendar.current
+               let currentMonth = calendar.component(.month, from: Date())
+               let currentYear = calendar.component(.year, from: Date())
+        
+        if let days = userstore.userForApp.first?.days.filter({day in
+            let components = calendar.dateComponents([.year, .month], from: stringToDate(string: day.date))
+            return components.month == currentMonth && components.year == currentYear
+        }){
             for day in days {
                 if currentTab == "Kcal"{
                     let item = StatsItem(name: "Kcal", value:Double(calculateKcals(day: day)), date: stringToDate(string: day.date))
