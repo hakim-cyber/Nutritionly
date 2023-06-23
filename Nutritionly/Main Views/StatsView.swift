@@ -21,6 +21,7 @@ struct StatsView: View {
     @State var isLineGraph = false
     
     @Environment(\.colorScheme) var colorScheme
+   
     
     @State private var screen = UIScreen.main.bounds
     
@@ -158,7 +159,7 @@ struct StatsView: View {
     func entitiesListRow(item:StatsItem)->some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .fill(.white.shadow(.drop(radius: 2)))
+                .fill(colorScheme == .light ? Color.black.shadow(.drop(radius: 2)) : Color.white.shadow(.drop(radius: 2)))
             HStack{
                 VStack(alignment: .leading){
                     HStack{

@@ -14,13 +14,14 @@ struct AddFoodView: View {
     @State var screen = UIScreen.main.bounds
     @State private var showaddingNewFood = false
     @State private var selectedMeal:String?
+    @Environment(\.colorScheme) var colorScheme
     var namespace:Namespace.ID
     var close:()->Void
     var body: some View {
         ZStack{
             if !showaddingNewFood{
                 ZStack{
-                    Color.white.ignoresSafeArea()
+                    
                       
                     VStack(spacing: 20){
                         HStack{
@@ -30,14 +31,14 @@ struct AddFoodView: View {
                                 
                             }label: {
                                 Image(systemName: "arrow.backward")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                             }
                             Spacer()
                         }
                         HStack{
                             VStack(alignment: .leading, spacing: 10){
                                 Text("daily food")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                                     .font(.system(size: 40))
                                     .fontDesign(.rounded)
                                     .fontWeight(.bold)

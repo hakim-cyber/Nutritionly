@@ -23,7 +23,7 @@ struct NutritionlyApp: App {
             StartScreen()
                 .environmentObject(dataManager)
                 .environmentObject(usersStore)
-                .preferredColorScheme(.light)
+              
         }
     }
 }

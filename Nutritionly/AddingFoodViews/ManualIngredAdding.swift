@@ -21,6 +21,7 @@ struct ManualIngredAdding: View {
     
     
     @State private var screen = UIScreen.main.bounds
+    @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var datamanager:NutritionData_Manager
     var body: some View {
@@ -56,6 +57,7 @@ struct ManualIngredAdding: View {
                         // servingSize
                         RoundedRectangle(cornerRadius: 15)
                             .fill(.regularMaterial)
+                            .colorScheme(.light)
                         
                         VStack(alignment: .leading){
                            Text("Serving Size (g)")
@@ -66,13 +68,14 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
+                                .colorScheme(.light)
                             Spacer()
                            
                             TextField("", value: $serviceSize,format:.number)
                                 .padding(10)
                                 .background(.ultraThinMaterial)
                                 .focused($amountisFocused)
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                                 .cornerRadius(10)
                                 .shadow(color:.gray,radius: 2)
                                 
@@ -80,6 +83,7 @@ struct ManualIngredAdding: View {
                                 .keyboardType(.decimalPad)
                                 .scrollDismissesKeyboard(.immediately)
                                 .padding(.horizontal,10)
+                              
                             Spacer()
                             
                         }
@@ -93,9 +97,10 @@ struct ManualIngredAdding: View {
                         //calorie per 100 gram
                         RoundedRectangle(cornerRadius: 15)
                             .fill(.regularMaterial)
-                        
+                            .colorScheme(.light)
                         VStack(alignment: .leading){
                            Text("Calorie (100g)")
+                                .colorScheme(.light)
                                 .fontDesign(.monospaced)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
@@ -103,19 +108,20 @@ struct ManualIngredAdding: View {
                                 .minimumScaleFactor(0.11)
                                 .scaledToFit()
                                 .padding(15)
+                                
                             Spacer()
                             TextField("", value: $kcal,format:.number)
                                 .padding(10)
                                 .background(.ultraThinMaterial)
                                 .focused($amountisFocused)
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                                 .cornerRadius(10)
                                 .shadow(color:.gray,radius: 2)
-                                
                                 .labelsHidden()
                                 .keyboardType(.decimalPad)
                                 .scrollDismissesKeyboard(.immediately)
                                 .padding(.horizontal,10)
+                               
                             Spacer()
                             
                         }
@@ -319,7 +325,7 @@ struct ManualIngredAdding: View {
             })
         }
       
-        .preferredColorScheme(.light)
+       
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
                        
                    // Give a moment for the screen boundaries to change after

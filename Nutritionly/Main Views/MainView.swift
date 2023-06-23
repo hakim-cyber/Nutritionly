@@ -413,6 +413,6 @@ struct MainView_Previews: PreviewProvider {
         }
             .environmentObject(NutritionData_Manager())
             .environmentObject(UserStore())
-            .preferredColorScheme(.dark)
+           
     }
 }
