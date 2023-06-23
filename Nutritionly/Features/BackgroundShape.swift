@@ -38,10 +38,11 @@ struct BackgroundShape2: Shape {
 
 struct BackGround: View {
     var namespace:Namespace.ID
-   
+    @AppStorage("backgroundColor") var backgroundColor = Colors.openGreen.rawValue
+    @Environment(\.colorScheme) var colorScheme
     var body: some View{
         ZStack{
-            Color.openGreen.ignoresSafeArea()
+            Color(backgroundColor).ignoresSafeArea()
                 .safeAreaInset(edge: .top){
                     ZStack{
                         BackgroundShape()
@@ -52,7 +53,7 @@ struct BackGround: View {
                        
                             
                         BackgroundShape()
-                            .fill(Color.white)
+                            .fill(  colorScheme == .dark ? Color.black : Color.white)
                             .frame(maxWidth:  .infinity , maxHeight: UIScreen.main.bounds.height / 2, alignment: .top)
                             .edgesIgnoringSafeArea(.top)
                             .matchedGeometryEffect(id: "background2", in: namespace)
@@ -69,9 +70,11 @@ struct BackGround: View {
 struct BackGround2: View {
     var namespace:Namespace.ID
     var animated:Bool
+    @AppStorage("backgroundColor") var backgroundColor = Colors.openGreen.rawValue
+    @Environment(\.colorScheme) var colorScheme
     var body: some View{
         ZStack{
-            Color.openGreen.ignoresSafeArea()
+            Color(backgroundColor).ignoresSafeArea()
                 .safeAreaInset(edge: .top){
                     ZStack{
                         BackgroundShape()
@@ -82,7 +85,7 @@ struct BackGround2: View {
                            
    
                         BackgroundShape()
-                            .fill(Color.white)
+                            .fill(  colorScheme == .dark ? Color.black : Color.white)
                             .frame(maxWidth:  .infinity , alignment: .top)
                             .frame(height:  animated ? UIScreen.main.bounds.height + 100: UIScreen.main.bounds.height / 2)
                             .edgesIgnoringSafeArea(.top)

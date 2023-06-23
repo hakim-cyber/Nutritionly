@@ -19,6 +19,7 @@ struct MultipleSectionWeightPicker: View {
                 Picker("", selection: $weightInt){
                 ForEach(ints ,id:\.self){num in
                     Text("\(num)")
+                        .foregroundColor(.black)
                         
                  }
                 }
@@ -28,12 +29,14 @@ struct MultipleSectionWeightPicker: View {
                 Picker("", selection: $weightDouble){
                 ForEach(doubles ,id:\.self){num in
                     Text("\(num)")
+                        .foregroundColor(.black)
                         
                  }
                 }
                 .pickerStyle(WheelPickerStyle())
                 .frame(width: geo.size.width / 3)
                 Text("kg")
+                    .foregroundColor(.black)
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
             

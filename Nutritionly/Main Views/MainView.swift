@@ -11,11 +11,18 @@ import Firebase
 import FirebaseFirestoreSwift
 import WidgetKit
 
+enum Colors:String,CaseIterable{
+    case openGreen
+    case orange
+    case purple
+    case mint
+}
+
 enum cards{
     case nutrition,steps,workout,weight,waterIntake
 }
 struct MainView: View {
-
+    @AppStorage("backgroundColor") var backgroundColor = Colors.openGreen.rawValue
     
     @EnvironmentObject var dataManager: NutritionData_Manager
     @EnvironmentObject var userStore: UserStore
@@ -25,6 +32,7 @@ struct MainView: View {
     @State private var showFullCard = false
     @State private var selectedCard:cards?
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.colorScheme) var colorScheme
     
     var adding:()->Void
     
@@ -43,7 +51,7 @@ struct MainView: View {
     var body: some View {
        
             ZStack{
-                Color.white.ignoresSafeArea()
+               
                 
                 if !showAddView{
                     ScrollView(showsIndicators: false){
@@ -52,12 +60,12 @@ struct MainView: View {
                             HStack{
                                 VStack(alignment: .leading, spacing: 10){
                                     Text("have a good day!")
-                                        .foregroundColor(.black)
+                                       
                                         .font(.system(size: 23))
                                         .fontDesign(.rounded)
                                         .fontWeight(.bold)
                                     Text("how was your day? let's tell us what did you do ")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.secondary)
                                         .font(.system(size: 13))
                                         .fontDesign(.rounded)
                                         .fontWeight(.bold)
@@ -77,14 +85,14 @@ struct MainView: View {
                                     Image(systemName: "plus")
                                         .padding(5)
                                         .font(.title3)
-                                        .foregroundColor(Color.black)
-                                        .background(Circle().stroke(.black))
+                                        .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                                        .background(Circle().stroke(colorScheme == .light ? Color.black : Color.white))
                                 }
                             }
                             .padding(.horizontal, 10)
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15,style: .continuous)
-                                    .fill(Color.openGreen)
+                                    .fill(Color(backgroundColor))
                                 
                                 
                                 HStack{
@@ -405,6 +413,6 @@ struct MainView_Previews: PreviewProvider {
         }
             .environmentObject(NutritionData_Manager())
             .environmentObject(UserStore())
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }

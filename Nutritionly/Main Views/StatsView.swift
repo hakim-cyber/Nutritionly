@@ -20,7 +20,7 @@ struct StatsView: View {
     @State var plotWidth:CGFloat = 0
     @State var isLineGraph = false
     
-    
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var screen = UIScreen.main.bounds
     
@@ -45,7 +45,7 @@ struct StatsView: View {
                         AnimatedChart()
                     }
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 10,style: .continuous).fill(.white.shadow(.drop(radius: 2))))
+                    .background(RoundedRectangle(cornerRadius: 10,style: .continuous).fill((colorScheme == .light ? Color.white : Color.black).shadow(.drop(radius: 2))))
                     
                     Toggle("Line Graph",isOn: $isLineGraph)
                         .padding(.top)
@@ -107,7 +107,7 @@ struct StatsView: View {
                             .padding(.vertical,4)
                             .background{
                                 RoundedRectangle(cornerRadius: 6,style:.continuous)
-                                    .fill(.white.shadow(.drop(radius: 2)))
+                                    .fill((colorScheme == .light ? Color.white : Color.black).shadow(.drop(radius: 2)))
                             }
                         }
                 }
@@ -170,7 +170,7 @@ struct StatsView: View {
                         Text(item.name)
                         
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                     Text(item.date, style: .date)
                         .foregroundColor(.secondary)
                 }

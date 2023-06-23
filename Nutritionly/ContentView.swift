@@ -25,7 +25,7 @@ struct ContentView: View {
                                 showTabBar.toggle()
                             }
                         }
-                              .preferredColorScheme(.light)
+                              
                               .tag(tab)
                               .transition(.move(edge: .trailing))
                             }
@@ -35,13 +35,13 @@ struct ContentView: View {
                       StatsView()
                             .tag(tab)
                             .transition(.move(edge: .trailing))
-                            .preferredColorScheme(.light)
+                            
                     }
                     if tab == .person{
                        ProfileView()
                             .tag(tab)
                             .transition(.move(edge: .trailing))
-                            .preferredColorScheme(.light)
+                            
                     }
                 }
             }
@@ -64,7 +64,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .preferredColorScheme(.light)
             .environmentObject(UserStore())
             .environmentObject(NutritionData_Manager())
     }

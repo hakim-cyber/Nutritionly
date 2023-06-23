@@ -142,6 +142,7 @@ struct UserInformationView: View {
                                     
                                     ForEach(0...250, id: \.self) { high in
                                         Text("\(high)")
+                                            .foregroundColor(.black)
                                     }
                                 }
                                 .labelsHidden()
@@ -171,6 +172,7 @@ struct UserInformationView: View {
                                     Picker("", selection: $selectedGender){
                                         ForEach(genders, id: \.self){
                                             Text($0)
+                                                .foregroundColor(.black)
                                         }
                                         
                                     }
