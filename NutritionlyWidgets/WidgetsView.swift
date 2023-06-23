@@ -12,11 +12,17 @@ import WidgetKit
 struct NutritionlyWidgetsEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var widgetFamily
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ZStack{
            
-            Color.openGreen
+            if  entry.color != nil{
+                Color(entry.color!)
+            }else{
+                Color.openGreen
+            }
             
             HStack{
                 if widgetFamily == .systemMedium{
@@ -94,6 +100,7 @@ struct NutritionlyWidgetsEntryView : View {
                   
                                             }
                                             .padding(20)
+                                            
           
         }
         

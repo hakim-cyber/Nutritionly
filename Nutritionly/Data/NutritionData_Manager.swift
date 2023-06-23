@@ -256,7 +256,7 @@ class NutritionData_Manager:ObservableObject{
                 defaults.set(encoded, forKey: "nutritOfDay")
               
                 
-                WidgetCenter.shared.reloadAllTimelines()
+                
                 print("saveddd")
             }
         }
@@ -267,7 +267,7 @@ class NutritionData_Manager:ObservableObject{
                 defaults.set(encoded, forKey: "nutritNeed")
               
                
-                WidgetCenter.shared.reloadAllTimelines()
+              
                 print("saveddd")
             }
         }

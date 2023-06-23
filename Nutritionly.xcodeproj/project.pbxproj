@@ -29,6 +29,7 @@
 		087ABF692A1FFF650092911B /* ProfiledData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF682A1FFF650092911B /* ProfiledData.swift */; };
 		087ABF6B2A20D9F00092911B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6A2A20D9F00092911B /* StatsView.swift */; };
 		087ABF6E2A22102D0092911B /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087ABF6D2A22102D0092911B /* GoalView.swift */; };
+		08887DC72A46238D002CAF6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082CC95E2A0F95F200D7F345 /* Assets.xcassets */; };
 		08910BB52A23EAC6006DF3E1 /* SpeedOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BB42A23EAC6006DF3E1 /* SpeedOptionView.swift */; };
 		08910BB72A23F204006DF3E1 /* TotalNutritionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08910BB62A23F204006DF3E1 /* TotalNutritionsView.swift */; };
 		08AA44F92A1BEC2B00537DD5 /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA44F82A1BEC2B00537DD5 /* WorkoutCardView.swift */; };
@@ -458,6 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08887DC72A46238D002CAF6C /* Assets.xcassets in Resources */,
 				08D0EFAC2A404F7A0038BB4D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

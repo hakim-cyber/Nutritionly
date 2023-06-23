@@ -14,4 +14,5 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
     var nutritions:[String:Int]?
     var nutritionNeed:[String:Int]?
+    var color:String?
 }

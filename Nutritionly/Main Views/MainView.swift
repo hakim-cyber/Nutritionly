@@ -392,17 +392,38 @@ struct MainView: View {
                 
             }
             .onChange(of: scenePhase) { phase in
-                        if phase == .background {
+                if phase == .background {
                             // Save here
-                            
+                    
+                            saveColorForWidget(new: backgroundColor)
                                             dataManager.saveNutritsOfDay()
                                             dataManager.saveNutritNeed()
+                        
+                            
                             WidgetCenter.shared.reloadAllTimelines()
                            
                         }
                 
+                
                     }
             
+    }
+    func saveColorForWidget(new:String){
+        DispatchQueue.main.async {
+            
+            if let encoded = try? JSONEncoder().encode(new){
+                if let defaults = UserDefaults(suiteName: "group.me.hakim.Aliyev.Nutritionly"){
+                    defaults.set(encoded, forKey: "backgroundColor")
+                    
+                    print("saved \(new)")
+                    
+                }
+            }else{
+                print("bad")
+            }
+        }
+        
+       
     }
 }
 

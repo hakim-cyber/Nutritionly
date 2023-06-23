@@ -12,5 +12,6 @@ import SwiftUI
 struct NutritionlyWidgetsBundle: WidgetBundle {
     var body: some Widget {
         NutritionlyWidgets()
+            
     }
 }

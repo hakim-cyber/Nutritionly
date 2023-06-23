@@ -11,7 +11,7 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent(),nutritions: nil,nutritionNeed: nil)
+        SimpleEntry(date: Date(), configuration: ConfigurationIntent(),nutritions: nil,nutritionNeed: nil,color: nil)
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
@@ -35,8 +35,22 @@ struct Provider: IntentTimelineProvider {
             if let decoded = try? JSONDecoder().decode([String:Int].self, from: data){
                
                 entry.nutritionNeed = decoded
+                print("loaded")
                
             }
+        }
+        if let data = UserDefaults(suiteName: "group.me.hakim.Aliyev.Nutritionly")?.data(forKey: "backgroundColor"){
+            if let decoded = try? JSONDecoder().decode(String.self, from: data){
+               
+                entry.color = decoded
+                
+               
+               
+            }else{
+                print("error decoding")
+            }
+        }else{
+            print("error fetching data")
         }
         
         completion(entry)
@@ -57,6 +71,19 @@ struct Provider: IntentTimelineProvider {
                
                 entry.nutritionNeed = decoded
             }
+        }
+        if let data = UserDefaults(suiteName: "group.me.hakim.Aliyev.Nutritionly")?.data(forKey: "backgroundColor"){
+            if let decoded = try? JSONDecoder().decode(String.self, from: data){
+               
+                entry.color = decoded
+                
+               
+               
+            }else{
+                print("error decoding")
+            }
+        }else{
+            print("error fetching data")
         }
         let timeline = Timeline(entries:[entry], policy: .atEnd)
                        completion(timeline)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     init(){
@@ -13,6 +14,8 @@ struct ContentView: View {
     }
     @State var showTabBar = true
     @State private var selectedTab:Tab = .house
+    
+    @AppStorage("backgroundColor") var backgroundColor = Colors.openGreen.rawValue
     
     var body: some View {
         ZStack {
@@ -56,9 +59,10 @@ struct ContentView: View {
                 
                 
         }
+        
 
     }
-        
+   
 }
 
 struct ContentView_Previews: PreviewProvider {
