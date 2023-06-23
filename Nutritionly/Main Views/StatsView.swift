@@ -196,10 +196,7 @@ struct StatsView: View {
                let currentMonth = calendar.component(.month, from: Date())
                let currentYear = calendar.component(.year, from: Date())
         
-        if let days = userstore.userForApp.first?.days.filter({day in
-            let components = calendar.dateComponents([.year, .month], from: stringToDate(string: day.date))
-            return components.month == currentMonth && components.year == currentYear
-        }){
+        if let days = userstore.userForApp.first?.days{
             for day in days {
                 if currentTab == "Kcal"{
                     let item = StatsItem(name: "Kcal", value:Double(calculateKcals(day: day)), date: stringToDate(string: day.date))
