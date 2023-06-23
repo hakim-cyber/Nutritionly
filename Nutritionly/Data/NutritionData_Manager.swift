@@ -36,7 +36,7 @@ class NutritionData_Manager:ObservableObject{
     
     // meals
     let meals = ["Breakfast","Lunch","Dinner","Snack"]
-    let mealsColors:[String:Color] = ["Breakfast":Color.openGreen, "Lunch":Color.indigo,"Dinner":Color.mint,"Snack":Color.orange]
+    let mealsColors:[String:Color] = ["Breakfast":Color("openGreen"), "Lunch":Color("purple"),"Dinner":Color("mint"),"Snack":Color("orange")]
     
     
     //foods of day and recent ones

@@ -13,6 +13,8 @@ struct MealItem: View {
     var color:Color
     var nameSpace:Namespace.ID
     var showAddingNewFood:(String)->Void
+    
+    @Environment(\.colorScheme) var colorScheme
   
     var body: some View {
    
@@ -28,7 +30,7 @@ struct MealItem: View {
                         HStack(alignment: .center){
                             Text(meal)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                             Button{
                                 // add day with this meal
                                 showAddingNewFood(meal)
@@ -37,13 +39,13 @@ struct MealItem: View {
                                     .padding(5)
                                     .font(.caption)
                                     .foregroundColor(Color.backgroundColor)
-                                    .background(Circle().stroke(.black))
+                                    .background(Circle().stroke(colorScheme == .light ? Color.black : Color.white))
                             }
                             Spacer()
                             
                             Text("\(totalCals) kcal")
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? Color.black : Color.white)
                         }
                         .padding(.top)
                         .padding(.horizontal)
@@ -61,7 +63,7 @@ struct MealItem: View {
                                             HStack(alignment: .center){
                                                 VStack(alignment: .leading,spacing: 10){
                                                     Text(food.name)
-                                                        .foregroundColor(.white)
+                                                        .foregroundColor(Color.white)
                                                         .bold()
                                                         .fontDesign(.rounded)
                                                         .font(.system(size: 18))
@@ -77,7 +79,7 @@ struct MealItem: View {
                                                 // place for image in future
                                                 ZStack{
                                                     Circle()
-                                                        .fill(.white)
+                                                        .fill(Color.white)
                                                         
                                                     Text("\(food.emoji)")
                                                         .padding(5)

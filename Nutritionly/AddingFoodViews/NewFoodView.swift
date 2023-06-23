@@ -174,8 +174,8 @@ struct NewFoodView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             .shadow(color:.gray,radius: 5)
-                        
                             .padding(.horizontal,10)
+                            .colorScheme(.light)
                         
                     
                     

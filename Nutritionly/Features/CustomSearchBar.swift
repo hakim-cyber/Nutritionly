@@ -27,6 +27,7 @@ struct CustomSearchBar: View {
         .shadow(color:.gray,radius: 5)
         .padding(.horizontal,10)
         .padding(.vertical,2)
+        .colorScheme(.light)
     }
 }
 
