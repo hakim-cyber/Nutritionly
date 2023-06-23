@@ -61,7 +61,6 @@ struct StatsView: View {
             .onAppear(perform: refreshStatsItems)
             .onChange(of: currentTab){_ in
                 refreshStatsItems()
-                animateGraph(fromChange: true)
             }
             .background(BackGround(namespace: nameSpace))
           
@@ -86,7 +85,7 @@ struct StatsView: View {
                 }else{
                     BarMark(
                         x: .value("Days", item.date,unit: .day),
-                        y: .value(item.name,item.animate ? item.value : 0)
+                        y: .value(item.name,item.value)
                     )
                     .clipShape(RoundedRectangle(cornerRadius:30))
                     .foregroundStyle(Color.openGreen.gradient)
@@ -115,9 +114,6 @@ struct StatsView: View {
         }
         .chartYScale(domain: 0...(max + max * 1.3))
         .frame(height: 250)
-        .onAppear{
-            animateGraph()
-        }
         .chartOverlay{proxy in
             GeometryReader{innerProxy in
                 Rectangle()
@@ -181,15 +177,7 @@ struct StatsView: View {
         .frame(height: 70)
     }
 
-    func animateGraph(fromChange:Bool = false){
-        for (index,_) in statsItems.enumerated(){
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(index) * (fromChange ? 0.03:0.05)){
-                withAnimation(fromChange ? .easeInOut(duration: 0.8):.easeInOut(duration: 1.0)){
-                    statsItems[index].animate = true
-                }
-            }
-        }
-    }
+  
     func refreshStatsItems(){
         var items = [StatsItem]()
         let calendar = Calendar.current
