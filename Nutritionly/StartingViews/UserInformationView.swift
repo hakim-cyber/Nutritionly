@@ -209,6 +209,7 @@ struct UserInformationView: View {
                             .font(.title2)
                         }
                     }
+                    .disabled(checked == false || informationIsAdded == true)
                     .onAppear{
                         DispatchQueue.main.async {
                             checkInforationIsAdded()
@@ -252,7 +253,7 @@ struct UserInformationView: View {
                                    
                                }
                            }
-                           checked = true 
+                           checked = true
                        } else {
                          
                            return
