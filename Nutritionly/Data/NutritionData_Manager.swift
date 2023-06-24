@@ -13,7 +13,7 @@ import WidgetKit
 class NutritionData_Manager:ObservableObject{
     
   // User Has Pro Version
-    @AppStorage("userIsPro") var userIsPro = false
+   
     
     
     

@@ -62,6 +62,8 @@
 		08DABA292A470E0800EEA1AC /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA282A470E0800EEA1AC /* PurchaseView.swift */; };
 		08DABA2C2A470F1400EEA1AC /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 08DABA2B2A470F1400EEA1AC /* ReceiptParser */; };
 		08DABA2E2A470F1400EEA1AC /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 08DABA2D2A470F1400EEA1AC /* RevenueCat */; };
+		08DABA302A4740CF00EEA1AC /* overlayForPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA2F2A4740CF00EEA1AC /* overlayForPro.swift */; };
+		08DABA322A47419200EEA1AC /* ProSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA312A47419200EEA1AC /* ProSymbol.swift */; };
 		08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */; };
 		08DB01802A16BAFB00DCA54A /* Custom checkMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */; };
 		08DB01822A16C63A00DCA54A /* TotalFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB01812A16C63A00DCA54A /* TotalFoodView.swift */; };
@@ -152,6 +154,8 @@
 		08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
 		08D0EFCA2A407AD30038BB4D /* NutritionlyWidgetsExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutritionlyWidgetsExtensionDebug.entitlements; sourceTree = "<group>"; };
 		08DABA282A470E0800EEA1AC /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		08DABA2F2A4740CF00EEA1AC /* overlayForPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overlayForPro.swift; sourceTree = "<group>"; };
+		08DABA312A47419200EEA1AC /* ProSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProSymbol.swift; sourceTree = "<group>"; };
 		08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIngredientsView.swift; sourceTree = "<group>"; };
 		08DB017F2A16BAFB00DCA54A /* Custom checkMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom checkMark.swift"; sourceTree = "<group>"; };
 		08DB01812A16C63A00DCA54A /* TotalFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalFoodView.swift; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				08DABA282A470E0800EEA1AC /* PurchaseView.swift */,
+				08DABA2F2A4740CF00EEA1AC /* overlayForPro.swift */,
+				08DABA312A47419200EEA1AC /* ProSymbol.swift */,
 			);
 			path = "Purchase Views";
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			files = (
 				082CC95D2A0F95F000D7F345 /* ContentView.swift in Sources */,
 				087ABF6E2A22102D0092911B /* GoalView.swift in Sources */,
+				08DABA302A4740CF00EEA1AC /* overlayForPro.swift in Sources */,
 				08C79C4D2A10EECC00AC28CB /* MainView.swift in Sources */,
 				08AA44FC2A1BFD5200537DD5 /* Water IntakeCard.swift in Sources */,
 				08AEC0F12A1517DD00CEA256 /* CustomSwitch.swift in Sources */,
@@ -509,6 +516,7 @@
 				082CC97D2A1007F200D7F345 /* UserInformationView.swift in Sources */,
 				08F367C22A141B8900180195 /* NutritionsLine.swift in Sources */,
 				08DB01852A17E0DE00DCA54A /* SearchIngredViewModel.swift in Sources */,
+				08DABA322A47419200EEA1AC /* ProSymbol.swift in Sources */,
 				08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */,
 				08ED21D82A1EA134004A0064 /* weightProgressChart.swift in Sources */,
 				087ABF652A1FE96B0092911B /* CustomTabBar.swift in Sources */,

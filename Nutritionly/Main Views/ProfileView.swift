@@ -92,16 +92,18 @@ struct ProfileView: View {
                                             
                                         }
                                         Menu{
-                                            
-                                            Picker("",selection:$backgroundColor){
-                                                ForEach(colors , id:\.self){color in
-                                                    Text("\(color)")
-                                                      
-                                                    
-                                                      
+                                            if userstore.userIsPro{
+                                                Picker("",selection:$backgroundColor){
+                                                    ForEach(colors , id:\.self){color in
+                                                        Text("\(color)")
+                                                          
+                                                        
+                                                          
+                                                    }
                                                 }
+                                                .labelsHidden()
                                             }
-                                            .labelsHidden()
+                                         
                                             
                                         }label:{
                                             HStack(alignment: .firstTextBaseline){
@@ -114,11 +116,18 @@ struct ProfileView: View {
                                                     .font(.callout)
                                                     .fontDesign(.rounded)
                                                 Spacer()
-                                                Image(systemName: "chevron.right")
-                                                    .font(.system(size: 15))
-                                                    .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                                                if !userstore.userIsPro {
+                                                    Image(systemName: "checkmark.seal.fill")
+                                                        .foregroundColor(Color("openBlue"))
+                                                        .font(.title3)
+                                                }else{
+                                                    Image(systemName: "chevron.right")
+                                                        .font(.system(size: 15))
+                                                        .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                                                }
                                             }
                                         }
+                                        
                                         Button{
                                             
                                             userstore.logOut()

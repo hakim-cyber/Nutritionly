@@ -17,6 +17,8 @@ class UserStore:ObservableObject{
     @Published var userForApp = [User]()
     
     @Published  var userIsLoggedIn = false
+    
+    @AppStorage("userIsPro") var userIsPro = false
  
     let db = Firestore.firestore()
     

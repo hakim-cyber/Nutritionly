@@ -14,7 +14,9 @@ struct NewFoodView: View {
     @State var name = ""
     @State var typeOfadding = TypeOfAddings.new
     @EnvironmentObject var dataManager:NutritionData_Manager
+    @EnvironmentObject var userStore:UserStore
     @State private var ingredients = [Ingredients]()
+   
     
     @State private var selectedFood:Food?
     // emoji picker
@@ -217,9 +219,18 @@ struct NewFoodView: View {
                                 showsearchView = true
                             }
                         }label: {
-                            Text("Search Database")
-                            Image(systemName: "magnifyingglass")
+                           
+                            if userStore.userIsPro{
+                                Text("Search Database")
+                                Image(systemName: "magnifyingglass")
+                            }else{
+                                Text("Search Database (Pro)")
+                                Image(systemName: "checkmark.seal.fill")
+                                  .foregroundColor(Color("openBlue"))
+                                  .font(.title3)
+                            }
                         }
+                        .disabled(!userStore.userIsPro)
                        
                     
                    
@@ -314,6 +325,7 @@ struct NewFoodView_Previews: PreviewProvider {
         NewFoodView(meal: "Breakfast",color: Color.indigo,namespace: namespace){
             
         }
+        .environmentObject(UserStore())
     }
 }
 
