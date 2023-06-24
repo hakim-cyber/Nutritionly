@@ -16,7 +16,7 @@ struct PurchaseView: View {
     @State private var screen = UIScreen.main.bounds
     
     @Environment(\.colorScheme) var colorScheme
-    
+    @Environment(\.dismiss) var dismiss
     @State private var seletedPlan:PurchasePlans = .monthly
     var body: some View {
         ZStack{
@@ -81,6 +81,18 @@ struct PurchaseView: View {
                 .padding(.horizontal)
                 .padding(.leading,10)
             }
+        }
+        .safeAreaInset(edge: .top){
+            HStack{
+                Button{
+                    dismiss()
+                }label:{
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+            }
+            .padding(.leading,22)
         }
         .safeAreaInset(edge: .bottom){
             VStack(spacing: 15){
