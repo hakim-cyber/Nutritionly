@@ -125,6 +125,13 @@ struct ProfileView: View {
                                                 }
                                             }
                                         }
+                                        .onTapGesture {
+                                            if !userstore.userIsPro{
+                                                withAnimation(.easeInOut){
+                                                   userstore.showPurchaseView = true
+                                                            }
+                                            }
+                                        }
                                         
                                         Button{
                                             

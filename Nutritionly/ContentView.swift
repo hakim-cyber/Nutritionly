@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var selectedTab:Tab = .house
     
     @AppStorage("backgroundColor") var backgroundColor = Colors.openGreen.rawValue
-    
+    @EnvironmentObject var userStore:UserStore
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab){
@@ -58,6 +58,10 @@ struct ContentView: View {
             }
                 
                 
+        }
+        .sheet(isPresented: $userStore.showPurchaseView){
+            
+            PurchaseView()
         }
         
 

@@ -215,8 +215,14 @@ struct NewFoodView: View {
                             Image(systemName: "hand.draw.fill")
                         }
                         Button{
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                                showsearchView = true
+                            if userStore.userIsPro{
+                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    showsearchView = true
+                                }
+                            }else{
+                                withAnimation(.easeInOut){
+                                                userStore.showPurchaseView = true
+                                            }
                             }
                         }label: {
                            
@@ -230,7 +236,7 @@ struct NewFoodView: View {
                                   .font(.title3)
                             }
                         }
-                        .disabled(!userStore.userIsPro)
+                       
                        
                     
                    

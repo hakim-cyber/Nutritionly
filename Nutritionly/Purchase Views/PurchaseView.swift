@@ -93,6 +93,7 @@ struct PurchaseView: View {
                 Spacer()
             }
             .padding(.leading,22)
+            .padding(.top,10)
         }
         .safeAreaInset(edge: .bottom){
             VStack(spacing: 15){
