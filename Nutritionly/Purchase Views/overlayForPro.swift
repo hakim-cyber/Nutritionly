@@ -6,24 +6,53 @@
 //
 
 import SwiftUI
+enum feutureType{
+    case water, workout,steps
+}
 
 struct overlayForPro: View {
     let width:CGFloat
     let height:CGFloat
     let cornerRadius:CGFloat
+    let feature:feutureType
    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(.ultraThinMaterial)
-                .frame(width: width,height: height)
-            ProSymbol()
+            VStack(spacing: 10){
+                ProSymbol()
+                if feature == .steps{
+                    Text("Track Daily Steps 🏃‍♀️")
+                        .font(.system(size: width / 12))
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                        
+                      
+                }else if feature == .water{
+                    Text("Track Daily Water Intake 💧")
+                        .font(.system(size: width / 19))
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                        
+                }else{
+                    Text("Track Your Workout🏋️")
+                        .font(.system(size: width / 13))
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                        
+                }
+              
+                
+            }
+           
         }
+        .frame(width: width,height: height)
     }
 }
 
 struct overlayForPro_Previews: PreviewProvider {
     static var previews: some View {
-        overlayForPro(width: 100, height: 100,cornerRadius: 15)
+        overlayForPro(width: 100, height: 100,cornerRadius: 15,feature: .steps)
     }
 }

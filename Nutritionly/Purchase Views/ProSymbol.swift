@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct ProSymbol: View {
+   
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        Text("Pro")
+        
+           
+            VStack{
+                HStack{
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundColor(Color("openBlue"))
+                        
+                    Text("Pro")
+                        .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                   
+                }
+            }
+            .padding(5)
+            .padding(.trailing,5)
+            
+        
+        
     }
 }
 

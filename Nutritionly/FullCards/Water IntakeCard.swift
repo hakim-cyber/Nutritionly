@@ -10,7 +10,7 @@ import SwiftUI
 struct Water_IntakeCard: View {
     @State var screen = UIScreen.main.bounds
     @EnvironmentObject var dataManager :NutritionData_Manager
-    
+    @EnvironmentObject var userStore:UserStore
     @State private var totalCount = 7
     
     var drinkedCount:Int{
@@ -92,6 +92,11 @@ struct Water_IntakeCard: View {
                 }
             }
         }
+        .overlay{
+            if !userStore.userIsPro{
+                overlayForPro(width:  screen.width / 1.05, height: 130, cornerRadius: 16,feature:.water)
+            }
+        }
     }
     
     func calculateDrinked(index:Int)->Bool{
@@ -107,5 +112,6 @@ struct Water_IntakeCard_Previews: PreviewProvider {
     static var previews: some View {
         Water_IntakeCard()
             .environmentObject(NutritionData_Manager())
+            .environmentObject(UserStore())
     }
 }

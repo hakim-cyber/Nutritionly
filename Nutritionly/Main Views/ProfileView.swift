@@ -117,9 +117,7 @@ struct ProfileView: View {
                                                     .fontDesign(.rounded)
                                                 Spacer()
                                                 if !userstore.userIsPro {
-                                                    Image(systemName: "checkmark.seal.fill")
-                                                        .foregroundColor(Color("openBlue"))
-                                                        .font(.title3)
+                                                    ProSymbol()
                                                 }else{
                                                     Image(systemName: "chevron.right")
                                                         .font(.system(size: 15))

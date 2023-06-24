@@ -227,14 +227,19 @@ struct MainView: View {
                                             }
                                         }
                                         .padding(.horizontal,8)
+                                        
                                         Spacer()
                                     }
                                     .padding(10)
                                     
                                 }
                                 .rotation3DEffect(Angle(degrees: dataManager.isAuthorized ? 360:0), axis: (x:0, y:1, z:0))
-                                .frame(width: screen.width / 2.1,height:110 )
-                                
+                                .frame(width: screen.width / 2.1,height:110)
+                                .overlay{
+                                    if !userStore.userIsPro{
+                                        overlayForPro(width:  screen.width / 2.1, height: 110, cornerRadius: 16,feature:.steps)
+                                    }
+                                }
                                 ZStack{
                                     // workouts hour
                                     
@@ -287,19 +292,27 @@ struct MainView: View {
                                 }
                                 .frame(width: screen.width / 2.1,height:110 )
                                 .onTapGesture (count:2){
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
-                                        showFullCard.toggle()
-                                        if showFullCard{
-                                            selectedCard = .workout
-                                        }else{
-                                            selectedCard = nil
+                                    if userStore.userIsPro{
+                                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                            showFullCard.toggle()
+                                            if showFullCard{
+                                                selectedCard = .workout
+                                            }else{
+                                                selectedCard = nil
+                                            }
                                         }
                                     }
                                 }
                                 .rotation3DEffect(Angle(degrees: showFullCard ? 360:0), axis: (x:0, y:1, z:0))
+                                .overlay{
+                                    if !userStore.userIsPro{
+                                        overlayForPro(width:  screen.width / 2.1, height: 110, cornerRadius: 16,feature:.workout)
+                                    }
+                                }
                             }
                             Water_IntakeCard()
                                 .environmentObject(dataManager)
+                                
                             WeightProgressCard()
                                 .environmentObject(userStore)
                             
