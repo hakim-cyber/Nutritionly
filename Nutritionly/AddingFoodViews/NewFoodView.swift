@@ -231,7 +231,7 @@ struct NewFoodView: View {
                                 Image(systemName: "magnifyingglass")
                             }else{
                                 Text("Search Database (Pro)")
-                                Image(systemName: "checkmark.seal.fill")
+                                Image(systemName: "crown.fill")
                                   .foregroundColor(Color("openBlue"))
                                   .font(.title3)
                             }

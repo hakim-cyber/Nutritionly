@@ -15,7 +15,7 @@ struct ProSymbol: View {
            
             VStack{
                 HStack{
-                    Image(systemName: "checkmark.seal.fill")
+                    Image(systemName: "crown.fill")
                         .foregroundColor(Color("openBlue"))
                         
                     Text("Pro")

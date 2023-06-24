@@ -29,7 +29,7 @@ struct PurchaseView: View {
                             .fontWeight(.heavy)
                            
                         VStack{
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                                 .font(.title3)
                             Spacer()
@@ -40,35 +40,35 @@ struct PurchaseView: View {
                     
                     VStack(spacing: 20){
                         HStack(spacing:15){
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                             Text("Track Daily Steps 🏃‍♀️")
                             
                             Spacer()
                         }
                         HStack(spacing:15){
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                             Text("Track Your Workout Minutes 🏋️")
                             
                             Spacer()
                         }
                         HStack(spacing:15){
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                             Text("Track Daily Water Intake 💧")
                             
                             Spacer()
                         }
                         HStack(spacing:15){
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                             Text("Acces To Food Database 🍛")
                             
                             Spacer()
                         }
                         HStack(spacing:15){
-                            Image(systemName: "checkmark.seal.fill")
+                            Image(systemName: "crown.fill")
                                 .foregroundColor(Color("openBlue"))
                             Text("Acces to Background Colors 🌈")
                             
@@ -105,7 +105,7 @@ struct PurchaseView: View {
                             .opacity(0.2)
                         HStack(spacing:15){
                             
-                            Image(systemName: seletedPlan == plan ? "checkmark.seal.fill" : "checkmark.seal" )
+                            Image(systemName: seletedPlan == plan ? "checkmark.circle.fill" : "checkmark.circle" )
                                 .foregroundColor(Color("openBlue"))
                                 .font(.title3)
                             if plan == .monthly{
