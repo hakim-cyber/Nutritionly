@@ -20,6 +20,7 @@ struct ProSymbol: View {
                         
                     Text("Pro")
                         .foregroundColor(colorScheme == .light ? Color.black : Color.white)
+                        .fontWeight(.black)
                    
                 }
             }
