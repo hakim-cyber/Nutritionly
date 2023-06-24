@@ -196,7 +196,7 @@ struct UserInformationView: View {
                             Spacer()
                             RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
                                 
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     dataManager.weightOfToday = weight
                                     next = true
                                 }
@@ -243,12 +243,12 @@ struct UserInformationView: View {
                        
                        if document.exists {
                           
-                           withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                           withAnimation(.easeInOut){
                              
                                self.animated = true
                            }
                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                               withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                               withAnimation(.easeInOut) {
                                    self.informationIsAdded = true
                                    
                                }

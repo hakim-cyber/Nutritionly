@@ -106,7 +106,7 @@ struct weightProgressChart: View {
        
     }
     func loadDaysOfUser(){
-        withAnimation(.interactiveSpring(response: 0.7,dampingFraction: 0.7).delay(0.5)){
+        withAnimation(.easeInOut.delay(0.5)){
             animate = true
         }
     }

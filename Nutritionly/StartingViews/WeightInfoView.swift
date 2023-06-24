@@ -70,7 +70,7 @@ struct WeightInfoView: View {
                            if abs(offset.width) > 100 {
                               
                               
-                                   withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                                   withAnimation(.easeInOut) {
                                       amountIsFocused = false
                                        if weight > 0.0{
                                            close(weight)

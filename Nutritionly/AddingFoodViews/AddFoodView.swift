@@ -55,7 +55,7 @@ struct AddFoodView: View {
                             VStack(spacing: 25){
                                 ForEach(dataManager.meals,id: \.self){
                                     MealItem(foods: dataManager.foodsOfDay, meal: $0,color: dataManager.mealsColors[$0] ?? Color.openGreen, nameSpace: namespace){selectedMeal in
-                                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.8)){
+                                        withAnimation(.easeInOut){
                                             self.selectedMeal = selectedMeal
                                             self.showaddingNewFood = true
                                         }
@@ -96,7 +96,7 @@ struct AddFoodView: View {
             }else{
                 if let selectedMeal = selectedMeal{
                     NewFoodView(meal: selectedMeal , color: dataManager.mealsColors[selectedMeal] ?? Color.openGreen,namespace: namespace){
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.8)){
+                        withAnimation(.easeInOut){
                             self.showaddingNewFood = false
                             self.selectedMeal = nil
                         }

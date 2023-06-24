@@ -74,7 +74,7 @@ struct MainView: View {
                                 Spacer()
                                 Button{
                                     // add food
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    withAnimation(.easeInOut){
                                         showAddView = true
                                         
                                     }
@@ -293,7 +293,7 @@ struct MainView: View {
                                 .frame(width: screen.width / 2.1,height:110 )
                                 .onTapGesture (count:2){
                                     if userStore.userIsPro{
-                                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                        withAnimation(.easeInOut){
                                             showFullCard.toggle()
                                             if showFullCard{
                                                 selectedCard = .workout
@@ -375,7 +375,7 @@ struct MainView: View {
                     
                 }else{
                     AddFoodView(namespace:namespace){
-                        withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8)){
+                        withAnimation(.easeInOut){
                             showAddView = false
                             
                             animateProgress = true

@@ -29,7 +29,7 @@ class UserStore:ObservableObject{
     }
    
     func logOut(){
-        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+        withAnimation(.easeInOut){
 
                 do{
                     
@@ -123,7 +123,7 @@ class UserStore:ObservableObject{
             try await deleteAccountInfo()
             try await deleteUser()
             DispatchQueue.main.async {
-                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                withAnimation(.easeInOut){
                     self.userIsLoggedIn = false
                     
                 }

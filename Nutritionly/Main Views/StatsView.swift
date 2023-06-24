@@ -201,7 +201,7 @@ struct StatsView: View {
             }
             
         }
-        withAnimation(.interactiveSpring(response: 0.8,dampingFraction: 0.8,blendDuration: 0.8)){
+        withAnimation(.easeInOut){
             statsItems = items
         }
     }

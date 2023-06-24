@@ -107,7 +107,7 @@ struct SpeedOptionView: View {
                             
                         }
                         .onTapGesture {
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 selectedSpeed = speed
                             }
                         }
@@ -124,7 +124,7 @@ struct SpeedOptionView: View {
                     HStack{
                         Spacer()
                         RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 speedMultiplier = selectedSpeed.multiplier
                                 calculating = true
                                 DispatchQueue.main.asyncAfter(deadline:DispatchTime.now() + 2 ){

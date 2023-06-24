@@ -93,7 +93,7 @@ struct TotalFoodView: View {
                                         
                                     }
                                     .onTapGesture{
-                                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.6)){
+                                        withAnimation(.easeInOut){
                                             if tappedIngreds.contains(where:{$0.id == ingredients[index].id}){
                                                 if  let index = tappedIngreds.firstIndex(where: {$0.id == ingredients[index].id}){
                                                     tappedIngreds.remove(at: index)

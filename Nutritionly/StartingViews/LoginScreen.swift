@@ -106,7 +106,7 @@ struct LoginScreen: View {
                     .onAppear{
                         Auth.auth().addStateDidChangeListener{auth,user in
                             if user != nil{
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     userStore.userIsLoggedIn.toggle()
                             }
                             }

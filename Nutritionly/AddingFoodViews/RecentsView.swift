@@ -75,11 +75,11 @@ struct RecentsView: View {
                             .padding(.vertical,10)
                             .onTapGesture {
                                 if isSelected(food: dataManager.recentFoodsOfUser[index]){
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    withAnimation(.easeInOut){
                                         selectedFood = nil
                                     }
                                 }else{
-                                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                    withAnimation(.easeInOut){
                                         selectedFood = dataManager.recentFoodsOfUser[index]
                                     }
                                 }

@@ -59,7 +59,7 @@ struct StartScreen: View {
                 HStack{
                     Spacer()
                     RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                        withAnimation(.easeInOut) {
                             buttonIsPressed.toggle()
                         }
                       

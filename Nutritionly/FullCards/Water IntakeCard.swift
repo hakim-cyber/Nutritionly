@@ -43,7 +43,7 @@ struct Water_IntakeCard: View {
                                 Image(systemName: "drop.fill")
                                     .font(.system(size: 40))
                                     .foregroundColor(calculateDrinked(index: index) ? .blue.opacity(0.5):.gray.opacity(0.7))
-                                    .animation(.interactiveSpring(response: 0.6,dampingFraction: 0.6), value: drinkedCount)
+                                    .animation(.easeInOut, value: drinkedCount)
                                 Text("300ml")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
@@ -63,14 +63,14 @@ struct Water_IntakeCard: View {
         .onTapGesture {
             if drinkedCount < totalCount{
                 
-                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                withAnimation(.easeInOut){
                     DispatchQueue.main.async {
                         dataManager.drinkedWater += 300
                     }
                 }
             }
         }
-        .animation(.interactiveSpring(response: 0.6,dampingFraction: 0.6), value: drinkedCount)
+        .animation(.easeInOut, value: drinkedCount)
        
         .frame(width: screen.width / 1.05,height:130 )
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in

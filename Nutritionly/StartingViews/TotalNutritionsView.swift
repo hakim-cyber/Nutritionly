@@ -96,7 +96,7 @@ struct TotalNutritionsView: View {
             HStack{
                 Spacer()
                 RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                    withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                    withAnimation(.easeInOut){
                         storeUserInformation()
                     }
                     
@@ -194,7 +194,7 @@ struct TotalNutritionsView: View {
                           if document.exists {
                              
                               DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                                  withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)) {
+                                  withAnimation(.easeInOut) {
                                       self.informationIsAdded = true
                                   }
                               }

@@ -24,7 +24,7 @@ struct ContentView: View {
                     
                     if tab == .house{
                         MainView(){
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 showTabBar.toggle()
                             }
                         }

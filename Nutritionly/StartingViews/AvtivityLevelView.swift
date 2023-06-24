@@ -120,7 +120,7 @@ struct ActivityLevelView: View {
                         }
                         .overlay(alignment:.topTrailing){
                             Button{
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     selectedLevel = level
                                     showInfo = true
                                 }
@@ -131,7 +131,7 @@ struct ActivityLevelView: View {
                             .padding(7)
                         }
                         .onTapGesture {
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 selectedLevel = level
                             }
                         }
@@ -148,7 +148,7 @@ struct ActivityLevelView: View {
                     HStack{
                         Spacer()
                         RoundedButtonView(text: "let's gooo", textColor: .white, backgroundColor: Color.buttonAndForegroundColor, action: {
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 activityMultiplier = selectedLevel.multiplier
                                 next = true
                             }
@@ -175,7 +175,7 @@ struct ActivityLevelView: View {
                     Spacer()
                     Image(systemName:"xmark.circle")
                         .onTapGesture {
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 showInfo = false
                             }
                         }

@@ -23,7 +23,7 @@ struct CustomProgressView: View {
                       
                         
                 }
-                .animation(.interactiveSpring(response: 0.8,dampingFraction: 0.8).speed(0.5), value: progress)
+                .animation(.easeInOut.speed(0.5), value: progress)
             
           
                

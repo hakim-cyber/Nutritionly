@@ -184,7 +184,7 @@ class NutritionData_Manager:ObservableObject{
     func resetallInfo(){
         DispatchQueue.main.async {
             // reset date
-            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+            withAnimation(.easeInOut){
                 self.workoutMinutes = 0
                 self.weightOfToday = 0.0
                 self.requestweight = true
@@ -304,7 +304,7 @@ class NutritionData_Manager:ObservableObject{
         let food = Food(name: name, meal: meal, ingredients: ingred,emoji: emoji ?? "")
         
         
-        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+        withAnimation(.easeInOut){
             foodsOfDay.append(food)
             
             if !(recentFoodsOfUser.contains(where: {$0.ingredients == food.ingredients})){
@@ -361,7 +361,7 @@ class NutritionData_Manager:ObservableObject{
             case .sharingDenied:
                 self.isAuthorized = false
             case .sharingAuthorized:
-                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                withAnimation(.easeInOut){
                     self.isAuthorized = true
                 }
             @unknown default:

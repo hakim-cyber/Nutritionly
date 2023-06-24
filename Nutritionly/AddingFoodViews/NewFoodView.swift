@@ -69,12 +69,12 @@ struct NewFoodView: View {
                         Button{
                             // Go to total view
                             if typeOfadding == .new{
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     showtotalView = true
                                 }
                             }else{
                                 
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     if let selectedFood = selectedFood{
                                         dataManager.AddNewFoodForDay(ingred: selectedFood.ingredients, name: selectedFood.name, meal: meal,emoji: selectedFood.emoji)
                                     }
@@ -134,7 +134,7 @@ struct NewFoodView: View {
             }else{
                 if showManualAddview{
                     ManualIngredAdding(color: color){selected in
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                        withAnimation(.easeInOut){
                             for select in selected{
                                 if !ingredients.contains(where: {$0.id == select.id}){
                                     ingredients.append(select)
@@ -147,7 +147,7 @@ struct NewFoodView: View {
                     .transition(.move(edge: .bottom))
                 }else{
                     SearchIngredientsView(color: color){selected in
-                        withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                        withAnimation(.easeInOut){
                             for select in selected{
                                 if !ingredients.contains(where: {$0.id == select.id}){
                                     ingredients.append(select)
@@ -207,7 +207,7 @@ struct NewFoodView: View {
          
                     Menu{
                         Button{
-                            withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                            withAnimation(.easeInOut){
                                 showManualAddview = true
                             }
                         }label: {
@@ -216,7 +216,7 @@ struct NewFoodView: View {
                         }
                         Button{
                             if userStore.userIsPro{
-                                withAnimation(.interactiveSpring(response: 0.6,dampingFraction: 0.6)){
+                                withAnimation(.easeInOut){
                                     showsearchView = true
                                 }
                             }else{
