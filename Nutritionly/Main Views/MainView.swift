@@ -165,13 +165,7 @@ struct MainView: View {
                                     .fontWeight(.bold)
                                 
                                 Spacer()
-                                Button{
-                                    // additional
-                                }label:{
-                                    Image(systemName: "ellipsis")
-                                        .font(.system(size: 18))
-                                        .foregroundColor(.black)
-                                }
+                                
                                 
                             }
                             .padding(.horizontal, 10)
