@@ -15,14 +15,27 @@ struct ProfiledData: View {
         Form{
             Section{
                 HStack(spacing: 10){
-                   Image(uiImage: profilePhoto ?? UIImage())
+                    if profilePhoto != nil{
+                    Image(uiImage: profilePhoto!)
                         .resizable()
                         .scaledToFit()
+                       
                         .clipShape(Circle())
                         .frame(width: 50)
                         .onTapGesture {
                             self.showPicker.toggle()
                         }
+                          }else{
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(8)
+                            .clipShape(Circle())
+                            .frame(width: 50)
+                            .onTapGesture {
+                                self.showPicker.toggle()
+                            }
+                    }
                     
                     VStack(alignment: .leading){
                         Text("\(user.name)")
