@@ -60,8 +60,6 @@
 		08D0EFC82A4060BA0038BB4D /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0EFC62A4060BA0038BB4D /* PropertyWrapper.swift */; };
 		08D0EFC92A40662C0038BB4D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084F29A12A10F6070071D321 /* ProgressView.swift */; };
 		08DABA292A470E0800EEA1AC /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA282A470E0800EEA1AC /* PurchaseView.swift */; };
-		08DABA2C2A470F1400EEA1AC /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 08DABA2B2A470F1400EEA1AC /* ReceiptParser */; };
-		08DABA2E2A470F1400EEA1AC /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 08DABA2D2A470F1400EEA1AC /* RevenueCat */; };
 		08DABA302A4740CF00EEA1AC /* overlayForPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA2F2A4740CF00EEA1AC /* overlayForPro.swift */; };
 		08DABA322A47419200EEA1AC /* ProSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DABA312A47419200EEA1AC /* ProSymbol.swift */; };
 		08DB017E2A16B69B00DCA54A /* SearchIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB017D2A16B69B00DCA54A /* SearchIngredientsView.swift */; };
@@ -177,10 +175,8 @@
 			files = (
 				08AA62892A22B61A002D9DBF /* FirebaseAuth in Frameworks */,
 				08AA62902A22B62F002D9DBF /* EmojiPicker in Frameworks */,
-				08DABA2E2A470F1400EEA1AC /* RevenueCat in Frameworks */,
 				08AA628B2A22B61A002D9DBF /* FirebaseFirestore in Frameworks */,
 				08AA628D2A22B61A002D9DBF /* FirebaseFirestoreSwift in Frameworks */,
-				08DABA2C2A470F1400EEA1AC /* ReceiptParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +198,7 @@
 				08D0EFCA2A407AD30038BB4D /* NutritionlyWidgetsExtensionDebug.entitlements */,
 				08D0EFC32A4055B20038BB4D /* NutritionlyWidgetsExtensionRelease.entitlements */,
 				082CC9592A0F95F000D7F345 /* Nutritionly */,
+				08DABA272A470DF100EEA1AC /* Purchase Views */,
 				08D0EFA52A404F770038BB4D /* NutritionlyWidgets */,
 				082CC9582A0F95F000D7F345 /* Products */,
 				08F367B82A12CB3900180195 /* Frameworks */,
@@ -225,7 +222,6 @@
 				08AA44FA2A1BF87900537DD5 /* Nutritionly.entitlements */,
 				082CC95A2A0F95F000D7F345 /* NutritionlyApp.swift */,
 				082CC95C2A0F95F000D7F345 /* ContentView.swift */,
-				08DABA272A470DF100EEA1AC /* Purchase Views */,
 				087ABF6C2A2159530092911B /* Main Views */,
 				08AA44F72A1BEC0C00537DD5 /* FullCards */,
 				082CC97A2A0FFDC000D7F345 /* GoogleService-Info.plist */,
@@ -402,8 +398,6 @@
 				08AA628A2A22B61A002D9DBF /* FirebaseFirestore */,
 				08AA628C2A22B61A002D9DBF /* FirebaseFirestoreSwift */,
 				08AA628F2A22B62F002D9DBF /* EmojiPicker */,
-				08DABA2B2A470F1400EEA1AC /* ReceiptParser */,
-				08DABA2D2A470F1400EEA1AC /* RevenueCat */,
 			);
 			productName = Nutritionly;
 			productReference = 082CC9572A0F95F000D7F345 /* Nutritionly.app */;
@@ -456,7 +450,6 @@
 			packageReferences = (
 				08AA62872A22B61A002D9DBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				08AA628E2A22B62F002D9DBF /* XCRemoteSwiftPackageReference "EmojiPicker" */,
-				08DABA2A2A470F1400EEA1AC /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 082CC9582A0F95F000D7F345 /* Products */;
 			projectDirPath = "";
@@ -868,14 +861,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		08DABA2A2A470F1400EEA1AC /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -898,16 +883,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08AA628E2A22B62F002D9DBF /* XCRemoteSwiftPackageReference "EmojiPicker" */;
 			productName = EmojiPicker;
-		};
-		08DABA2B2A470F1400EEA1AC /* ReceiptParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 08DABA2A2A470F1400EEA1AC /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = ReceiptParser;
-		};
-		08DABA2D2A470F1400EEA1AC /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 08DABA2A2A470F1400EEA1AC /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

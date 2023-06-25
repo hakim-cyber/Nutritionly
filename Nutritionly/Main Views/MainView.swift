@@ -235,11 +235,7 @@ struct MainView: View {
                                 }
                                 .rotation3DEffect(Angle(degrees: dataManager.isAuthorized ? 360:0), axis: (x:0, y:1, z:0))
                                 .frame(width: screen.width / 2.1,height:110)
-                                .overlay{
-                                    if !userStore.userIsPro{
-                                        overlayForPro(width:  screen.width / 2.1, height: 110, cornerRadius: 16,feature:.steps)
-                                    }
-                                }
+                                
                                 ZStack{
                                     // workouts hour
                                     
@@ -292,7 +288,7 @@ struct MainView: View {
                                 }
                                 .frame(width: screen.width / 2.1,height:110 )
                                 .onTapGesture (count:2){
-                                    if userStore.userIsPro{
+                                    
                                         withAnimation(.easeInOut){
                                             showFullCard.toggle()
                                             if showFullCard{
@@ -301,14 +297,10 @@ struct MainView: View {
                                                 selectedCard = nil
                                             }
                                         }
-                                    }
+                                    
                                 }
                                 .rotation3DEffect(Angle(degrees: showFullCard ? 360:0), axis: (x:0, y:1, z:0))
-                                .overlay{
-                                    if !userStore.userIsPro{
-                                        overlayForPro(width:  screen.width / 2.1, height: 110, cornerRadius: 16,feature:.workout)
-                                    }
-                                }
+                               
                             }
                             Water_IntakeCard()
                                 .environmentObject(dataManager)

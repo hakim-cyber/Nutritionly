@@ -18,8 +18,8 @@ class UserStore:ObservableObject{
     
     @Published  var userIsLoggedIn = false
     
-    @AppStorage("userIsPro") var userIsPro = false
-    @Published var showPurchaseView = false
+  
+ 
  
     let db = Firestore.firestore()
     

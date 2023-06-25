@@ -51,11 +51,7 @@ struct overlayForPro: View {
            
         }
         .frame(width: width,height: height)
-        .onTapGesture {
-            withAnimation(.easeInOut){
-                userStore.showPurchaseView = true
-            }
-        }
+        
     }
 }
 

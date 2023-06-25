@@ -92,17 +92,17 @@ struct ProfileView: View {
                                             
                                         }
                                         Menu{
-                                            if userstore.userIsPro{
-                                                Picker("",selection:$backgroundColor){
-                                                    ForEach(colors , id:\.self){color in
-                                                        Text("\(color)")
-                                                          
-                                                        
-                                                          
-                                                    }
+                                           
+                                            Picker("",selection:$backgroundColor){
+                                                ForEach(colors , id:\.self){color in
+                                                    Text("\(color)")
+                                                    
+                                                    
+                                                    
                                                 }
-                                                .labelsHidden()
                                             }
+                                                .labelsHidden()
+                                            
                                          
                                             
                                         }label:{
@@ -116,22 +116,15 @@ struct ProfileView: View {
                                                     .font(.callout)
                                                     .fontDesign(.rounded)
                                                 Spacer()
-                                                if !userstore.userIsPro {
-                                                    ProSymbol()
-                                                }else{
+                                              
+                                                
                                                     Image(systemName: "chevron.right")
                                                         .font(.system(size: 15))
                                                         .foregroundColor(colorScheme == .light ? Color.black : Color.white)
-                                                }
+                                                
                                             }
                                         }
-                                        .onTapGesture {
-                                            if !userstore.userIsPro{
-                                                withAnimation(.easeInOut){
-                                                   userstore.showPurchaseView = true
-                                                            }
-                                            }
-                                        }
+                                        
                                         
                                         Button{
                                             

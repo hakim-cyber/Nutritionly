@@ -92,11 +92,7 @@ struct Water_IntakeCard: View {
                 }
             }
         }
-        .overlay{
-            if !userStore.userIsPro{
-                overlayForPro(width:  screen.width / 1.05, height: 130, cornerRadius: 16,feature:.water)
-            }
-        }
+       
     }
     
     func calculateDrinked(index:Int)->Bool{

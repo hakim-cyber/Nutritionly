@@ -215,26 +215,22 @@ struct NewFoodView: View {
                             Image(systemName: "hand.draw.fill")
                         }
                         Button{
-                            if userStore.userIsPro{
+                            
                                 withAnimation(.easeInOut){
                                     showsearchView = true
                                 }
-                            }else{
-                                withAnimation(.easeInOut){
-                                                userStore.showPurchaseView = true
-                                            }
-                            }
+                           
                         }label: {
                            
-                            if userStore.userIsPro{
+                          
                                 Text("Search Database")
                                 Image(systemName: "magnifyingglass")
-                            }else{
+                            
                                 Text("Search Database (Pro)")
                                 Image(systemName: "crown.fill")
                                   .foregroundColor(Color("openBlue"))
                                   .font(.title3)
-                            }
+                            
                         }
                        
                        

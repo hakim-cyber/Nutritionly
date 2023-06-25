@@ -59,10 +59,7 @@ struct ContentView: View {
                 
                 
         }
-        .sheet(isPresented: $userStore.showPurchaseView){
-            
-            PurchaseView()
-        }
+        
         
 
     }
