@@ -35,7 +35,7 @@ struct MyTargetView: View {
         
         let progressKgs = currentWeight - startWeight
         
-        return Double(max(0,progressKgs))
+        return Double(progressKgs)
     }
     var body: some View {
         Form{
@@ -63,9 +63,15 @@ struct MyTargetView: View {
             Section{
                 HStack{
                     Spacer()
-                    Text("Your Progress \(progres.formatted()) Kg🔥")
-                        .bold()
-                        .font(.title3)
+                    if progres < 0{
+                        Text("Your Progress \(String(format: "-%.01f", -progres)) Kg🔥")
+                            .bold()
+                            .font(.title3)
+                    }else{
+                        Text("Your Progress \(String(format: "%.01f", progres)) Kg🔥")
+                            .bold()
+                            .font(.title3)
+                    }
                     Spacer()
                     
                 }
