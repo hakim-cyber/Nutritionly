@@ -35,7 +35,7 @@ class NutritionData_Manager:ObservableObject{
     @AppStorage("workoutMinutes") var workoutMinutes = 0
     @AppStorage("requestweight") var requestweight = false
     
-    @AppStorage("weightOfToday") var weightOfToday = 1.0
+    @AppStorage("weightOfToday") var weightOfToday = 0.0
   
     
     // meals
