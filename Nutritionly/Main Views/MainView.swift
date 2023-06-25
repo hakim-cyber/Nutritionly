@@ -101,41 +101,49 @@ struct MainView: View {
                                             .font(.system(size: 40))
                                             .fontDesign(.monospaced)
                                             .fontWeight(.heavy)
+                                            .font(.system(size: 1000))
+                                            .minimumScaleFactor(0.001)
+                                        
                                         
                                         HStack{
                                             Text("\(dataManager.totalNutritOfDay["kcal"] ?? 0)/\(dataManager.caloriesNeed)")
                                                 .fontDesign(.monospaced)
                                                 .fontWeight(.bold)
+                                                .font(.system(size: 400))
+                                                .minimumScaleFactor(0.03)
                                             
                                             Text("kcal")
                                                 .foregroundColor(.secondary)
+                                                .font(.system(size: 400))
+                                                .minimumScaleFactor(0.001)
                                         }
-                                      
+                                        
                                         HStack{
                                             
                                             Text("p")
                                                 .foregroundColor(.secondary)
                                              
-                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0 ) g")
+                                            Text("\(dataManager.totalNutritOfDay["p"] ?? 0 )/\(dataManager.proteinNeed) g")
                                                 .fontWeight(.bold)
                                               
                                             
                                             Text("c")
                                                 .foregroundColor(.secondary)
                                                
-                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0) g")
+                                            Text("\(dataManager.totalNutritOfDay["c"] ?? 0)/\(dataManager.carbohydratesNeed) g")
                                               
                                                 .fontWeight(.bold)
                                               
                                             Text("f")
                                               
                                                 .foregroundColor(.secondary)
-                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0) g")
+                                            Text("\(dataManager.totalNutritOfDay["f"] ?? 0)/\(dataManager.fatsNeed) g")
                                                 .fontWeight(.bold)
                                               
                                                
                                         }
-                                        
+                                        .font(.system(size: 500))
+                                        .minimumScaleFactor(0.02)
                                         
                                         Spacer()
                                       
