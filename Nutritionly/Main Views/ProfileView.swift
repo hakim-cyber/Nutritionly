@@ -16,7 +16,7 @@ struct ProfileView: View {
     let colors = ["mint","orange","purple","openGreen"]
     @Namespace var namespace
     var body: some View {
-            NavigationView{
+            NavigationStack{
                 ZStack{
                     BackGround(namespace: namespace)
                     VStack{
@@ -173,6 +173,7 @@ struct ProfileView: View {
             }
                 
         }
+            
             .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
                            
                        // Give a moment for the screen boundaries to change after

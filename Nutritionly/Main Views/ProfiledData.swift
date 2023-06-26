@@ -110,7 +110,7 @@ struct ProfiledData: View {
 
 struct ProfiledData_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
+        NavigationStack{
             ProfiledData()
                 .environmentObject(UserStore())
         }

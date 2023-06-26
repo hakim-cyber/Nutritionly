@@ -35,6 +35,7 @@ class UserStore:ObservableObject{
                     
                     try Auth.auth().signOut()
                     self.userIsLoggedIn = false
+                
                     
                 }catch{
                     print("\(error) signing out error")

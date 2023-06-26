@@ -107,8 +107,11 @@ struct LoginScreen: View {
                         Auth.auth().addStateDidChangeListener{auth,user in
                             if user != nil{
                                 withAnimation(.easeInOut){
-                                    userStore.userIsLoggedIn.toggle()
+                                    userStore.userIsLoggedIn = true
+                                  
                             }
+                            }else{
+                                print("no user")
                             }
                         }
                     }
