@@ -255,7 +255,7 @@ struct UserInformationView: View {
                            }
                            checked = true
                        } else {
-                         
+                           checked = true
                            return
                          
                        }
