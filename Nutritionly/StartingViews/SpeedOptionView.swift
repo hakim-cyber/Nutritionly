@@ -30,6 +30,8 @@ struct SpeedOptionView: View {
     @State private var selectedSpeed = SpeedOption.slow
     @State private var next = false
     @State private var calculating = false
+    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
 
             ZStack{
@@ -43,6 +45,7 @@ struct SpeedOptionView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
+                            .foregroundColor(colorScheme == .light ? .black : .white)
                         ProgressView()
                     }
                     
@@ -100,6 +103,7 @@ struct SpeedOptionView: View {
                                     }
                                     
                                 }
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                             }
                             
                             

@@ -11,6 +11,8 @@ struct GoalView: View {
    @AppStorage("goal") var selectedGoal = "InShape"
     let goals = ["Lose","InShape","Gain"]
     @State private var next = false
+    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
         if next{
@@ -72,7 +74,8 @@ struct GoalView: View {
                                     
                                 }
                             }
-                            
+                         
+                            .foregroundColor(colorScheme == .light ? .black : .white)
                             
                             
                             

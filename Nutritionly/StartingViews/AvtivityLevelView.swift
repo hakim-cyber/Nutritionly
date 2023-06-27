@@ -34,6 +34,8 @@ struct ActivityLevelView: View {
     @State private var selectedLevel = ActivityLevel.sedentary
     @State private var showInfo = false
     @State private var next = false
+    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
             if next{
@@ -208,6 +210,7 @@ struct ActivityLevelView: View {
                     Text("▪️ Rigorous training sessions and multiple intense physical activities daily")
                 }
             }
+                .foregroundColor(colorScheme == .light ? .black : .white)
             .padding()
             .padding(.bottom)
             

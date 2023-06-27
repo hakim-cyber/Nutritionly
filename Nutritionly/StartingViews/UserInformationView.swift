@@ -20,6 +20,8 @@ struct UserInformationView: View {
     
     @AppStorage("age") var age: Int = 12
     @AppStorage("gender")  var selectedGender:String = "Male"
+    
+    @Environment(\.colorScheme) var colorScheme
    
 
     @State var genders = ["Male","Female"]
@@ -115,6 +117,7 @@ struct UserInformationView: View {
                                         .font(.system(size: 30))
                                         .fontWeight(.heavy)
                                   MultipleSectionWeightPicker(weightInt: $weightInt, weightDouble: $weightDouble)
+                                        .colorScheme(.light)
                                     
                                     
                                 }
@@ -176,6 +179,7 @@ struct UserInformationView: View {
                                         }
                                         
                                     }
+                                    .colorScheme(.light)
                                     .frame(maxWidth: 220)
                                     .pickerStyle(.segmented)
                                     .padding(.trailing,20)

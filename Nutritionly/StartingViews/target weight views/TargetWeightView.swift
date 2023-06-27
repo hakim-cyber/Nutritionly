@@ -13,6 +13,8 @@ struct TargetWeightView: View {
     @State private var weightDouble = 1
     
     @State private var next = false
+    
+    @Environment(\.colorScheme) var colorScheme
    
     var body: some View {
         
@@ -34,9 +36,10 @@ struct TargetWeightView: View {
                     VStack{
                         HStack{
                             Text("Target Weight")
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                             Spacer()
                             Text("\(targetWeightView.formatted()) kg")
-                            
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                         }
                         Divider()
                         VStack{
@@ -51,7 +54,7 @@ struct TargetWeightView: View {
                 }
                 .frame(height:300)
                 Text("Don't worry you can change it later")
-                    .foregroundColor(.secondary)
+                    .foregroundColor( .black)
                 Spacer()
                 Spacer()
                 

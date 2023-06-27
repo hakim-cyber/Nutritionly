@@ -16,6 +16,8 @@ struct TotalNutritionsView: View {
     @AppStorage("age") var age: Int = 12
     @AppStorage("gender")  var selectedGender:String = "Male"
     
+    @Environment(\.colorScheme) var colorScheme
+    
     
     @State var informationIsAdded = false
     @State private var show = false
@@ -81,6 +83,7 @@ struct TotalNutritionsView: View {
                 .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
                 
             }
+            .foregroundColor(colorScheme == .light ? .black : .white)
             .frame(height:300)
             
             Spacer()

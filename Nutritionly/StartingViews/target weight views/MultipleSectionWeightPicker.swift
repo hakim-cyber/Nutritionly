@@ -12,6 +12,8 @@ struct MultipleSectionWeightPicker: View {
     @Binding var weightDouble:Int
     let doubles = Array(0...9)
     let ints = Array(30...150)
+    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         GeometryReader{geo in
             
@@ -19,24 +21,25 @@ struct MultipleSectionWeightPicker: View {
                 Picker("", selection: $weightInt){
                 ForEach(ints ,id:\.self){num in
                     Text("\(num)")
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .light ? .black :.white)
                         
                  }
                 }
                 .pickerStyle(WheelPickerStyle())
                 .frame(width: geo.size.width / 3)
             Text(".")
+                    .foregroundColor(colorScheme == .light ? .black : .white)
                 Picker("", selection: $weightDouble){
                 ForEach(doubles ,id:\.self){num in
                     Text("\(num)")
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .light ? .black :.white)
                         
                  }
                 }
                 .pickerStyle(WheelPickerStyle())
                 .frame(width: geo.size.width / 3)
                 Text("kg")
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .light ? .black : .white)
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
             
